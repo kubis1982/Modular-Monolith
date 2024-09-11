@@ -8,7 +8,11 @@
 		<PackageReference Include="Ardalis.Specification" Version="8.0.0">
 			<PrivateAssets>build;compile;analyzers</PrivateAssets>
 		</PackageReference>
-		<PackageReference Include="MediatR" Version="12.4.0" />
+		<PackageReference Include="MediatR" Version="12.4.1" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+	</ItemGroup>
+	<ItemGroup>
+		<InternalsVisibleTo Include="$(AssemblyName)Tests" />
+		<InternalsVisibleTo Include="Kubis1982.Shared.Domain" />
 	</ItemGroup>
 </Project>
