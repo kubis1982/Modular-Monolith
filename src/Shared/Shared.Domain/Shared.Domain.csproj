@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<RootNamespace>Kubis1982.Shared</RootNamespace>
+		<AssemblyName>Kubis1982.Shared.Domain</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Ardalis.Specification" Version="8.0.0">
+			<PrivateAssets>build;compile;analyzers</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="MediatR" Version="12.4.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+	</ItemGroup>
+</Project>
