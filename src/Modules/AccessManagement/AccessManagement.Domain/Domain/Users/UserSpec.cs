@@ -1,6 +1,5 @@
 ﻿namespace Kubis1982.Modules.AccessManagement.Domain.Users
 {
-    using Kubis1982.AccessManagement.Domain.Users;
     using Kubis1982.Shared.Kernel;
     using Kubis1982.Shared.Kernel.Types;
     using System;
@@ -24,14 +23,6 @@
         /// <returns>The user specification.</returns>
         public static UserSpec ById(UserId userId)
             => new(n => n.Where(n => n.Id == userId));
-
-        /// <summary>
-        /// Creates a specification to query users by their name.
-        /// </summary>
-        /// <param name="userName">The user name.</param>
-        /// <returns>The user specification.</returns>
-        public static UserSpec ByName(UserName userName)
-            => new(n => n.Where(n => n.Name == userName));
 
         /// <summary>
         /// Creates a specification to query users by their email.

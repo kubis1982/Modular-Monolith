@@ -1,18 +1,15 @@
-﻿using Kubis1982.AccessManagement.Domain.Users;
-
-namespace Kubis1982.Modules.AccessManagement.Domain.Users.Events
+﻿namespace Kubis1982.Modules.AccessManagement.Domain.Users.Events
 {
     public sealed record UserCreatedEvent : UserDomainEvent
     {
-        public UserCreatedEvent(User user, UserName name, UserFullName fullName, UserEmail? email) : base(user)
+        public UserCreatedEvent(User user, UserEmail email, UserFullName fullName) : base(user)
         {
-            Name = name;
-            FullName = fullName;
             Email = email;
+            FullName = fullName;            
         }
 
-        public UserName Name { get; }
-        public UserFullName FullName { get; }
         public UserEmail? Email { get; }
+
+        public UserFullName FullName { get; }        
     }
 }

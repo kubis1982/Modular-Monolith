@@ -17,7 +17,7 @@
         {
         }
 
-        private UserEmail(string email)
+        private UserEmail(string? email)
         {
             if (!MailAddress.TryCreate(email, out _))
             {
@@ -30,13 +30,10 @@
         /// <summary>
         /// Creates a new instance of the <see cref="UserEmail"/> class.
         /// </summary>
-        /// <param name="email">The email address. If <paramref name="email"/> is empty or null, returns null.</param>
-        /// <returns>A new instance of the <see cref="UserEmail"/> class, or null if <paramref name="email"/> is empty or null.</returns>
-        public static UserEmail? Of(string? email)
+        /// <param name="email">The email address.</param>
+        /// <returns>A new instance of the <see cref="UserEmail"/> class.</returns>
+        public static UserEmail Of(string? email)
         {
-            if (string.IsNullOrWhiteSpace(email))
-                return null;
-
             return new UserEmail(email);
         }
 
