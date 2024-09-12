@@ -9,6 +9,7 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddModular(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment environment)
     {
+        services.AddHttpContextAccessor();
         services.AddSecurity(configuration);
         services.AddSharedInfrastructure(configuration);
         return services;
