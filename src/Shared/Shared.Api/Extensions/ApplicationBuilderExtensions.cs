@@ -16,7 +16,7 @@
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.UseExceptionHandler();
+            //app.UseExceptionHandler();
             app.UseSecurity();
             return app;
         }

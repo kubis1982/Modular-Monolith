@@ -14,8 +14,8 @@ public static class ServiceCollectionExtensions {
     }
 
     internal static IApplicationBuilder UseSecurity(this IApplicationBuilder applicationBuilder) {
-        applicationBuilder.UseAuthentication();
-        applicationBuilder.UseAuthorization();
+        //applicationBuilder.UseAuthentication();
+        //applicationBuilder.UseAuthorization();
         return applicationBuilder;
     }
 }
