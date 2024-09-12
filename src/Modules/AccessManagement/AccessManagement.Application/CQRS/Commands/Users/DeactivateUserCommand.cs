@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Commands.Users
+﻿namespace Kubis1982.Modules.AccessManagement.CQRS.Commands.Users
 {
     using Kubis1982.Modules.AccessManagement.Domain.Users;
     using Kubis1982.Shared.CQRS.Commands;
@@ -6,15 +6,15 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public record ActivateUserCommand(int UserId) : UnitOfWorkCommand
+    public record DeactivateUserCommand(int UserId) : UnitOfWorkCommand
     {
-        internal class ActivateUserCommandHandler(IUserRepository userRepository, IUserContext userContext) : UnitOfWorkCommandHandler<ActivateUserCommand>
+        internal class DeactivateUserCommandHandler(IUserRepository userRepository, IUserContext userContext) : UnitOfWorkCommandHandler<DeactivateUserCommand>
         {
-            public override async Task Handle(ActivateUserCommand command, CancellationToken cancellationToken)
+            public override async Task Handle(DeactivateUserCommand command, CancellationToken cancellationToken)
             {
                 User user = await userRepository.SingleAsync(UserSpec.ById(command.UserId), cancellationToken);
                 User currentUser = await userRepository.SingleAsync(UserSpec.ById(userContext.UserId), cancellationToken);
-                user.Activate(currentUser);
+                user.Deactivate(currentUser);
             }
         }
     }

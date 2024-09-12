@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Commands.Users
+﻿namespace Kubis1982.Modules.AccessManagement.CQRS.Commands.Users
 {
     using Kubis1982.AccessManagement.Domain.Users;
     using Kubis1982.Modules.AccessManagement.Domain.Users;
