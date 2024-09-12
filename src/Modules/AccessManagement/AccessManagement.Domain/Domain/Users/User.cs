@@ -21,12 +21,12 @@
         /// <summary>
         /// Gets or sets a value indicating whether the user is active.
         /// </summary>
-        internal bool? IsActive { get; private set; } = false;
+        internal bool IsActive { get; private set; } = false;
 
         /// <summary>
         /// Gets or sets the full name of the user.
         /// </summary>
-        internal UserFullName? FullName { get; private set; }
+        internal UserFullName FullName { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="User"/> class.
@@ -45,9 +45,9 @@
         /// <param name="fullName">The full name of the user.</param>
         private User(UserEmail email, UserPassword password, UserFullName fullName) : this()
         {
-            Password = password;
-            FullName = fullName;
             Email = email;
+            Password = password;
+            FullName = fullName;            
 
             AddEvent(new UserCreatedEvent(this, email, fullName));
         }
@@ -144,6 +144,6 @@
         /// <summary>
         /// Gets the administrator user.
         /// </summary>
-        internal static User Administrator => new(UserEmail.Of("admin@kubis1982.com"), UserPassword.Of("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"), UserFullName.Create("Administrator")) { Id = UserId.Administrator };
+        internal static User Administrator => new(UserEmail.Of("kubis1982@kubis1982.com"), UserPassword.Of("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"), UserFullName.Create("Administrator")) { Id = UserId.Administrator };
     }
 }
