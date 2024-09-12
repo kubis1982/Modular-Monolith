@@ -99,7 +99,7 @@
             {
                 throw new ActionOnCurrentUserException();
             }
-            if (IsActive == false)
+            if (!IsActive)
             {
                 IsActive = true;
                 AddEvent(new UserActivatedEvent(this, currentUser));
@@ -117,7 +117,7 @@
                 throw new ActionOnCurrentUserException();
             }
 
-            if (IsActive != true)
+            if (IsActive)
             {
                 IsActive = false;
                 AddEvent(new UserDeactivatedEvent(this, currentUser));
