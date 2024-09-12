@@ -80,7 +80,8 @@
                 .FirstOrDefault(n => n.Name.Equals(propertyName, StringComparison.OrdinalIgnoreCase))?
                 .GetValue(null);
 
-            if (ob == null) { return null; }
+            if (ob == null)
+            { return null; }
 
             return (T?)ob;
         }
