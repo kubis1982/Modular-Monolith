@@ -1,11 +1,5 @@
-﻿namespace Kubis1982.AccessManagement.Security
+﻿namespace Kubis1982.Shared.Security
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     internal class ClaimTypes
     {
         public const string UserId = System.Security.Claims.ClaimTypes.NameIdentifier;
