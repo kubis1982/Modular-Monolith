@@ -11,7 +11,7 @@
         /// <summary>
         /// The regular expression pattern for a valid user name.
         /// </summary>
-        public const string NAME_PATTERN = "^[A-Za-z0-9\\.\\-_]+$";
+        public const string NamePattern = "^[A-Za-z0-9\\.\\-_]+$";
 
         /// <summary>
         /// Gets the value of the user name.
@@ -64,7 +64,7 @@
         /// Gets the regular expression pattern for a valid user name.
         /// </summary>
         /// <returns>A <see cref="Regex"/> object representing the user name pattern.</returns>
-        [GeneratedRegex(NAME_PATTERN)]
+        [GeneratedRegex(NamePattern)]
         private static partial Regex UserNamePattern();
     }
 }

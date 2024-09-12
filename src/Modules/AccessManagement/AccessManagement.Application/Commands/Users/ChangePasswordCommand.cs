@@ -5,7 +5,7 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public record ChangePasswordCommand(int UserId, string Password, bool RequirePasswordReset) : UnitOfWorkCommand
+    public record ChangePasswordCommand(int UserId, string Password) : UnitOfWorkCommand
     {
         internal class ChangePasswordCommandHandler(IUserRepository userRepository, IPasswordHasher passwordHasher) : UnitOfWorkCommandHandler<ChangePasswordCommand>
         {
@@ -13,7 +13,7 @@
             {
                 User user = await userRepository.SingleAsync(UserSpec.ById(command.UserId), cancellationToken);
                 UserPassword password = UserPassword.Create(command.Password, passwordHasher);
-                user.ChangePassword(password, command.RequirePasswordReset);
+                user.ChangePassword(password);
             }
         }
     }

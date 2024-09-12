@@ -76,8 +76,7 @@
         /// Changes the password of the user.
         /// </summary>
         /// <param name="password">The new password.</param>
-        /// <param name="requirePasswordReset">A value indicating whether the user should be required to reset the password on the next login (default is true).</param>
-        public void ChangePassword(UserPassword password, bool requirePasswordReset = true)
+        public void ChangePassword(UserPassword password)
         {
             if (Password.Equals(password))
             {
