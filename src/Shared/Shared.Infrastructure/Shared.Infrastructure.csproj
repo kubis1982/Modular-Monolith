@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<RootNamespace>Kubis1982.Shared</RootNamespace>
+		<AssemblyName>Kubis1982.Shared.Infrastructure</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="8.0.0">
+			<PrivateAssets>build;compile;analyzers</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Scrutor" Version="4.2.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.8" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Shared.Application\Shared.Application.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+		<ProjectReference Include="..\Shared.Domain\Shared.Domain.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+	</ItemGroup>
+	<ItemGroup>
+		<InternalsVisibleTo Include="$(AssemblyName)Tests" />
+	</ItemGroup>
+</Project>
