@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
+		<AssemblyName>Kubis1982.ArchitectureTests</AssemblyName>
+		<RootNamespace>Kubis1982.ArchitectureTests</RootNamespace>
+		<NoWarn>$(NoWarn);NU1603</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.8" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />
+		<PackageReference Include="NetArchTest.Rules" Version="1.3.2" />
+		<PackageReference Include="xunit" Version="2.9.0" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="FluentAssertions" Version="6.12.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Modules\AccessManagement\AccessManagement.Api\AccessManagement.Api.csproj" />
+	  <ProjectReference Include="..\Modules\AccessManagement\AccessManagement.Application\AccessManagement.Application.csproj" />
+	  <ProjectReference Include="..\Modules\AccessManagement\AccessManagement.DomainTests\AccessManagement.DomainTests.csproj" />
+	  <ProjectReference Include="..\Modules\AccessManagement\AccessManagement.Domain\AccessManagement.Domain.csproj" />
+	  <ProjectReference Include="..\Modules\AccessManagement\AccessManagement.Infrastructure\AccessManagement.Infrastructure.csproj" />
+	  <ProjectReference Include="..\Shared\Shared.Api\Shared.Api.csproj" />
+	  <ProjectReference Include="..\Shared\Shared.Application\Shared.Application.csproj" />
+	  <ProjectReference Include="..\Shared\Shared.Domain\Shared.Domain.csproj" />
+	  <ProjectReference Include="..\Shared\Shared.Infrastructure\Shared.Infrastructure.csproj" />
+	</ItemGroup>
+
+</Project>
