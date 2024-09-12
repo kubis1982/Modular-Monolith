@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Enumerations
+﻿namespace Kubis1982.Shared.Kernel.Types
 {
     using System;
     using System.Collections.Generic;
