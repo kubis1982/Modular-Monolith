@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  db:
+    image: postgres:15.3
+    container_name: db
+    ports:
+        - 5432:5432         
+    environment:
+        POSTGRES_PASSWORD: 'mypassword'            
+    networks: 
+        - backend
+  bootstraper:
+    image: ${DOCKER_REGISTRY-}bootstraper
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+        - 8080:443
+    networks:
+        - backend
+    depends_on:
+        - db
+
+networks:
+    backend:
