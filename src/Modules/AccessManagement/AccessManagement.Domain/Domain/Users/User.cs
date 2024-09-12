@@ -1,10 +1,11 @@
-﻿namespace Kubis1982.AccessManagement.Domain.Users
+﻿namespace Kubis1982.Modules.AccessManagement.Domain.Users
 {
-    using Kubis1982.AccessManagement.Domain.Users.Events;
-    using Kubis1982.AccessManagement.Domain.Users.Exceptions;
+    using Kubis1982.AccessManagement.Domain.Users;
+    using Kubis1982.Modules.AccessManagement.Domain;
+    using Kubis1982.Modules.AccessManagement.Domain.Users.Events;
+    using Kubis1982.Modules.AccessManagement.Domain.Users.Exceptions;
     using Kubis1982.Shared.Kernel;
     using Kubis1982.Shared.Kernel.Types;
-    using System;
 
     public sealed partial class User : DomainEntity<UserId, int, EntityType>, IAggregateRoot
     {
@@ -161,7 +162,7 @@
             {
                 throw new ActionOnCurrentUserException();
             }
-            if (this.Id == UserId.Administrator)
+            if (Id == UserId.Administrator)
             {
                 throw new DeletingAdministratorException();
             }

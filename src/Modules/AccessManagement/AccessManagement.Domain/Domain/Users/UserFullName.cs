@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.AccessManagement.Domain.Users
+﻿namespace Kubis1982.Modules.AccessManagement.Domain.Users
 {
     /// <summary>
     /// Represents the full name of a user.

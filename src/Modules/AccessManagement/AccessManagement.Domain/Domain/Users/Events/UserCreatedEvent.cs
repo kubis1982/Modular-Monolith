@@ -1,4 +1,6 @@
-﻿namespace Kubis1982.AccessManagement.Domain.Users.Events
+﻿using Kubis1982.AccessManagement.Domain.Users;
+
+namespace Kubis1982.Modules.AccessManagement.Domain.Users.Events
 {
     public sealed record UserCreatedEvent : UserDomainEvent
     {

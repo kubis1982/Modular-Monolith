@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
-		<RootNamespace>Kubis1982.AccessManagement</RootNamespace>
-		<AssemblyName>Kubis1982.AccessManagement.Domain</AssemblyName>
+		<RootNamespace>Kubis1982.Modules.AccessManagement</RootNamespace>
+		<AssemblyName>Kubis1982.Modules.AccessManagement.Domain</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Shared\Shared.Domain\Shared.Domain.csproj" />

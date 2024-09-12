@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.AccessManagement.Domain
+﻿namespace Kubis1982.Modules.AccessManagement.Domain
 {
     using Kubis1982.Shared.Kernel.Types;
 

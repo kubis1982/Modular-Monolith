@@ -1,6 +1,7 @@
 ﻿namespace Kubis1982.Shared.Pipelines
 {
     using Kubis1982.Shared.CQRS.Commands;
+    using Kubis1982.Shared.Extensions;
     using Kubis1982.Shared.Persistance;
     using MediatR;
     using Microsoft.Extensions.DependencyInjection;

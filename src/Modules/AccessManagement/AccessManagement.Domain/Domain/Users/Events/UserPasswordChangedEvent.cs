@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.AccessManagement.Domain.Users.Events
+﻿namespace Kubis1982.Modules.AccessManagement.Domain.Users.Events
 {
     public sealed record UserPasswordChangedEvent : UserDomainEvent
     {

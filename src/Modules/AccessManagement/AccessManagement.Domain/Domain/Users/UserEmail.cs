@@ -1,6 +1,6 @@
-﻿namespace Kubis1982.AccessManagement.Domain.Users
+﻿namespace Kubis1982.Modules.AccessManagement.Domain.Users
 {
-    using Kubis1982.AccessManagement.Domain.Users.Exceptions;
+    using Kubis1982.Modules.AccessManagement.Domain.Users.Exceptions;
     using System.Net.Mail;
 
     /// <summary>
