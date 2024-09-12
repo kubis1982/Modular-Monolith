@@ -21,10 +21,10 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ModularMonolith.sln
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build ModularMonolith.sln --no-restore
     - name: ArchitectureTests
-      run: dotnet test --no-build --verbosity normal --filter "Category=Architecture"  
+      run: dotnet test ModularMonolith.sln --no-build --verbosity normal --filter "Category=Architecture"  
     - name: DomainTests
-      run: dotnet test --no-build --verbosity normal --filter "Category=Domain"
+      run: dotnet test ModularMonolith.sln --no-build --verbosity normal --filter "Category=Domain"
