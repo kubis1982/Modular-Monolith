@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<RootNamespace>Kubis1982.AccessManagement</RootNamespace>
+		<AssemblyName>Kubis1982.AccessManagement.Infrastructure</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Shared\Shared.Api\Shared.Api.csproj" />
+		<ProjectReference Include="..\..\..\Shared\Shared.Infrastructure\Shared.Infrastructure.csproj" />
+		<ProjectReference Include="..\AccessManagement.Application\AccessManagement.Application.csproj" />
+		<ProjectReference Include="..\AccessManagement.Domain\AccessManagement.Domain.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+	</ItemGroup>
+</Project>

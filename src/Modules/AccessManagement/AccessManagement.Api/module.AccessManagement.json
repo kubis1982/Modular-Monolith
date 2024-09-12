@@ -1,0 +1,8 @@
+{
+  "AccessManagement": {
+    "module": {
+      "name": "AccessManagement",
+      "enabled": true
+    }
+  }
+}

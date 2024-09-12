@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<RootNamespace>Kubis1982.AccessManagement</RootNamespace>
+		<AssemblyName>Kubis1982.AccessManagement.Api</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+		<Content Include="module.AccessManagement.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Shared\Shared.Api\Shared.Api.csproj" />
+		<ProjectReference Include="..\AccessManagement.Application\AccessManagement.Application.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+		<ProjectReference Include="..\AccessManagement.Infrastructure\AccessManagement.Infrastructure.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+	</ItemGroup>
+	<ItemGroup>
+		<InternalsVisibleTo Include="$(AssemblyName)Tests" />
+	</ItemGroup>
+</Project>
