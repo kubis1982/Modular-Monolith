@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Kubis1982.Shared.CQRS.Commands;
 using Kubis1982.Shared.CQRS.Queries;
+using Kubis1982.Shared.Events.Domain;
 using Kubis1982.Shared.Extensions;
 using Kubis1982.Shared.Persistance;
 using Kubis1982.Shared.Pipelines;
@@ -40,6 +41,8 @@ public static class ServiceCollectionExtensions
             config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(RequestPostProcessorBehavior<,>));
         });
         services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetSystemAssemblies(), includeInternalTypes: true);
+        services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
+        services.AddScoped<IDomainEventPublisher, DomainEventPublisher>();
         services.AddDatabase(configuration);
         services.AddSingleton<IClock, Clock>();
         services.AddScoped<ICommandExecutor, CommandExecutor>()

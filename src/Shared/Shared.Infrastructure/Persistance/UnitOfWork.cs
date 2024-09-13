@@ -1,15 +1,17 @@
 ﻿namespace Kubis1982.Shared.Persistance
 {
+    using Kubis1982.Shared.Events.Domain;
     using Kubis1982.Shared.Kernel;
     using Kubis1982.Shared.Persistance.WriteModel;
     using Kubis1982.Shared.Security;
+    using Kubis1982.Shared.Serialization;
     using Kubis1982.Shared.Time;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class UnitOfWork<T>(T dbContext, IUserContext userContext, IClock clock) : IUnitOfWork where T : WriteDbContextBase
+    public class UnitOfWork<T>(T dbContext, IDomainEventsDispatcher domainEventsDispatcher) : IUnitOfWork where T : WriteDbContextBase
     {
 
         /// <summary>
@@ -54,10 +56,10 @@
         /// <param name="domainEvents"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        //private async Task DispatchEvents(IEnumerable<IDomainEvent> domainEvents, CancellationToken cancellationToken)
-        //{
-        //    await domainEventsDispatcher.DispatchEventsAsync(domainEvents, cancellationToken);
-        //}
+        private async Task DispatchEvents(IEnumerable<IDomainEvent> domainEvents, CancellationToken cancellationToken)
+        {
+            await domainEventsDispatcher.DispatchEvents(domainEvents, cancellationToken);
+        }
 
         /// <summary>
         /// Zatwierdza zmiany w bazie danych. Jeżeli operacja wykryje dodatkowe zdarzenia domenowe wówczas ponawia wykonanie metody.
@@ -70,7 +72,7 @@
             var events = GetEvents();
             int count = await dbContext.SaveChangesAsync(cancellationToken);
             domainEvents.AddRange(events);
-            //await DispatchEvents(events, cancellationToken);
+            await DispatchEvents(events, cancellationToken);
             if (events.Any())
             {
                 await SaveChanges(domainEvents, cancellationToken);
