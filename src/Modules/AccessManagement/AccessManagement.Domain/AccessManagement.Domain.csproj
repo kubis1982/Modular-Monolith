@@ -9,6 +9,6 @@
 	</ItemGroup>
 	<ItemGroup>
 		<InternalsVisibleTo Include="$(AssemblyName)Tests" />
-		<InternalsVisibleTo Include="Kubis1982.AccessManagement.Infrastructure" />
+		<InternalsVisibleTo Include="Kubis1982.Modules.AccessManagement.Infrastructure" />
 	</ItemGroup>
 </Project>

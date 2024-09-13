@@ -1,25 +1,15 @@
 ﻿namespace Kubis1982.Shared.Persistance.WriteModel
 {
-    using Kubis1982.Shared.Kernel;
     using Kubis1982.Shared.Kernel.Types;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using System;
-    using System.Linq;
 
     public abstract class DomainEntityTypeConfiguration<TEntity, TEntityId, TEntityTypeEnumerator> : EntityTypeConfiguration<TEntity, TEntityId, int, TEntityTypeEnumerator>
         where TEntity : DomainEntity<TEntityId, int, TEntityTypeEnumerator>
         where TEntityId : EntityId<int, TEntityTypeEnumerator>, new()
         where TEntityTypeEnumerator : EntityTypeEnumerator
     {
-
-        public bool IsAggregateRoot { get; }
-
-        public DomainEntityTypeConfiguration()
-        {
-            IsAggregateRoot = typeof(TEntity).GetInterfaces().Any(n => n == typeof(IAggregateRoot));
-        }
-
         public override void Configure(EntityTypeBuilder<TEntity> builder)
         {
             base.Configure(builder);
@@ -28,7 +18,6 @@
             AddIdentityField(builder);
             AddCreatedField(builder);
             AddModifiedField(builder);
-            AddVersionField(builder);
             AddKey(builder);
         }
 
@@ -51,14 +40,6 @@
         {
             builder.Property<DateTime?>(ShadowProperties.ModifiedOn).HasColumnOrder(4);
             builder.Property<int?>(ShadowProperties.ModifiedBy).HasColumnOrder(5);
-        }
-
-        public virtual void AddVersionField(EntityTypeBuilder<TEntity> builder)
-        {
-            if (IsAggregateRoot)
-            {
-                builder.Property<Guid?>(ShadowProperties.Version).IsConcurrencyToken(true).HasColumnOrder(6);
-            }
         }
 
         public virtual void AddKey(EntityTypeBuilder<TEntity> builder)

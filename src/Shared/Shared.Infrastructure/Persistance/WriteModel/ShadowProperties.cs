@@ -6,6 +6,5 @@
         public const string CreatedOn = "CreatedOn";
         public const string ModifiedBy = "ModifiedBy";
         public const string ModifiedOn = "ModifiedOn";
-        public const string Version = "Version";
     }
 }

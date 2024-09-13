@@ -1,6 +1,8 @@
-﻿using Kubis1982.Shared.CQRS.Commands;
+﻿using FluentValidation;
+using Kubis1982.Shared.CQRS.Commands;
 using Kubis1982.Shared.CQRS.Queries;
 using Kubis1982.Shared.Extensions;
+using Kubis1982.Shared.Persistance;
 using Kubis1982.Shared.Pipelines;
 using Kubis1982.Shared.Time;
 using MediatR;
@@ -36,6 +38,8 @@ public static class ServiceCollectionExtensions
             config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(UnitOfWorkPipelineBehavior<,>));
             config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(RequestPostProcessorBehavior<,>));
         });
+        services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetSystemAssemblies(), includeInternalTypes: true);
+        services.AddDatabase(configuration);
         services.AddSingleton<IClock, Clock>();
         services.AddScoped<ICommandExecutor, CommandExecutor>()
             .AddScoped<IQueryExecutor, QueryExecutor>();
