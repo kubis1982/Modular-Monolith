@@ -10,6 +10,8 @@
         {
         }
 
-        public static EntityType User => new(1, "Użytkownik");
+        public static EntityType User => new(1, nameof(User));
+
+        public static EntityType Session => new(2, nameof(Session));
     }
 }

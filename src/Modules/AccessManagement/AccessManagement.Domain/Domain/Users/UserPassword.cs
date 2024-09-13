@@ -1,7 +1,5 @@
 ﻿namespace Kubis1982.Modules.AccessManagement.Domain.Users
 {
-    using Kubis1982.Modules.AccessManagement.Domain.Users.Exceptions;
-
     /// <summary>
     /// Represents a user password.
     /// </summary>

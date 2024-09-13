@@ -2,12 +2,15 @@
 {
     using Kubis1982.Modules.AccessManagement.Domain;
     using Kubis1982.Modules.AccessManagement.Domain.Users.Events;
-    using Kubis1982.Modules.AccessManagement.Domain.Users.Exceptions;
     using Kubis1982.Shared.Kernel;
     using Kubis1982.Shared.Kernel.Types;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public sealed partial class User : DomainEntity<UserId, int, EntityType>, IAggregateRoot
+    public partial class User : DomainEntity<UserId, int, EntityType>, IAggregateRoot
     {
+        private readonly List<Session> sessions = [];
+
         /// <summary>
         /// Gets or sets the email
         /// </summary>
@@ -27,6 +30,11 @@
         /// Gets or sets the full name of the user.
         /// </summary>
         internal UserFullName FullName { get; private set; }
+
+        /// <summary>
+        /// Gets the sessions associated with the user.
+        /// </summary>
+        internal IReadOnlyCollection<Session> Sessions => sessions;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="User"/> class.
@@ -62,6 +70,24 @@
         public static User Create(UserEmail email, UserPassword password, UserFullName fullName)
         {
             return new User(email, password, fullName);
+        }
+
+        /// <summary>
+        /// Checks the password of the user.
+        /// </summary>
+        /// <param name="password"></param>
+        /// <exception cref="UserIsUnactiveException"></exception>
+        /// <exception cref="IncorrectUserPasswordException"></exception>
+        private void CheckPassword(UserPassword password)
+        {
+            if (IsActive == false)
+            {
+                throw new UserIsUnactiveException();
+            }
+            if (!Password.Equals(password))
+            {
+                throw new IncorrectUserPasswordException();
+            }
         }
 
         /// <summary>
@@ -138,12 +164,16 @@
             {
                 throw new DeletingAdministratorException();
             }
+            if (sessions.Count != 0)
+            {
+                throw new UserHasSessionsException();
+            }
             AddEvent(new UserDeletedEvent(this, currentUser));
         }
 
         /// <summary>
         /// Gets the administrator user.
         /// </summary>
-        internal static User Administrator => new(UserEmail.Of("kubis1982@kubis1982.com"), UserPassword.Of("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"), UserFullName.Create("Administrator")) { Id = UserId.Administrator };
+        internal static User Administrator => new(UserEmail.Of("administrator@kubis1982.com"), UserPassword.Of("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"), UserFullName.Create("Administrator")) { Id = UserId.Administrator };
     }
 }

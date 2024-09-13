@@ -32,6 +32,6 @@
         /// Implicitly converts an integer value to a <see cref="UserId"/>.
         /// </summary>
         /// <param name="value">The integer value to convert.</param>
-        public static implicit operator UserId(int value) => new(value);
+        public static explicit operator UserId(int value) => new(value);
     }
 }

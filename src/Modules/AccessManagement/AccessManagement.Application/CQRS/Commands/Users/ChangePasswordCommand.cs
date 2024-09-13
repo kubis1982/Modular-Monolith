@@ -11,7 +11,7 @@
         {
             public override async Task Handle(ChangePasswordCommand command, CancellationToken cancellationToken)
             {
-                User user = await userRepository.SingleAsync(UserSpec.ById(command.UserId), cancellationToken);
+                User user = await userRepository.SingleAsync(UserSpec.ById((UserId)command.UserId), cancellationToken);
                 UserPassword password = UserPassword.Create(command.Password, passwordHasher);
                 user.ChangePassword(password);
             }

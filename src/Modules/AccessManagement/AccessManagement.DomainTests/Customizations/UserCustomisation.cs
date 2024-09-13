@@ -12,7 +12,7 @@
             fixture.Customize<UserPassword>(n => n.FromFactory(() => (UserPassword)fixture.Create<string>()));
 
             fixture.Customize<User>(n => n.FromFactory(() => User.Create(fixture.Create<UserEmail>(), fixture.Create<UserPassword>(), fixture.Create<UserFullName>())
-                .Extensions().SetValue(n => n.Id, new UserId((int)fixture.Create(
+                .Extensions().SetValue(n => n.IsActive, true).SetValue(n => n.Id, new UserId((int)fixture.Create(
                     new RangedNumberRequest(typeof(int), 5, int.MaxValue),
                     new SpecimenContext(fixture)))).DomainEntity));
 
