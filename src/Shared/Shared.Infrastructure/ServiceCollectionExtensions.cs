@@ -4,6 +4,7 @@ using Kubis1982.Shared.CQRS.Queries;
 using Kubis1982.Shared.Extensions;
 using Kubis1982.Shared.Persistance;
 using Kubis1982.Shared.Pipelines;
+using Kubis1982.Shared.Serialization;
 using Kubis1982.Shared.Time;
 using MediatR;
 using MediatR.Pipeline;
@@ -43,6 +44,7 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IClock, Clock>();
         services.AddScoped<ICommandExecutor, CommandExecutor>()
             .AddScoped<IQueryExecutor, QueryExecutor>();
+        services.AddSerialization();
         return services;
     }
 }
