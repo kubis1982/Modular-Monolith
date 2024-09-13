@@ -8,14 +8,8 @@
     {
         public static Assembly[] GetSystemAssemblies(this AppDomain currentDomain) => currentDomain.GetAssemblies().Where(n => n.FullName?.StartsWith(SystemInformation.SystemName) == true).ToArray();
 
-        public static Assembly[] GetModuleAssemblies(this AppDomain currentDomain, string moduleName)
-        {
-            return currentDomain.GetSystemAssemblies().Where(n => n.FullName?.StartsWith($"{SystemInformation.SystemName}.Modules.{moduleName}") == true).ToArray();
-        }
+        public static Assembly[] GetModuleAssemblies(this AppDomain currentDomain, string moduleName) => currentDomain.GetSystemAssemblies().Where(n => n.FullName?.StartsWith($"{SystemInformation.SystemName}.Modules.{moduleName}") == true).ToArray();
 
-        public static Assembly? GetModuleSharedAssembly(this AppDomain currentDomain, string moduleName)
-        {
-            return currentDomain.GetModuleAssemblies(moduleName).FirstOrDefault(n => n.FullName?.StartsWith($"{SystemInformation.SystemName}.Modules.{moduleName}.Shared") == true);
-        }
+        public static Assembly? GetModuleSharedAssembly(this AppDomain currentDomain, string moduleName) => currentDomain.GetModuleAssemblies(moduleName).FirstOrDefault(n => n.FullName?.StartsWith($"{SystemInformation.SystemName}.Modules.{moduleName}.Shared") == true);
     }
 }

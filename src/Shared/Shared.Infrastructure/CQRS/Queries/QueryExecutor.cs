@@ -6,6 +6,6 @@
 
     internal class QueryExecutor(IMediator mediator) : IQueryExecutor
     {
-        public Task<TResult> ExecuteAsync<TResult>(IQuery<TResult> query, CancellationToken cancellationToken) => mediator.Send(query, cancellationToken);
+        public Task<TResult> Get<TResult>(IQuery<TResult> query, CancellationToken cancellationToken) => mediator.Send(query, cancellationToken);
     }
 }

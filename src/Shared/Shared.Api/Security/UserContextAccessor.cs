@@ -1,6 +1,5 @@
 ﻿namespace Kubis1982.Shared.Security
 {
-    using Kubis1982.Shared.Security;
     using Microsoft.AspNetCore.Http;
     using System;
 

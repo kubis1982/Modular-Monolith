@@ -1,7 +1,6 @@
 ﻿namespace Kubis1982.Shared.CQRS.Commands
 {
     using Kubis1982.Shared.Kernel.Types;
-    using System;
 
     public class EntityIdentityResult
     {

@@ -5,7 +5,7 @@
 
     public interface ICommandExecutor
     {
-        Task<TResponse> ExecuteAsync<TResponse>(ICommand<TResponse> command, CancellationToken cancellationToken);
-        Task ExecuteAsync(ICommand command, CancellationToken cancellationToken);
+        Task<TResponse> Execute<TResponse>(ICommand<TResponse> command, CancellationToken cancellationToken);
+        Task Execute(ICommand command, CancellationToken cancellationToken);
     }
 }

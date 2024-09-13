@@ -5,6 +5,6 @@
 
     public interface IQueryExecutor
     {
-        Task<TResult> ExecuteAsync<TResult>(IQuery<TResult> query, CancellationToken cancellationToken);
+        Task<TResult> Get<TResult>(IQuery<TResult> query, CancellationToken cancellationToken);
     }
 }

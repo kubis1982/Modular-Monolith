@@ -15,7 +15,7 @@
         {
             var response = await next();
             var unitOfWork = serviceProvider.GetRequiredKeyedService<IUnitOfWork>(request.GetModuleName());
-            await unitOfWork.CommitAsync(cancellationToken);
+            await unitOfWork.Commit(cancellationToken);
             return response;
         }
     }
