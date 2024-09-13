@@ -2,6 +2,7 @@
 using Kubis1982.Shared.CQRS.Queries;
 using Kubis1982.Shared.Extensions;
 using Kubis1982.Shared.Pipelines;
+using Kubis1982.Shared.Time;
 using MediatR;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Configuration;
@@ -35,6 +36,7 @@ public static class ServiceCollectionExtensions
             config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(UnitOfWorkPipelineBehavior<,>));
             config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(RequestPostProcessorBehavior<,>));
         });
+        services.AddSingleton<IClock, Clock>();
         services.AddScoped<ICommandExecutor, CommandExecutor>()
             .AddScoped<IQueryExecutor, QueryExecutor>();
         return services;
