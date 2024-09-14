@@ -12,6 +12,7 @@ using MediatR.Pipeline;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using ModularMonolith.Shared.Events;
 
 namespace ModularMonolith.Shared;
 
@@ -45,8 +46,9 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IDomainEventPublisher, DomainEventPublisher>();
         services.AddDatabase(configuration);
         services.AddSingleton<IClock, Clock>();
-        services.AddScoped<ICommandExecutor, CommandExecutor>()
-            .AddScoped<IQueryExecutor, QueryExecutor>();
+        services.AddScoped<ICommandExecutor, CommandExecutor>();
+        services.AddScoped<IQueryExecutor, QueryExecutor>();
+        services.AddScoped<IEventPublisher, EventPublisher>();
         services.AddSerialization();
         return services;
     }
