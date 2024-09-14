@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Security
+﻿namespace ModularMonolith.Shared.Security
 {
     using Microsoft.AspNetCore.Http;
     using System.Security.Claims;

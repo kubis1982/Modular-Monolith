@@ -1,6 +1,6 @@
-﻿namespace Kubis1982.Shared.Persistance.Converters
+﻿namespace ModularMonolith.Shared.Persistance.Converters
 {
-    using Kubis1982.Shared.Kernel.Types;
+    using ModularMonolith.Shared.Kernel.Types;
     using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
     internal class EntityTypeIdConverter : ValueConverter<EntityTypeId, string>

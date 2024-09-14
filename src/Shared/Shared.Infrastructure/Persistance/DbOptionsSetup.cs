@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Persistance
+﻿namespace ModularMonolith.Shared.Persistance
 {
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Options;

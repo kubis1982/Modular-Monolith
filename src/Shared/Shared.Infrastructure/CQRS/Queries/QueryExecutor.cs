@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.CQRS.Queries
+﻿namespace ModularMonolith.Shared.CQRS.Queries
 {
     using MediatR;
     using System.Threading;

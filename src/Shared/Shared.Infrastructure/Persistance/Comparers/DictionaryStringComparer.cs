@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Persistance.Comparers
+﻿namespace ModularMonolith.Shared.Persistance.Comparers
 {
     using Microsoft.EntityFrameworkCore.ChangeTracking;
     using System;

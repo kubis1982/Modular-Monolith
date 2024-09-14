@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Persistance.WriteModel
+﻿namespace ModularMonolith.Shared.Persistance.WriteModel
 {
     public static class ShadowProperties
     {

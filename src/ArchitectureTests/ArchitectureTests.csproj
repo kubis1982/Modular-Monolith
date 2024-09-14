@@ -4,8 +4,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<IsPackable>false</IsPackable>
 		<IsTestProject>true</IsTestProject>
-		<AssemblyName>Kubis1982.ArchitectureTests</AssemblyName>
-		<RootNamespace>Kubis1982.ArchitectureTests</RootNamespace>
+		<AssemblyName>ModularMonolith.ArchitectureTests</AssemblyName>
+		<RootNamespace>ModularMonolith.ArchitectureTests</RootNamespace>
 		<NoWarn>$(NoWarn);NU1603</NoWarn>
 	</PropertyGroup>
 

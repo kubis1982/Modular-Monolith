@@ -1,7 +1,7 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Domain.Users
+﻿namespace ModularMonolith.Modules.AccessManagement.Domain.Users
 {
-    using Kubis1982.Shared.Kernel.Types;
-    using Kubis1982.Shared.Time;
+    using ModularMonolith.Shared.Kernel.Types;
+    using ModularMonolith.Shared.Time;
     using System;
 
     /// <summary>

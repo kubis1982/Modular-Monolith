@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Persistance.Interceptors.Abstracts
+﻿namespace ModularMonolith.Shared.Persistance.Interceptors.Abstracts
 {
     using Microsoft.EntityFrameworkCore.Diagnostics;
     using Microsoft.EntityFrameworkCore;

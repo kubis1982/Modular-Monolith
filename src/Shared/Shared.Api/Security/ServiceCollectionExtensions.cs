@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System.Linq;
 
-namespace Kubis1982.Shared.Security;
+namespace ModularMonolith.Shared.Security;
 
 public static class ServiceCollectionExtensions {
     internal static IServiceCollection AddSecurity(this IServiceCollection services, IConfiguration configuration) { 

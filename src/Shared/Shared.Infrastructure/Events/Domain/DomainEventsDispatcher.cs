@@ -1,6 +1,6 @@
-﻿namespace Kubis1982.Shared.Events.Domain
+﻿namespace ModularMonolith.Shared.Events.Domain
 {
-    using Kubis1982.Shared.Kernel;
+    using ModularMonolith.Shared.Kernel;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading;

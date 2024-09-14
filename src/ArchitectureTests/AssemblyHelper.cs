@@ -1,7 +1,7 @@
-﻿namespace Kubis1982.ArchitectureTests
+﻿namespace ModularMonolith.ArchitectureTests
 {
-    using Kubis1982.Shared;
-    using Kubis1982.Shared.Extensions;
+    using ModularMonolith.Shared;
+    using ModularMonolith.Shared.Extensions;
     using System;
     using System.Linq;
     using System.Reflection;

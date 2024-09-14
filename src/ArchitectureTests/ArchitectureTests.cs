@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.ArchitectureTests {
+﻿namespace ModularMonolith.ArchitectureTests {
     [Trait("Category", "Architecture")]
     public abstract class ArchitectureTests {
     }

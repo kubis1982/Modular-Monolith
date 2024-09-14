@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Kernel.Types
+﻿namespace ModularMonolith.Shared.Kernel.Types
 {
     using System;
     using System.Collections.Generic;

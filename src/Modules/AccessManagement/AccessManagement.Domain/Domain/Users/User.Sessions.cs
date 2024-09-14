@@ -1,9 +1,9 @@
-﻿using Kubis1982.Modules.AccessManagement.Domain.Users.Events;
-using Kubis1982.Shared.Time;
+﻿using ModularMonolith.Modules.AccessManagement.Domain.Users.Events;
+using ModularMonolith.Shared.Time;
 using System;
 using System.Linq;
 
-namespace Kubis1982.Modules.AccessManagement.Domain.Users
+namespace ModularMonolith.Modules.AccessManagement.Domain.Users
 {
     /// <summary>
     /// Represents a user in the access control domain.

@@ -1,6 +1,6 @@
-﻿namespace Kubis1982.Shared.Persistance.WriteModel
+﻿namespace ModularMonolith.Shared.Persistance.WriteModel
 {
-    using Kubis1982.Shared.Extensions;
+    using ModularMonolith.Shared.Extensions;
     using Microsoft.Extensions.DependencyInjection;
     using System;
     using System.Linq;

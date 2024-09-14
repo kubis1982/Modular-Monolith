@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Kubis1982.Modules.AccessManagement.Persistance.WriteModel.Migrations
+namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Migrations
 {
     /// <inheritdoc />
     public partial class InitialDb : Migration

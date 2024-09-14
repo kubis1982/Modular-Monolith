@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Persistance.Converters
+﻿namespace ModularMonolith.Shared.Persistance.Converters
 {
     using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
     using System.Collections.Generic;

@@ -1,6 +1,6 @@
-﻿namespace Kubis1982.Shared.Kernel.Types
+﻿namespace ModularMonolith.Shared.Kernel.Types
 {
-    using Kubis1982.Shared.Kernel;
+    using ModularMonolith.Shared.Kernel;
     using System;
     using System.Collections.Generic;
 

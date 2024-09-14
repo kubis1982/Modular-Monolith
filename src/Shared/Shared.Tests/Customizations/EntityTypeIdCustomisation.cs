@@ -1,7 +1,7 @@
-﻿namespace Kubis1982.Shared.Customizations
+﻿namespace ModularMonolith.Shared.Customizations
 {
     using AutoFixture;
-    using Kubis1982.Shared.Kernel.Types;
+    using ModularMonolith.Shared.Kernel.Types;
 
     internal class EntityTypeIdCustomisation : ICustomization {
         public void Customize(IFixture fixture) {

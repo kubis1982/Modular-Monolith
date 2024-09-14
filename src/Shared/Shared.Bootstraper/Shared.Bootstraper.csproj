@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
-		<AssemblyName>Kubis1982.Shared.Bootstraper</AssemblyName>
+		<AssemblyName>ModularMonolith.Shared.Bootstraper</AssemblyName>
 		<NoWarn>$(NoWarn);1591</NoWarn>
 	</PropertyGroup>
 

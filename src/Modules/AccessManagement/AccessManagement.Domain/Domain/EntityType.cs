@@ -1,6 +1,6 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Domain
+﻿namespace ModularMonolith.Modules.AccessManagement.Domain
 {
-    using Kubis1982.Shared.Kernel.Types;
+    using ModularMonolith.Shared.Kernel.Types;
 
     public sealed class EntityType : EntityTypeEnumerator
     {

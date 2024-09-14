@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Domain.Users.Events
+﻿namespace ModularMonolith.Modules.AccessManagement.Domain.Users.Events
 {
     using System;
 

@@ -1,6 +1,6 @@
-﻿namespace Kubis1982.Shared.Extensions
+﻿namespace ModularMonolith.Shared.Extensions
 {
-    using Kubis1982.Shared.Security;
+    using ModularMonolith.Shared.Security;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Hosting;

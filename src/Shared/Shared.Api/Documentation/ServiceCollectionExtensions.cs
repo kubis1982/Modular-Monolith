@@ -1,6 +1,6 @@
-﻿namespace Kubis1982.Shared.Documentation
+﻿namespace ModularMonolith.Shared.Documentation
 {
-    using Kubis1982.Shared.Extensions;
+    using ModularMonolith.Shared.Extensions;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.OpenApi.Models;

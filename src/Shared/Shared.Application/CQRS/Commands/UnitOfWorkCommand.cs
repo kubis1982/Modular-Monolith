@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.CQRS.Commands
+﻿namespace ModularMonolith.Shared.CQRS.Commands
 {
     public interface IUnitOfWorkCommand : ICommandBase { }
 

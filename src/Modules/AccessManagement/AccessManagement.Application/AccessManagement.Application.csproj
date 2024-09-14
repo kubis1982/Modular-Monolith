@@ -1,11 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
-		<RootNamespace>Kubis1982.Modules.AccessManagement</RootNamespace>
-		<AssemblyName>Kubis1982.Modules.AccessManagement.Application</AssemblyName>
+		<RootNamespace>ModularMonolith.Modules.AccessManagement</RootNamespace>
+		<AssemblyName>ModularMonolith.Modules.AccessManagement.Application</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Shared\Shared.Application\Shared.Application.csproj" />
 		<ProjectReference Include="..\AccessManagement.Domain\AccessManagement.Domain.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<InternalsVisibleTo Include="$(AssemblyName)Tests" />
 	</ItemGroup>
 </Project>

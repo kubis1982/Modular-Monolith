@@ -1,7 +1,7 @@
-﻿namespace Kubis1982.Shared.Persistance.WriteModel
+﻿namespace ModularMonolith.Shared.Persistance.WriteModel
 {
-    using Kubis1982.Shared.Exceptions;
-    using Kubis1982.Shared.Kernel;
+    using ModularMonolith.Shared.Exceptions;
+    using ModularMonolith.Shared.Kernel;
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Threading;

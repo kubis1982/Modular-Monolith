@@ -1,11 +1,11 @@
-﻿namespace Kubis1982.Shared.Persistance
+﻿namespace ModularMonolith.Shared.Persistance
 {
-    using Kubis1982.Shared.Events.Domain;
-    using Kubis1982.Shared.Kernel;
-    using Kubis1982.Shared.Persistance.WriteModel;
-    using Kubis1982.Shared.Security;
-    using Kubis1982.Shared.Serialization;
-    using Kubis1982.Shared.Time;
+    using ModularMonolith.Shared.Events.Domain;
+    using ModularMonolith.Shared.Kernel;
+    using ModularMonolith.Shared.Persistance.WriteModel;
+    using ModularMonolith.Shared.Security;
+    using ModularMonolith.Shared.Serialization;
+    using ModularMonolith.Shared.Time;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading;

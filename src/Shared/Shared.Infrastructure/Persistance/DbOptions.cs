@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Persistance
+﻿namespace ModularMonolith.Shared.Persistance
 {
     public class DbOptions
     {

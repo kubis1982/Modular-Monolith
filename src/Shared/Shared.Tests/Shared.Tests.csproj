@@ -4,13 +4,12 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<IsPackable>false</IsPackable>
 		<IsTestProject>false</IsTestProject>
-		<RootNamespace>Kubis1982.Shared</RootNamespace>
-		<AssemblyName>Kubis1982.Shared.ApiTests</AssemblyName>
+		<RootNamespace>ModularMonolith.Shared</RootNamespace>
+		<AssemblyName>ModularMonolith.Shared.Tests</AssemblyName>
 		<NoWarn>$(NoWarn);NU1603</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.8" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
 		<PackageReference Include="xunit" Version="2.9.0" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
@@ -24,23 +23,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Shared.Api\Shared.Api.csproj">
-			<PrivateAssets>build;compile</PrivateAssets>
-		</ProjectReference>
-		<ProjectReference Include="..\Shared.Application\Shared.Application.csproj" />
-		<ProjectReference Include="..\Shared.Bootstraper\Shared.Bootstraper.csproj" />
-		<ProjectReference Include="..\Shared.Domain\Shared.Domain.csproj">
-			<PrivateAssets>build;compile</PrivateAssets>
-		</ProjectReference>
-		<ProjectReference Include="..\Shared.Infrastructure\Shared.Infrastructure.csproj">
-			<PrivateAssets>build;compile</PrivateAssets>
-		</ProjectReference>
+	  <ProjectReference Include="..\Shared.Domain\Shared.Domain.csproj" />
 	</ItemGroup>
-
-	<ItemGroup>
-		<None Update="xunit.runner.json">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
-
 </Project>

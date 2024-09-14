@@ -1,9 +1,9 @@
-﻿namespace Kubis1982.ArchitectureTests.Tests
+﻿namespace ModularMonolith.ArchitectureTests.Tests
 {
     using FluentValidation;
-    using Kubis1982.ArchitectureTests.Extensions;
-    using Kubis1982.Shared.CQRS.Commands;
-    using Kubis1982.Shared.CQRS.Queries;
+    using ModularMonolith.ArchitectureTests.Extensions;
+    using ModularMonolith.Shared.CQRS.Commands;
+    using ModularMonolith.Shared.CQRS.Queries;
     using NetArchTest.Rules;
 
     public class CQRSTests : ArchitectureTests {

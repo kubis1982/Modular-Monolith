@@ -1,9 +1,9 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Domain.Users
+﻿namespace ModularMonolith.Modules.AccessManagement.Domain.Users
 {
-    using Kubis1982.Modules.AccessManagement.Domain;
-    using Kubis1982.Modules.AccessManagement.Domain.Users.Events;
-    using Kubis1982.Shared.Kernel;
-    using Kubis1982.Shared.Kernel.Types;
+    using ModularMonolith.Modules.AccessManagement.Domain;
+    using ModularMonolith.Modules.AccessManagement.Domain.Users.Events;
+    using ModularMonolith.Shared.Kernel;
+    using ModularMonolith.Shared.Kernel.Types;
     using System.Collections.Generic;
     using System.Linq;
 

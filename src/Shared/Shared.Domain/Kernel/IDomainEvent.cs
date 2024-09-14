@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Kernel
+﻿namespace ModularMonolith.Shared.Kernel
 {
     using MediatR;
 

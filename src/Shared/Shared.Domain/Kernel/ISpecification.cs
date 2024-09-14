@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Kernel
+﻿namespace ModularMonolith.Shared.Kernel
 {
     public interface ISpecification<TEntity> where TEntity : class, IAggregateRoot
     {

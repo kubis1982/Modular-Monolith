@@ -1,8 +1,8 @@
-﻿namespace Kubis1982.Modules.AccessManagement.CQRS.Commands.Users
+﻿namespace ModularMonolith.Modules.AccessManagement.CQRS.Commands.Users
 {
-    using Kubis1982.Modules.AccessManagement.Domain.Users;
-    using Kubis1982.Shared.CQRS.Commands;
-    using Kubis1982.Shared.Security;
+    using ModularMonolith.Modules.AccessManagement.Domain.Users;
+    using ModularMonolith.Shared.CQRS.Commands;
+    using ModularMonolith.Shared.Security;
     using System.Threading;
     using System.Threading.Tasks;
 

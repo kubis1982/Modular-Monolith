@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Persistance.WriteModel
+﻿namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel
 {
     public class WriteDbContextFactory : WriteDbContextFactoryBase<WriteDbContext>
     {

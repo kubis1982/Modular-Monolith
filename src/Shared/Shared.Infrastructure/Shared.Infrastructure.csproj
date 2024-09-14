@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
-		<RootNamespace>Kubis1982.Shared</RootNamespace>
-		<AssemblyName>Kubis1982.Shared.Infrastructure</AssemblyName>
+		<RootNamespace>ModularMonolith.Shared</RootNamespace>
+		<AssemblyName>ModularMonolith.Shared.Infrastructure</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="8.0.0">

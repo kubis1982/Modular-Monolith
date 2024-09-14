@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Customizations
+﻿namespace ModularMonolith.Shared.Customizations
 {
     using AutoFixture;
     using AutoFixture.Kernel;

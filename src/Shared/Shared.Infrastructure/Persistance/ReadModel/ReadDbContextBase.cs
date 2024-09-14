@@ -1,7 +1,7 @@
-﻿namespace Kubis1982.Shared.Persistance.ReadModel
+﻿namespace ModularMonolith.Shared.Persistance.ReadModel
 {
-    using Kubis1982.Shared.Kernel.Types;
-    using Kubis1982.Shared.Persistance.Converters;
+    using ModularMonolith.Shared.Kernel.Types;
+    using ModularMonolith.Shared.Persistance.Converters;
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
 

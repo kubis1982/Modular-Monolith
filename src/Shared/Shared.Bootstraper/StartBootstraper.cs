@@ -1,6 +1,6 @@
-using Kubis1982.Shared;
+using ModularMonolith.Shared;
 
-namespace Kubis1982
+namespace ModularMonolith
 {
     public class StartBootstraper
     {

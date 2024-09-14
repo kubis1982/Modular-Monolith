@@ -1,8 +1,9 @@
-﻿namespace Kubis1982.Shared {
+﻿namespace ModularMonolith.Shared
+{
     using AutoFixture;
     using AutoFixture.AutoMoq;
     using AutoFixture.Xunit2;
-    using Kubis1982.Shared.Extensions;
+    using ModularMonolith.Shared.Extensions;
 
     public class AutoFixtureAttribute(params object[] values) : InlineAutoDataAttribute(new AutoFixtureDataAttribute(), values) {
         private class AutoFixtureDataAttribute : AutoDataAttribute {

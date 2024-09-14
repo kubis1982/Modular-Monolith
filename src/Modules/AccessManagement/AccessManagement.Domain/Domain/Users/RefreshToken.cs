@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Domain.Users
+﻿namespace ModularMonolith.Modules.AccessManagement.Domain.Users
 {
     using System;
 

@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Kubis1982.Shared.CQRS.Commands
+namespace ModularMonolith.Shared.CQRS.Commands
 {
     public abstract record Command<TResponse> : ICommand<TResponse>
     {

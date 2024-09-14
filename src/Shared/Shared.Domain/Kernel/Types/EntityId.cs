@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Kernel.Types
+﻿namespace ModularMonolith.Shared.Kernel.Types
 {
     public record EntityId<TKey, TEntityTypeEnumerator> : EntityId<TKey> where TEntityTypeEnumerator : EntityTypeEnumerator
     {

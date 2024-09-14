@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Extensions
+﻿namespace ModularMonolith.Shared.Extensions
 {
     using System;
 

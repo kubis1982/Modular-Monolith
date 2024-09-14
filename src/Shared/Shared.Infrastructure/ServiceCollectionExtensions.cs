@@ -1,19 +1,19 @@
 ﻿using FluentValidation;
-using Kubis1982.Shared.CQRS.Commands;
-using Kubis1982.Shared.CQRS.Queries;
-using Kubis1982.Shared.Events.Domain;
-using Kubis1982.Shared.Extensions;
-using Kubis1982.Shared.Persistance;
-using Kubis1982.Shared.Pipelines;
-using Kubis1982.Shared.Serialization;
-using Kubis1982.Shared.Time;
+using ModularMonolith.Shared.CQRS.Commands;
+using ModularMonolith.Shared.CQRS.Queries;
+using ModularMonolith.Shared.Events.Domain;
+using ModularMonolith.Shared.Extensions;
+using ModularMonolith.Shared.Persistance;
+using ModularMonolith.Shared.Pipelines;
+using ModularMonolith.Shared.Serialization;
+using ModularMonolith.Shared.Time;
 using MediatR;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Kubis1982.Shared;
+namespace ModularMonolith.Shared;
 
 public static class ServiceCollectionExtensions
 {

@@ -1,6 +1,6 @@
-﻿namespace Kubis1982.Shared.Persistance.Interceptors
+﻿namespace ModularMonolith.Shared.Persistance.Interceptors
 {
-    using Kubis1982.Shared.Persistance.Interceptors.Abstracts;
+    using ModularMonolith.Shared.Persistance.Interceptors.Abstracts;
     using Npgsql;
 
     internal class PostgresExceptionProcessorInterceptor : ExceptionProcessorInterceptor<PostgresException>

@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Pipelines
+﻿namespace ModularMonolith.Shared.Pipelines
 {
     using FluentValidation;
     using FluentValidation.Results;

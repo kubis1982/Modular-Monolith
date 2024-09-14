@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Security.Cryptography
+﻿namespace ModularMonolith.Shared.Security.Cryptography
 {
     using System;
     using System.Security.Cryptography;

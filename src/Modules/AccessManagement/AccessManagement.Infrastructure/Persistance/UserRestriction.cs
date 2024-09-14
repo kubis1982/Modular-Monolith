@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Persistance
+﻿namespace ModularMonolith.Modules.AccessManagement.Persistance
 {
     public static class UserRestriction
     {

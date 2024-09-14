@@ -1,11 +1,11 @@
-﻿namespace Kubis1982.Modules.AccessManagement
+﻿namespace ModularMonolith.Modules.AccessManagement
 {
-    using Kubis1982.Modules.AccessManagement.Persistance.ReadModel;
-    using Kubis1982.Modules.AccessManagement.Persistance.WriteModel;
-    using Kubis1982.Modules.AccessManagement.Persistance.WriteModel.Repositories;
+    using ModularMonolith.Modules.AccessManagement.Persistance.ReadModel;
+    using ModularMonolith.Modules.AccessManagement.Persistance.WriteModel;
+    using ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Repositories;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Kubis1982.Shared.Persistance;
+    using ModularMonolith.Shared.Persistance;
 
     public static class ServiceCollectionExtensions
     {

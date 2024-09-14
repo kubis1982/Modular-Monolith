@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Exceptions
+﻿namespace ModularMonolith.Shared.Exceptions
 {
     public class EntityNotFoundException : AppException
     {

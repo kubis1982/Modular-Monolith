@@ -1,6 +1,6 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Domain.Users
+﻿namespace ModularMonolith.Modules.AccessManagement.Domain.Users
 {
-    using Kubis1982.Shared.Exceptions;
+    using ModularMonolith.Shared.Exceptions;
 
     /// <summary>
     /// Exception thrown when attempting to perform an action on the current user.

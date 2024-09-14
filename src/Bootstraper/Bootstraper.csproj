@@ -3,9 +3,9 @@
 	<PropertyGroup>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
-		<AssemblyName>Kubis1982.Bootstraper</AssemblyName>
+		<AssemblyName>ModularMonolith.Bootstraper</AssemblyName>
 		<NoWarn>$(NoWarn);1591</NoWarn>
-		<UserSecretsId>30B8C138-C632-49C1-B10C-46CBB001F316</UserSecretsId>
+		<UserSecretsId>9FAA87C4-B4FB-46B9-A482-7F988CC30F73</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>		

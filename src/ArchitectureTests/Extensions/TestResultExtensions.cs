@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.ArchitectureTests.Extensions
+﻿namespace ModularMonolith.ArchitectureTests.Extensions
 {
     internal static class TestResultExtensions {
         public static void ShouldBeTrue(this NetArchTest.Rules.TestResult @object) {

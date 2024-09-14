@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Persistance.WriteModel.Configurations
+﻿namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Configurations
 {
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using System;

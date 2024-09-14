@@ -1,6 +1,6 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Domain.Users
+﻿namespace ModularMonolith.Modules.AccessManagement.Domain.Users
 {
-    using Kubis1982.Shared.Kernel;
+    using ModularMonolith.Shared.Kernel;
 
     /// <summary>
     /// Represents a base class for user domain events.

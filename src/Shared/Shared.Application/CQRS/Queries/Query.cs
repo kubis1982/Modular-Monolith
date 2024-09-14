@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Kubis1982.Shared.CQRS.Queries
+namespace ModularMonolith.Shared.CQRS.Queries
 {
 
     public abstract record Query<TResponse> : IQuery<TResponse>

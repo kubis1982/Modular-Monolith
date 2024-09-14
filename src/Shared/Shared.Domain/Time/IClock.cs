@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Time
+﻿namespace ModularMonolith.Shared.Time
 {
     using System;
 

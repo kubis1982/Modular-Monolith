@@ -1,10 +1,10 @@
-﻿using Kubis1982.Shared.Documentation;
-using Kubis1982.Shared.Security;
+﻿using ModularMonolith.Shared.Documentation;
+using ModularMonolith.Shared.Security;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Kubis1982.Shared;
+namespace ModularMonolith.Shared;
 
 public static class ServiceCollectionExtensions
 {

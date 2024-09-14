@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Serialization
+﻿namespace ModularMonolith.Shared.Serialization
 {
     using Microsoft.Extensions.Options;
     using System;

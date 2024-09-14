@@ -13,4 +13,4 @@ RUN dotnet publish "Bootstraper.csproj" -c Release -o /app/publish /p:UseAppHost
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Kubis1982.Bootstraper.dll"]
+ENTRYPOINT ["dotnet", "ModularMonolith.Bootstraper.dll"]

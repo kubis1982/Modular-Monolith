@@ -1,9 +1,9 @@
-﻿namespace Kubis1982.Shared.Persistance
+﻿namespace ModularMonolith.Shared.Persistance
 {
-    using Kubis1982.Shared.Extensions;
-    using Kubis1982.Shared.Persistance.Interceptors;
-    using Kubis1982.Shared.Persistance.ReadModel;
-    using Kubis1982.Shared.Persistance.WriteModel;
+    using ModularMonolith.Shared.Extensions;
+    using ModularMonolith.Shared.Persistance.Interceptors;
+    using ModularMonolith.Shared.Persistance.ReadModel;
+    using ModularMonolith.Shared.Persistance.WriteModel;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Diagnostics;
     using Microsoft.Extensions.Configuration;

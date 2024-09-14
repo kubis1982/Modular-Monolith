@@ -1,8 +1,8 @@
-﻿namespace Kubis1982.Shared.Persistance.WriteModel
+﻿namespace ModularMonolith.Shared.Persistance.WriteModel
 {
-    using Kubis1982.Shared.Kernel.Types;
-    using Kubis1982.Shared.Persistance.Comparers;
-    using Kubis1982.Shared.Persistance.Converters;
+    using ModularMonolith.Shared.Kernel.Types;
+    using ModularMonolith.Shared.Persistance.Comparers;
+    using ModularMonolith.Shared.Persistance.Converters;
     using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;

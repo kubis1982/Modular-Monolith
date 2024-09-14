@@ -1,7 +1,7 @@
-﻿using Kubis1982.ArchitectureTests.Extensions;
+﻿using ModularMonolith.ArchitectureTests.Extensions;
 using NetArchTest.Rules;
 
-namespace Kubis1982.ArchitectureTests.Tests
+namespace ModularMonolith.ArchitectureTests.Tests
 {
     public class LayersTests : ArchitectureTests {
         [Fact]

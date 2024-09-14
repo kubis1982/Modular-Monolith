@@ -1,6 +1,6 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Domain.Users
+﻿namespace ModularMonolith.Modules.AccessManagement.Domain.Users
 {
-    using Kubis1982.Shared.Kernel.Types;
+    using ModularMonolith.Shared.Kernel.Types;
 
     /// <summary>
     /// Represents a session identifier.

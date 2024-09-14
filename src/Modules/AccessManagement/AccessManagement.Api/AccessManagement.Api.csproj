@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
-		<RootNamespace>Kubis1982.Modules.AccessManagement</RootNamespace>
-		<AssemblyName>Kubis1982.Modules.AccessManagement.Api</AssemblyName>
+		<RootNamespace>ModularMonolith.Modules.AccessManagement</RootNamespace>
+		<AssemblyName>ModularMonolith.Modules.AccessManagement.Api</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
 		<Content Include="module.AccessManagement.json">

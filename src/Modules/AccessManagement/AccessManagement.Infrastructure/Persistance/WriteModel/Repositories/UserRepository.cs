@@ -1,7 +1,7 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Persistance.WriteModel.Repositories
+﻿namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Repositories
 {
-    using Kubis1982.Modules.AccessManagement.Exceptions.Users;
-    using Kubis1982.Shared.Exceptions;
+    using ModularMonolith.Modules.AccessManagement.Exceptions.Users;
+    using ModularMonolith.Shared.Exceptions;
 
     internal class UserRepository(WriteDbContext dbContext) : Repository<User, UserSpec>(dbContext), IUserRepository
     {

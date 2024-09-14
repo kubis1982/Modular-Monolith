@@ -1,7 +1,7 @@
-﻿namespace Kubis1982.Shared.Persistance.WriteModel
+﻿namespace ModularMonolith.Shared.Persistance.WriteModel
 {
-    using Kubis1982.Shared.Kernel;
-    using Kubis1982.Shared.Kernel.Types;
+    using ModularMonolith.Shared.Kernel;
+    using ModularMonolith.Shared.Kernel.Types;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

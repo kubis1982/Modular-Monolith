@@ -1,6 +1,6 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Domain.Users.Events
+﻿namespace ModularMonolith.Modules.AccessManagement.Domain.Users.Events
 {
-    using Kubis1982.Modules.AccessManagement.Domain.Users;
+    using ModularMonolith.Modules.AccessManagement.Domain.Users;
 
     public record UserDeactivatedEvent : UserDomainEvent
     {

@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Kernel.Types
+﻿namespace ModularMonolith.Shared.Kernel.Types
 {
     public abstract class Specification<TEntity> : ISpecification<TEntity> where TEntity : class, IAggregateRoot
     {

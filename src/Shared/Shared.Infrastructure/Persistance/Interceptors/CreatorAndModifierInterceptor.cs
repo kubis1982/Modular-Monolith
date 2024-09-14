@@ -1,9 +1,9 @@
-﻿namespace Kubis1982.Shared.Persistance.Interceptors
+﻿namespace ModularMonolith.Shared.Persistance.Interceptors
 {
-    using Kubis1982.Shared.Kernel;
-    using Kubis1982.Shared.Persistance.WriteModel;
-    using Kubis1982.Shared.Security;
-    using Kubis1982.Shared.Time;
+    using ModularMonolith.Shared.Kernel;
+    using ModularMonolith.Shared.Persistance.WriteModel;
+    using ModularMonolith.Shared.Security;
+    using ModularMonolith.Shared.Time;
     using Microsoft.EntityFrameworkCore.ChangeTracking;
     using Microsoft.EntityFrameworkCore.Diagnostics;
     using Microsoft.EntityFrameworkCore;

@@ -1,12 +1,12 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Domain.Users
+﻿namespace ModularMonolith.Modules.AccessManagement.Domain.Users
 {
-    using Kubis1982.Modules.AccessManagement.Domain.Users.Events;
-    using Kubis1982.Shared;
-    using Kubis1982.Shared.Extensions;
-    using Kubis1982.Shared.Time;
+    using ModularMonolith.Modules.AccessManagement.Domain.Users.Events;
+    using ModularMonolith.Shared;
+    using ModularMonolith.Shared.Extensions;
+    using ModularMonolith.Shared.Time;
     using System;
 
-    public class UserTests : AbstractTests {
+    public class UserTests : DomainTests {
         [Theory]
         [AutoFixture]
         public void ShouldCreateUser(UserEmail userEmail, UserPassword userPassword, UserFullName userFullName) {

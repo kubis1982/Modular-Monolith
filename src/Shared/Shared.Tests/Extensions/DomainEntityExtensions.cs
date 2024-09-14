@@ -1,6 +1,6 @@
-﻿namespace Kubis1982.Shared.Extensions
+﻿namespace ModularMonolith.Shared.Extensions
 {
-    using Kubis1982.Shared.Kernel;
+    using ModularMonolith.Shared.Kernel;
     using System;
     using System.Collections.Generic;
     using System.Linq;

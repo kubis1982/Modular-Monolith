@@ -1,8 +1,8 @@
-﻿namespace Kubis1982.Modules.AccessManagement.Persistance.WriteModel
+﻿namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel
 {
-    using Kubis1982.Modules.AccessManagement.Domain;
-    using Kubis1982.Modules.AccessManagement.Domain.Users;
-    using Kubis1982.Shared.Persistance.WriteModel;
+    using ModularMonolith.Modules.AccessManagement.Domain;
+    using ModularMonolith.Modules.AccessManagement.Domain.Users;
+    using ModularMonolith.Shared.Persistance.WriteModel;
     using Microsoft.EntityFrameworkCore;
 
     public class WriteDbContext(DbContextOptions<WriteDbContext> options) : WriteDbContextBase(options)

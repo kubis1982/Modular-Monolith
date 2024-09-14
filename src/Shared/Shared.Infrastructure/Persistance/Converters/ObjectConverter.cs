@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Persistance.Converters
+﻿namespace ModularMonolith.Shared.Persistance.Converters
 {
     using System;
     using System.Text.Json;

@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Security
+﻿namespace ModularMonolith.Shared.Security
 {
     /// <summary>
     /// Represents the user context.

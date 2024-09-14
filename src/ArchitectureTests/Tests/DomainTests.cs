@@ -1,8 +1,8 @@
-﻿namespace Kubis1982.ArchitectureTests.Tests
+﻿namespace ModularMonolith.ArchitectureTests.Tests
 {
-    using Kubis1982.ArchitectureTests.Extensions;
-    using Kubis1982.Shared.Exceptions;
-    using Kubis1982.Shared.Kernel;
+    using ModularMonolith.ArchitectureTests.Extensions;
+    using ModularMonolith.Shared.Exceptions;
+    using ModularMonolith.Shared.Kernel;
     using NetArchTest.Rules;
 
     public class DomainTests : ArchitectureTests {

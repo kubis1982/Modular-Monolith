@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Kubis1982.Shared.Extensions;
+namespace ModularMonolith.Shared.Extensions;
 
 public static class PropertyInfoExtensions {
     public static PropertyInfo GetPropertyInfoFromExpression<TEntity, TProperty>(this Expression<Func<TEntity, TProperty>> propertyExpression) {

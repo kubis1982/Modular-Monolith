@@ -1,4 +1,4 @@
-﻿namespace Kubis1982.Shared.Persistance.Exceptions
+﻿namespace ModularMonolith.Shared.Persistance.Exceptions
 {
     using Microsoft.EntityFrameworkCore.ChangeTracking;
     using Microsoft.EntityFrameworkCore;
