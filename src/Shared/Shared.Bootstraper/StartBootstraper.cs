@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Builder;
 using ModularMonolith.Shared;
+using ModularMonolith.Shared.Extensions;
 
 namespace ModularMonolith
 {
@@ -6,11 +8,13 @@ namespace ModularMonolith
     {
         private static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder();
+            var builder = WebApplication.CreateBuilder().Initialize();
 
             builder.Services.AddModular(builder.Configuration, builder.Environment);
 
             var app = builder.Build();
+
+            app.UseModular(app.Environment);
 
             app.Run();
         }

@@ -2,7 +2,7 @@ using Serilog;
 using ModularMonolith.Shared;
 using ModularMonolith.Shared.Extensions;
 
-var builder = WebApplication.CreateBuilder();
+var builder = WebApplication.CreateBuilder().Initialize();
 
 var logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
