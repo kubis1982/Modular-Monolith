@@ -13,7 +13,7 @@
         public override void Configure(EntityTypeBuilder<TEntity> builder)
         {
             base.Configure(builder);
-            TEntityId entityId = new() { Value = 0 };
+            TEntityId entityId = new() { Id = 0 };
             builder.Property<EntityTypeId>("TypeId").HasColumnOrder(0).HasDefaultValue(entityId.TypeId).IsRequired(true);
             AddIdentityField(builder);
             AddCreatedField(builder);
@@ -24,7 +24,7 @@
         public virtual void AddIdentityField(EntityTypeBuilder<TEntity> builder)
         {
             builder.Property(n => n.Id).IsRequired(true)
-                .HasConversion(n => n.Value, n => new TEntityId { Value = n })
+                .HasConversion(n => n.Id, n => new TEntityId { Id = n })
                 .ValueGeneratedOnAdd()
                 .HasColumnOrder(1);
         }

@@ -21,7 +21,7 @@
         public virtual void AddIdentityField(EntityTypeBuilder<TEntity> builder)
         {
             builder.Property(n => n.Id).IsRequired(true)
-                .HasConversion(n => n.Value, n => new TEntityId { Value = n })
+                .HasConversion(n => n.Id, n => new TEntityId { Id = n })
                 .ValueGeneratedOnAdd()
                 .HasColumnOrder(1);
         }

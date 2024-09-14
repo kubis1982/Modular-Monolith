@@ -174,6 +174,6 @@
         /// <summary>
         /// Gets the administrator user.
         /// </summary>
-        internal static User Administrator => new(UserEmail.Of("administrator@kubis1982.com"), UserPassword.Of("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"), UserFullName.Create("Administrator")) { Id = UserId.Administrator };
+        internal static User Administrator => new(UserEmail.Of("administrator@kubis1982.com"), UserPassword.Of("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"), UserFullName.Create("Administrator")) { Id = UserId.Administrator, IsActive = true };
     }
 }

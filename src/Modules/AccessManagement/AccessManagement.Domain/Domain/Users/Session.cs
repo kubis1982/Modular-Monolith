@@ -46,7 +46,7 @@
         /// <param name="clock">The clock used to get the current time.</param>
         internal void Kill(User user, IClock clock)
         {
-            if (Killer?.Id.Value > 0)
+            if (Killer?.Id.Id > 0)
             {
                 throw new SessionHasAlreadyBeenKilledException();
             }

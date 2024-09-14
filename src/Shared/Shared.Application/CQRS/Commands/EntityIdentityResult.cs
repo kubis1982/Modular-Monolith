@@ -14,7 +14,7 @@
             where TEntityId : EntityId<int, TEntityTypeEnumerator>
             where TEntityTypeEnumerator : EntityTypeEnumerator
         {
-            return new EntityIdentityResult(d.Id.TypeId, d.Id.Value);
+            return new EntityIdentityResult(d.Id.TypeId, d.Id.Id);
         }
 
         public EntityTypeId TypeId { get; }

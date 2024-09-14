@@ -15,17 +15,17 @@
             {
                 var administrator = User.Administrator;
 
-                //n.HasData(new
-                //{
-                //    administrator.Id.TypeId,
-                //    administrator.Id,
-                //    administrator.Password,
-                //    administrator.IsBlocked,
-                //    CreatedBy = UserId.Administrator.Value,
-                //    administrator.Email
-                //});
+                n.HasData(new
+                {
+                    administrator.Id.TypeId,
+                    administrator.Id,
+                    administrator.Email,
+                    administrator.Password,
+                    administrator.IsActive,
+                    CreatedBy = UserId.Administrator.Id                    
+                });
 
-                //n.OwnsOne(n => n.FullName).HasData(new { UserId = administrator.Id, administrator.FullName!.FirstName, administrator.FullName!.MiddleName, administrator.FullName!.LastName });
+                n.OwnsOne(n => n.FullName).HasData(new { UserIdentity = administrator.Id, administrator.FullName!.FirstName, administrator.FullName!.MiddleName, administrator.FullName!.LastName });
             });
         }
     }

@@ -10,9 +10,9 @@
         public EntityTypeId TypeId { get; }
     }
 
-    public record EntityId<TKey>(TKey Value);
+    public record EntityId<TKey>(TKey Id);
 
-    public record EntityId(EntityTypeId TypeId, int Value) : EntityId<int>(Value)
+    public record EntityId(EntityTypeId TypeId, int Id) : EntityId<int>(Id)
     {
         public static EntityId Empty => new(EntityTypeId.Empty, 0);
 
