@@ -4,10 +4,10 @@
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
     <DockerPublishLocally>False</DockerPublishLocally>
-    <ProjectGuid>1cf1034a-c120-4bfc-8fbe-218fa0efb893</ProjectGuid>
+    <ProjectGuid>A2AE39B5-495B-4BE8-B9DF-3AB05DD0CE07</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>kubis1982-bootstraper</DockerServiceName>
+    <DockerServiceName>ModularMonolith</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
