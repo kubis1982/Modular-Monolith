@@ -1,16 +1,14 @@
 ﻿namespace ModularMonolith.Shared.Persistance.Interceptors
 {
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.ChangeTracking;
+    using Microsoft.EntityFrameworkCore.Diagnostics;
     using ModularMonolith.Shared.Kernel;
     using ModularMonolith.Shared.Persistance.WriteModel;
     using ModularMonolith.Shared.Security;
     using ModularMonolith.Shared.Time;
-    using Microsoft.EntityFrameworkCore.ChangeTracking;
-    using Microsoft.EntityFrameworkCore.Diagnostics;
-    using Microsoft.EntityFrameworkCore;
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -18,13 +16,13 @@
     {
         public InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
         {
-            SetUserId(eventData.Context, userContextAccessor.Get().UserId, clock.Now);
+            SetUserId(eventData.Context, userContextAccessor.Get().Id, clock.Now);
             return result;
         }
 
         public ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)
         {
-            SetUserId(eventData.Context, userContextAccessor.Get().UserId, clock.Now);
+            SetUserId(eventData.Context, userContextAccessor.Get().Id, clock.Now);
             return new(result);
         }
 

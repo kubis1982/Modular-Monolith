@@ -9,6 +9,7 @@ public static class ServiceCollectionExtensions {
         services.AddHttpContextAccessor();
         services.AddScoped<IUserContextAccessor, UserContextAccessor>();
         services.AddScoped(n => n.GetRequiredService<IUserContextAccessor>().Get());
+        services.AddScoped<IJwtProvider, JwtProvider>();
         return services;
     }
 

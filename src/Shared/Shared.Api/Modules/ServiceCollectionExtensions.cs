@@ -19,19 +19,20 @@
                 .Select(Activator.CreateInstance)
                 .Cast<AbstractModuleDefinition>()
                 .Distinct())
-                {
-                    module.AddDependencies(services, configuration);
-                    services.AddSingleton(module);
+            {
+                module.AddDependencies(services, configuration);
+                services.AddSingleton(module);
+                services.AddSingleton(module.GetType(), module);
 
-                    module.GetType().Assembly.GetTypes()
-                        .Where(x => typeof(IModuleEndpoints).IsAssignableFrom(x) && !x.IsAbstract)
-                        .OrderBy(x => x.Name)
-                        .ToList().ForEach(x => 
-                        { 
-                            services.AddTransient(x);
-                            services.AddKeyedTransient(module.ModuleCode, (provider, key) => (IModuleEndpoints)provider.GetService(x)!); 
-                        });
-                }
+                module.GetType().Assembly.GetTypes()
+                    .Where(x => typeof(IModuleEndpoints).IsAssignableFrom(x) && !x.IsAbstract)
+                    .OrderBy(x => x.Name)
+                    .ToList().ForEach(x =>
+                    {
+                        services.AddTransient(x);
+                        services.AddKeyedTransient(module.ModuleCode, (provider, key) => (IModuleEndpoints)provider.GetService(x)!);
+                    });
+            }
             return services;
         }
     }

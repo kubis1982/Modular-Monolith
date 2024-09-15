@@ -8,11 +8,21 @@
         /// <summary>
         /// Gets the user ID.
         /// </summary>
-        int UserId { get; }
+        int Id { get; }
 
         /// <summary>
         /// Gets the user name.
         /// </summary>
-        string UserName { get; }
+        string Email { get; }
+
+        /// <summary>
+        /// Gets the session ID.
+        /// </summary>
+        int SessionId { get; }
+
+        /// <summary>
+        /// Gets the user name.
+        /// </summary>
+        string Name { get; }
     }
 }

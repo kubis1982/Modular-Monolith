@@ -6,7 +6,9 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Shared\Shared.Application\Shared.Application.csproj" />
-		<ProjectReference Include="..\AccessManagement.Domain\AccessManagement.Domain.csproj" />
+		<ProjectReference Include="..\AccessManagement.Domain\AccessManagement.Domain.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
 	</ItemGroup>
 	<ItemGroup>
 		<InternalsVisibleTo Include="$(AssemblyName)Tests" />

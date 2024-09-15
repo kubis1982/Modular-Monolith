@@ -6,6 +6,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using ModularMonolith.Shared.Persistance;
+    using ModularMonolith.Modules.AccessManagement.CQRS.Queries;
 
     public static class ServiceCollectionExtensions
     {
@@ -14,6 +15,8 @@
         public static IServiceCollection AddModularInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services
+                // CQRS
+                .AddScoped<IQueryContext, QueryContext>()
                 // Repositories
                 .AddScoped<IUserRepository, UserRepository>()
                 // Services

@@ -13,7 +13,7 @@
             public override async Task Handle(DeactivateUserCommand command, CancellationToken cancellationToken)
             {
                 User user = await userRepository.SingleAsync(UserSpec.ById((UserId)command.UserId), cancellationToken);
-                User currentUser = await userRepository.SingleAsync(UserSpec.ById((UserId)userContext.UserId), cancellationToken);
+                User currentUser = await userRepository.SingleAsync(UserSpec.ById((UserId)userContext.Id), cancellationToken);
                 user.Deactivate(currentUser);
             }
         }
