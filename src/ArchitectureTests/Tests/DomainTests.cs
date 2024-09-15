@@ -5,7 +5,8 @@
     using ModularMonolith.Shared.Kernel;
     using NetArchTest.Rules;
 
-    public class DomainTests : ArchitectureTests {
+    public class DomainTests : ArchitectureTests
+    {
         [Fact]
         public void ExceptionClassesShouldHaveNameEndingWithException() => Types.InAssemblies(AssemblyHelper.GetAssemblies())
                 .That().Inherit(typeof(AppException)).Should()
@@ -19,15 +20,19 @@
                 .ShouldBeTrue();
 
         [Fact]
-        public void DomainEventsShouldNotHavePropertiesThatReferToDomainEvent() {
+        public void DomainEventsShouldNotHavePropertiesThatReferToDomainEvent()
+        {
             var domainEventTypes = Types.InAssemblies(AssemblyHelper.GetAssemblies())
                 .That().ImplementInterface(typeof(IDomainEvent)).GetTypes();
 
             var failingTypes = new List<Type>();
-            foreach (var domainEventType in domainEventTypes) {
+            foreach (var domainEventType in domainEventTypes)
+            {
                 var properties = domainEventType.GetProperties();
-                foreach (var property in properties) {
-                    if (property.PropertyType.IsSubclassOf(typeof(IDomainEntity)) == true) {
+                foreach (var property in properties)
+                {
+                    if (property.PropertyType.IsSubclassOf(typeof(IDomainEntity)) == true)
+                    {
                         failingTypes.Add(domainEventType);
                         break;
                     }

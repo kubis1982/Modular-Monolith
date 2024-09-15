@@ -3,7 +3,8 @@
     using ModularMonolith.Modules.AccessManagement.Persistance;
     using System.ComponentModel.DataAnnotations;
 
-    public class CreateUserRequest {
+    public class CreateUserRequest
+    {
         /// <summary>
         /// Email of user.
         /// </summary>

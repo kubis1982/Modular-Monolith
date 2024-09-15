@@ -1,8 +1,8 @@
 ﻿namespace ModularMonolith.Shared.Persistance.WriteModel
 {
-    using ModularMonolith.Shared.Kernel.Types;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using ModularMonolith.Shared.Kernel.Types;
     using System;
 
     public abstract class DomainEntityIdConfiguration<TEntity, TEntityId> : EntityTypeConfiguration<TEntity>

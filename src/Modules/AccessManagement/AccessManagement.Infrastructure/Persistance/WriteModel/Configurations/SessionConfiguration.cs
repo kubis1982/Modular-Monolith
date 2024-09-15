@@ -8,7 +8,8 @@
         protected override void OnConfigure(EntityTypeBuilder<Session> builder)
         {
             builder.Property(n => n.ExpiryDate).IsRequired(true);
-            builder.OwnsOne(n => n.RefreshToken, n => {
+            builder.OwnsOne(n => n.RefreshToken, n =>
+            {
                 n.Property(m => m!.Token).HasMaxLength(UserRestriction.RefreshTokenLength).HasColumnName("RefreshToken");
                 n.Property(m => m!.ExpiryTime).HasColumnName("RefreshTokenExpiryDate");
             });
@@ -20,7 +21,7 @@
 
         public override void AddCreatedField(EntityTypeBuilder<Session> builder)
         {
-            builder.Property<DateTime?>(ShadowProperties.CreatedOn).HasColumnOrder(2);            
+            builder.Property<DateTime?>(ShadowProperties.CreatedOn).HasColumnOrder(2);
             builder.Property<UserId>(ShadowProperties.CreatedBy).HasColumnOrder(3).IsRequired(true);
         }
     }

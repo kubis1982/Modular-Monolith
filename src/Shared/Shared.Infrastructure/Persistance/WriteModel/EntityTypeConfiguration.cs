@@ -1,9 +1,9 @@
 ﻿namespace ModularMonolith.Shared.Persistance.WriteModel
 {
-    using ModularMonolith.Shared.Kernel;
-    using ModularMonolith.Shared.Kernel.Types;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using ModularMonolith.Shared.Kernel;
+    using ModularMonolith.Shared.Kernel.Types;
 
     public abstract class EntityTypeConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : class
     {

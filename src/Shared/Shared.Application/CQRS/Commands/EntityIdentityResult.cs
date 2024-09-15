@@ -20,6 +20,6 @@
         public EntityTypeId TypeId { get; }
         public int Id { get; }
 
-        public static EntityIdentityResult Empty => new( EntityTypeId.Empty, 0);
+        public static EntityIdentityResult Empty => new(EntityTypeId.Empty, 0);
     }
 }

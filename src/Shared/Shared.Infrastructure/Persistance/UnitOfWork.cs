@@ -3,9 +3,6 @@
     using ModularMonolith.Shared.Events.Domain;
     using ModularMonolith.Shared.Kernel;
     using ModularMonolith.Shared.Persistance.WriteModel;
-    using ModularMonolith.Shared.Security;
-    using ModularMonolith.Shared.Serialization;
-    using ModularMonolith.Shared.Time;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading;

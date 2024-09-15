@@ -1,10 +1,10 @@
 ﻿namespace ModularMonolith.Shared.Pipelines
 {
+    using MediatR;
+    using Microsoft.Extensions.DependencyInjection;
     using ModularMonolith.Shared.CQRS.Commands;
     using ModularMonolith.Shared.Extensions;
     using ModularMonolith.Shared.Persistance;
-    using MediatR;
-    using Microsoft.Extensions.DependencyInjection;
     using System;
     using System.Threading;
     using System.Threading.Tasks;

@@ -1,7 +1,7 @@
 ﻿namespace ModularMonolith.Shared.Persistance.Converters
 {
-    using ModularMonolith.Shared.Kernel.Types;
     using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+    using ModularMonolith.Shared.Kernel.Types;
 
     internal class EntityTypeIdConverter : ValueConverter<EntityTypeId, string>
     {

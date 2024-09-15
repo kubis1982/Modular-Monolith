@@ -1,11 +1,11 @@
-﻿using MediatR.Pipeline;
-using MediatR;
+﻿using MediatR;
+using MediatR.Pipeline;
 using Microsoft.Extensions.DependencyInjection;
 using ModularMonolith.Shared.CQRS.Commands;
 using ModularMonolith.Shared.CQRS.Queries;
+using ModularMonolith.Shared.Extensions;
 using ModularMonolith.Shared.Pipelines;
 using System;
-using ModularMonolith.Shared.Extensions;
 
 namespace ModularMonolith.Shared.CQRS
 {
@@ -13,7 +13,8 @@ namespace ModularMonolith.Shared.CQRS
     {
         public static IServiceCollection AddCQRS(this IServiceCollection services)
         {
-            services.AddMediatR(config => {
+            services.AddMediatR(config =>
+            {
                 config.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetSystemAssemblies());
                 config.AutoRegisterRequestProcessors = false;
 

@@ -1,6 +1,6 @@
-using Serilog;
 using ModularMonolith.Shared;
 using ModularMonolith.Shared.Extensions;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder().Initialize();
 

@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using ModularMonolith.Shared.Events.Domain;
 using ModularMonolith.Shared.Extensions;
 using System;

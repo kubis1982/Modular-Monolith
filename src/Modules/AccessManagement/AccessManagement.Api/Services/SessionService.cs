@@ -82,7 +82,7 @@
             return (token, session.ExpiryDate, session.RefreshToken ?? "", session.RefreshTokenExpiryDate ?? DateTime.MinValue, sessionId.Id);
         }
     }
-   
+
     internal interface ISessionService
     {
         /// <summary>

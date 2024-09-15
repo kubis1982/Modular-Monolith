@@ -1,9 +1,9 @@
 ﻿namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel
 {
+    using Microsoft.EntityFrameworkCore;
     using ModularMonolith.Modules.AccessManagement.Domain;
     using ModularMonolith.Modules.AccessManagement.Domain.Users;
     using ModularMonolith.Shared.Persistance.WriteModel;
-    using Microsoft.EntityFrameworkCore;
 
     public class WriteDbContext(DbContextOptions<WriteDbContext> options) : WriteDbContextBase(options)
     {
@@ -22,7 +22,7 @@
                     administrator.Email,
                     administrator.Password,
                     administrator.IsActive,
-                    CreatedBy = UserId.Administrator.Id                    
+                    CreatedBy = UserId.Administrator.Id
                 });
 
                 n.OwnsOne(n => n.FullName).HasData(new { UserIdentity = administrator.Id, administrator.FullName!.FirstName, administrator.FullName!.MiddleName, administrator.FullName!.LastName });

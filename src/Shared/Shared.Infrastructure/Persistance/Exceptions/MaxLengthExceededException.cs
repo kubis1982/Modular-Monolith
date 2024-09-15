@@ -1,12 +1,9 @@
 ﻿namespace ModularMonolith.Shared.Persistance.Exceptions
 {
-    using Microsoft.EntityFrameworkCore.ChangeTracking;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.ChangeTracking;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class MaxLengthExceededException : DbUpdateException
     {

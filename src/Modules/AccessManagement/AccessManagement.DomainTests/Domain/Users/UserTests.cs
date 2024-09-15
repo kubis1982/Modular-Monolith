@@ -6,10 +6,12 @@
     using ModularMonolith.Shared.Time;
     using System;
 
-    public class UserTests : DomainTests {
+    public class UserTests : DomainTests
+    {
         [Theory]
         [AutoFixture]
-        public void ShouldCreateUser(UserEmail userEmail, UserPassword userPassword, UserFullName userFullName) {
+        public void ShouldCreateUser(UserEmail userEmail, UserPassword userPassword, UserFullName userFullName)
+        {
             // Act
             User user = User.Create(userEmail, userPassword, userFullName);
 
@@ -21,7 +23,8 @@
 
         [Theory]
         [AutoFixture]
-        public void ShouldChangePassword(User user, UserPassword newPassword) {
+        public void ShouldChangePassword(User user, UserPassword newPassword)
+        {
             // Act
             user.ChangePassword(newPassword);
 
@@ -33,7 +36,8 @@
 
         [Theory]
         [AutoFixture]
-        public void ShouldUpdateUser(User user, UserFullName userFullName) {
+        public void ShouldUpdateUser(User user, UserFullName userFullName)
+        {
             // Act
             user.Update(userFullName);
 
@@ -44,7 +48,8 @@
 
         [Theory]
         [AutoFixture]
-        public void ShouldDeactivateUser(User user, User currentUser) {
+        public void ShouldDeactivateUser(User user, User currentUser)
+        {
             // Arrange
             user.Extensions().SetValue(n => n.IsActive, true);
 
@@ -59,7 +64,8 @@
 
         [Theory]
         [AutoFixture]
-        public void ShouldNotDeactivateHimself(User user) {
+        public void ShouldNotDeactivateHimself(User user)
+        {
             // Act
             Action action = () => user.Deactivate(user);
 
@@ -69,7 +75,8 @@
 
         [Theory]
         [AutoFixture]
-        public void ShouldActivateUser(User user, User currentUser) {
+        public void ShouldActivateUser(User user, User currentUser)
+        {
             // Arrange
             user.Extensions().SetValue(n => n.IsActive, false);
 
@@ -84,7 +91,8 @@
 
         [Theory]
         [AutoFixture]
-        public void ShouldDeleteUser(User user, User currentUser) {
+        public void ShouldDeleteUser(User user, User currentUser)
+        {
             // Act
             user.Delete(currentUser);
 

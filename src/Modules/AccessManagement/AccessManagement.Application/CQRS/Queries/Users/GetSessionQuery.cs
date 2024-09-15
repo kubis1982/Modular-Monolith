@@ -15,17 +15,17 @@
             {
                 DateTime dt = clock.Now;
                 return Task.FromResult((from sessions in queryContext.Sessions.Where(n => n.Id == request.SessionId)
-                            orderby sessions.CreatedOn descending
-                            select new GetSessionQueryResult
-                            {
-                                Id = sessions.Id,
-                                CreatedBy = sessions.CreatedBy,
-                                CreatedOn = sessions.CreatedOn,
-                                IsExpired = dt > sessions.ExpiryDate,
-                                ExpiryDate = sessions.ExpiryDate,
-                                RefreshToken = sessions.RefreshToken,
-                                RefreshTokenExpiryDate = sessions.RefreshTokenExpiryDate
-                            }).SingleOrDefault());
+                                        orderby sessions.CreatedOn descending
+                                        select new GetSessionQueryResult
+                                        {
+                                            Id = sessions.Id,
+                                            CreatedBy = sessions.CreatedBy,
+                                            CreatedOn = sessions.CreatedOn,
+                                            IsExpired = dt > sessions.ExpiryDate,
+                                            ExpiryDate = sessions.ExpiryDate,
+                                            RefreshToken = sessions.RefreshToken,
+                                            RefreshTokenExpiryDate = sessions.RefreshTokenExpiryDate
+                                        }).SingleOrDefault());
             }
         }
     }

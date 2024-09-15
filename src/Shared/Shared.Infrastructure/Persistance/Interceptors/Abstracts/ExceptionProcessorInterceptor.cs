@@ -1,12 +1,8 @@
 ﻿namespace ModularMonolith.Shared.Persistance.Interceptors.Abstracts
 {
-    using Microsoft.EntityFrameworkCore.Diagnostics;
     using Microsoft.EntityFrameworkCore;
-    using System;
-    using System.Collections.Generic;
+    using Microsoft.EntityFrameworkCore.Diagnostics;
     using System.Data.Common;
-    using System.Linq;
-    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
 

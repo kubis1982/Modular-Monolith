@@ -1,7 +1,7 @@
 ﻿namespace ModularMonolith.Shared.Persistance.WriteModel
 {
-    using ModularMonolith.Shared.Extensions;
     using Microsoft.Extensions.DependencyInjection;
+    using ModularMonolith.Shared.Extensions;
     using System;
     using System.Linq;
 

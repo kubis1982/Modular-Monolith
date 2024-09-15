@@ -1,7 +1,7 @@
 ﻿namespace ModularMonolith.Shared.Events.Domain
 {
-    using ModularMonolith.Shared.Kernel;
     using MediatR;
+    using ModularMonolith.Shared.Kernel;
     using System.Threading;
     using System.Threading.Tasks;
 

@@ -8,7 +8,8 @@
         public TDbContext CreateDbContext(string[] args)
         {
             DbContextOptionsBuilder<TDbContext> dbContextOptionsBuilder = new();
-            dbContextOptionsBuilder.UseNpgsql("User ID=postgres;Password=mypassword;Host=localhost;Port=5432;Database=modular-monolith", n => {
+            dbContextOptionsBuilder.UseNpgsql("User ID=postgres;Password=mypassword;Host=localhost;Port=5432;Database=modular-monolith", n =>
+            {
                 n.MigrationsHistoryTable("MigrationHistory", Schema);
             });
             return CreateDbContext(dbContextOptionsBuilder.Options);

@@ -5,7 +5,6 @@
     using ModularMonolith.Shared.Kernel;
     using ModularMonolith.Shared.Kernel.Types;
     using System.Collections.Generic;
-    using System.Linq;
 
     public partial class User : DomainEntity<UserId, int, EntityType>, IAggregateRoot
     {
@@ -55,7 +54,7 @@
         {
             Email = email;
             Password = password;
-            FullName = fullName;            
+            FullName = fullName;
 
             AddEvent(new UserCreatedEvent(this, email, fullName));
         }
@@ -111,7 +110,7 @@
         public void Update(UserFullName userFullName)
         {
             FullName = userFullName;
-            
+
             AddEvent(new UserUpdatedEvent(this, userFullName));
         }
 

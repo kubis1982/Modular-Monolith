@@ -3,7 +3,8 @@ using NetArchTest.Rules;
 
 namespace ModularMonolith.ArchitectureTests.Tests
 {
-    public class LayersTests : ArchitectureTests {
+    public class LayersTests : ArchitectureTests
+    {
         [Fact]
         public void DomainLayerShouldNotHaveDependencyToApplicationLayer() => Types.InAssemblies(AssemblyHelper.GetDomainAssemblies())
                 .Should()

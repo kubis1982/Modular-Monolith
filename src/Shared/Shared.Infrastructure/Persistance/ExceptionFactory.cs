@@ -1,8 +1,8 @@
 ﻿namespace ModularMonolith.Shared.Persistance
 {
-    using ModularMonolith.Shared.Persistance.Exceptions;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.ChangeTracking;
+    using ModularMonolith.Shared.Persistance.Exceptions;
     using System;
     using System.Collections.Generic;
 

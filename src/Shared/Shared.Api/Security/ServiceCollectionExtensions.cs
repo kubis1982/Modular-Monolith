@@ -4,8 +4,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ModularMonolith.Shared.Security;
 
-public static class ServiceCollectionExtensions {
-    internal static IServiceCollection AddSecurity(this IServiceCollection services, IConfiguration configuration) {
+public static class ServiceCollectionExtensions
+{
+    internal static IServiceCollection AddSecurity(this IServiceCollection services, IConfiguration configuration)
+    {
         services.AddHttpContextAccessor();
         services.AddScoped<IUserContextAccessor, UserContextAccessor>();
         services.AddScoped(n => n.GetRequiredService<IUserContextAccessor>().Get());
@@ -13,7 +15,8 @@ public static class ServiceCollectionExtensions {
         return services;
     }
 
-    internal static IApplicationBuilder UseSecurity(this IApplicationBuilder applicationBuilder) {
+    internal static IApplicationBuilder UseSecurity(this IApplicationBuilder applicationBuilder)
+    {
         //applicationBuilder.UseAuthentication();
         //applicationBuilder.UseAuthorization();
         return applicationBuilder;

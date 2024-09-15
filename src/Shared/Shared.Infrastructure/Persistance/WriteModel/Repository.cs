@@ -1,8 +1,8 @@
 ﻿namespace ModularMonolith.Shared.Persistance.WriteModel
 {
+    using Microsoft.EntityFrameworkCore;
     using ModularMonolith.Shared.Exceptions;
     using ModularMonolith.Shared.Kernel;
-    using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;

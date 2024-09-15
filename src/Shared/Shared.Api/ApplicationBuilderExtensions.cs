@@ -1,12 +1,11 @@
 ﻿namespace ModularMonolith.Shared
 {
-    using ModularMonolith.Shared.Security;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Hosting;
     using ModularMonolith.Shared;
-    using ModularMonolith.Shared.Modules;
     using ModularMonolith.Shared.Extensions;
+    using ModularMonolith.Shared.Security;
 
     public static class ApplicationBuilderExtensions
     {

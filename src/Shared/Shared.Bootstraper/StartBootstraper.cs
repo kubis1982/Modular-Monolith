@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Builder;
 using ModularMonolith.Shared;
 using ModularMonolith.Shared.Extensions;
 

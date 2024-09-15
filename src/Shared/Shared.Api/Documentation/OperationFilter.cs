@@ -1,7 +1,7 @@
 ﻿namespace ModularMonolith.Shared.Documentation
 {
-    using ModularMonolith.Shared.Extensions;
     using Microsoft.OpenApi.Models;
+    using ModularMonolith.Shared.Extensions;
     using Swashbuckle.AspNetCore.SwaggerGen;
     using System.Reflection;
 

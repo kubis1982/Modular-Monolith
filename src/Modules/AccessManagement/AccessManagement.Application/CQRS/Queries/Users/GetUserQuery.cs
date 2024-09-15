@@ -22,17 +22,17 @@
             public override Task<GetUserQueryResult?> Handle(GetUserQuery query, CancellationToken cancellationToken)
             {
                 return Task.FromResult((from user in readQueryable.Users.Where(n => n.Id == query.UserId)
-                    select new GetUserQueryResult
-                    {
-                        TypeId = user.TypeId,
-                        Id = user.Id,
-                        Email = user.Email,
-                        FirstName = user.FirstName,
-                        LastName = user.LastName,
-                        MiddleName = user.MiddleName,
-                        IsActive = user.IsActive,
-                        LastLogged = readQueryable.Sessions.Where(m => m.CreatedBy == user.Id).OrderByDescending(n => n.CreatedOn).Select(n => n.CreatedOn).FirstOrDefault()
-                    }).SingleOrDefault());
+                                        select new GetUserQueryResult
+                                        {
+                                            TypeId = user.TypeId,
+                                            Id = user.Id,
+                                            Email = user.Email,
+                                            FirstName = user.FirstName,
+                                            LastName = user.LastName,
+                                            MiddleName = user.MiddleName,
+                                            IsActive = user.IsActive,
+                                            LastLogged = readQueryable.Sessions.Where(m => m.CreatedBy == user.Id).OrderByDescending(n => n.CreatedOn).Select(n => n.CreatedOn).FirstOrDefault()
+                                        }).SingleOrDefault());
             }
         }
     }

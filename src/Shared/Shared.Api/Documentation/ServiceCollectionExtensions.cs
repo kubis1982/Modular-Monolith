@@ -1,9 +1,9 @@
 ﻿namespace ModularMonolith.Shared.Documentation
 {
-    using ModularMonolith.Shared.Extensions;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.OpenApi.Models;
+    using ModularMonolith.Shared.Extensions;
     using System;
     using System.IO;
     using System.Xml.XPath;
@@ -14,7 +14,8 @@
         {
             services.AddSwaggerGen(swagger =>
             {
-                swagger.CustomSchemaIds(x => {
+                swagger.CustomSchemaIds(x =>
+                {
                     string moduleName = x.GetModuleName();
                     string name = x.Name;
                     if (name.EndsWith("Model"))

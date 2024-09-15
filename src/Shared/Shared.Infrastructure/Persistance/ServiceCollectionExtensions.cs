@@ -1,15 +1,15 @@
 ﻿namespace ModularMonolith.Shared.Persistance
 {
-    using ModularMonolith.Shared.Extensions;
-    using ModularMonolith.Shared.Persistance.Interceptors;
-    using ModularMonolith.Shared.Persistance.ReadModel;
-    using ModularMonolith.Shared.Persistance.WriteModel;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Diagnostics;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
+    using ModularMonolith.Shared.Extensions;
+    using ModularMonolith.Shared.Persistance.Interceptors;
+    using ModularMonolith.Shared.Persistance.ReadModel;
+    using ModularMonolith.Shared.Persistance.WriteModel;
     using System;
     using System.Collections.Generic;
 

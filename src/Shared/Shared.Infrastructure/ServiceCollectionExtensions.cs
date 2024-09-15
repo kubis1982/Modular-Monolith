@@ -1,19 +1,13 @@
 ﻿using FluentValidation;
-using ModularMonolith.Shared.CQRS.Commands;
-using ModularMonolith.Shared.CQRS.Queries;
-using ModularMonolith.Shared.Events.Domain;
-using ModularMonolith.Shared.Extensions;
-using ModularMonolith.Shared.Persistance;
-using ModularMonolith.Shared.Pipelines;
-using ModularMonolith.Shared.Serialization;
-using ModularMonolith.Shared.Time;
-using MediatR;
-using MediatR.Pipeline;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using ModularMonolith.Shared.Events;
 using ModularMonolith.Shared.CQRS;
+using ModularMonolith.Shared.Events;
+using ModularMonolith.Shared.Extensions;
+using ModularMonolith.Shared.Persistance;
+using ModularMonolith.Shared.Serialization;
+using ModularMonolith.Shared.Time;
+using System;
 
 namespace ModularMonolith.Shared;
 
@@ -23,9 +17,9 @@ public static class ServiceCollectionExtensions
     {
         services.AddCQRS();
         services.AddEvents();
-        services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetSystemAssemblies(), includeInternalTypes: true);        
+        services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetSystemAssemblies(), includeInternalTypes: true);
         services.AddDatabase(configuration);
-        services.AddSingleton<IClock, Clock>();   
+        services.AddSingleton<IClock, Clock>();
         services.AddSerialization();
         return services;
     }

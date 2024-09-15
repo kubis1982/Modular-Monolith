@@ -1,5 +1,7 @@
-﻿namespace ModularMonolith.ArchitectureTests {
+﻿namespace ModularMonolith.ArchitectureTests
+{
     [Trait("Category", "Architecture")]
-    public abstract class ArchitectureTests {
+    public abstract class ArchitectureTests
+    {
     }
 }

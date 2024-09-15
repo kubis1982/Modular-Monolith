@@ -1,12 +1,12 @@
 ﻿namespace ModularMonolith.Modules.AccessManagement
 {
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using ModularMonolith.Modules.AccessManagement.CQRS.Queries;
     using ModularMonolith.Modules.AccessManagement.Persistance.ReadModel;
     using ModularMonolith.Modules.AccessManagement.Persistance.WriteModel;
     using ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Repositories;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
     using ModularMonolith.Shared.Persistance;
-    using ModularMonolith.Modules.AccessManagement.CQRS.Queries;
 
     public static class ServiceCollectionExtensions
     {

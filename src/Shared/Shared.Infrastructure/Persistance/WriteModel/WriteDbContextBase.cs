@@ -1,9 +1,9 @@
 ﻿namespace ModularMonolith.Shared.Persistance.WriteModel
 {
+    using Microsoft.EntityFrameworkCore;
     using ModularMonolith.Shared.Kernel.Types;
     using ModularMonolith.Shared.Persistance.Comparers;
     using ModularMonolith.Shared.Persistance.Converters;
-    using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
 

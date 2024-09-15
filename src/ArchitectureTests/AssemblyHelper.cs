@@ -6,8 +6,10 @@
     using System.Linq;
     using System.Reflection;
 
-    internal static class AssemblyHelper {
-        static AssemblyHelper() {
+    internal static class AssemblyHelper
+    {
+        static AssemblyHelper()
+        {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
             var locations = assemblies.Where(x => !x.IsDynamic).Select(x => x.Location).ToArray();
             var files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll")

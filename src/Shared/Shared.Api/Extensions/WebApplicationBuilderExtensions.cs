@@ -5,7 +5,6 @@
     using ModularMonolith.Shared.Modules;
     using System.Collections.Generic;
     using System.IO;
-    using System.Reflection;
 
     public static class WebApplicationBuilderExtensions
     {

@@ -1,8 +1,8 @@
 ﻿namespace ModularMonolith.Shared.Persistance.ReadModel
 {
+    using Microsoft.EntityFrameworkCore;
     using ModularMonolith.Shared.Kernel.Types;
     using ModularMonolith.Shared.Persistance.Converters;
-    using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
 
     public class ReadDbContextBase(DbContextOptions options) : DbContext(options)

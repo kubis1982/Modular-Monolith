@@ -6,7 +6,8 @@
     using ModularMonolith.Shared.CQRS.Queries;
     using NetArchTest.Rules;
 
-    public class CQRSTests : ArchitectureTests {
+    public class CQRSTests : ArchitectureTests
+    {
         [Fact]
         public void CommandClassesShouldHaveNameEndingWithCommand() => Types.InAssemblies(AssemblyHelper.GetAssemblies())
                 .That().Inherit(typeof(ICommand<>)).And().AreNotAbstract().Or().Inherit(typeof(ICommand)).And().AreNotAbstract().Should()

@@ -5,7 +5,7 @@
     using System.Collections.Generic;
 
     public abstract class DomainEntity<TEntityId, TKey> : IDomainEntity where TEntityId : EntityId<TKey>
-    {    
+    {
         public TEntityId Id { get; protected set; } = null!;
 
         protected DomainEntity()
