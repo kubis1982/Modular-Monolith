@@ -16,11 +16,12 @@
         public int Id { get; set; }
 
         public DateTime CreatedOn { get; set; }
+
         public int CreatedBy { get; set; }
 
         public DateTime ExpiryDate { get; set; }
 
-        [StringLength(256)]
+        [StringLength(UserRestriction.RefreshTokenLength)]
         public string? RefreshToken { get; set; }
 
         public DateTime? RefreshTokenExpiryDate { get; set; }

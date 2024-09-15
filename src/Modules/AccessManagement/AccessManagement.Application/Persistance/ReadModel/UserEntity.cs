@@ -8,27 +8,26 @@
     [Table("Users", Schema = EntityType.ModuleCode)]
     public partial class UserEntity
     {
-        [StringLength(5)]
         public EntityTypeId TypeId { get; set; } = null!;
 
         [Key]
         public int Id { get; set; }
 
-        [StringLength(30)]
+        [StringLength(UserRestriction.EmailLength)]
         public string? Email { get; set; }
 
-        [StringLength(64)]
+        [StringLength(UserRestriction.PasswordLength)]
         public string Password { get; set; } = null!;
 
         public bool? IsActive { get; set; }
 
-        [StringLength(20)]
+        [StringLength(UserRestriction.FirstNameLength)]
         public string? FirstName { get; set; }
 
-        [StringLength(20)]
+        [StringLength(UserRestriction.MiddleNameLength)]
         public string? MiddleName { get; set; }
 
-        [StringLength(20)]
+        [StringLength(UserRestriction.LastNameLength)]
         public string? LastName { get; set; }
     }
 }

@@ -13,7 +13,6 @@ public static class ServiceCollectionExtensions
     {
         services.AddEndpointsApiExplorer();
         services.AddEndpointsApiDocumentation();
-        services.AddSecurity(configuration);
         services.AddSharedInfrastructure(configuration);
         services.AddModules(configuration);
         return services;

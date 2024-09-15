@@ -25,6 +25,7 @@
             var list = Enumerable.Repeat(0, 64).Select(x => chars[random.Next(chars.Length)]);
             return string.Join("", list);
         }
+
         /// <summary>
         /// Refreshes the session for the current user with the specified refresh token.
         /// </summary>

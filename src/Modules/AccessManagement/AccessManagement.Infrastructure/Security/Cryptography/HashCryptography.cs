@@ -4,7 +4,7 @@
     using System.Security.Cryptography;
     using System.Text;
 
-    public class HashCryptography(HashAlgorithm hashAlgorithm) : IDisposable
+    internal class HashCryptography(HashAlgorithm hashAlgorithm) : IDisposable
     {
         void IDisposable.Dispose() => hashAlgorithm.Dispose();
 

@@ -19,7 +19,6 @@
             }
             app.UseHttpsRedirection();
             //app.UseExceptionHandler();
-            app.UseSecurity();
             app.UseEndpoints(n => n.MapEndpoints());
             return app;
         }
