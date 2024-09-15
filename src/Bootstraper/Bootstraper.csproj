@@ -6,6 +6,9 @@
 		<AssemblyName>ModularMonolith.Bootstraper</AssemblyName>
 		<NoWarn>$(NoWarn);1591</NoWarn>
 		<UserSecretsId>9FAA87C4-B4FB-46B9-A482-7F988CC30F73</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..</DockerfileContext>
+		<DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
 	</PropertyGroup>
 
 	<ItemGroup>		

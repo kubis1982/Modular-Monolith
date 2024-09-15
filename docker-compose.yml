@@ -1,30 +1,27 @@
-version: '3.4'
-
 services:
-  db:
-    image: postgres:15.3
-    container_name: modular-monolith-db
-    ports:
-        - 5432:5432         
-    environment:
-        POSTGRES_PASSWORD: 'mypassword'            
-    networks: 
-        - backend
-  bootstraper:
-    image: ${DOCKER_REGISTRY-}bootstraper
-    container_name: modular-monolith-bootstraper
-    environment:
-        ModularMonolith__Db__ConnectionString: "User ID=postgres;Password=mypassword;Host=db;Port=5432;Database=modular-monolith"
-        ModularMonolith__Db__ReadConnectionString: "User ID=postgres;Password=mypassword;Host=db;Port=5432;Database=modular-monolith"
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-        - 8080:443
-    networks:
-        - backend
-    depends_on:
-        - db
+    db:
+        image: postgres:15.3
+        container_name: modular-monolith-db
+        ports:
+            - 5432:5432         
+        environment:
+            POSTGRES_PASSWORD: 'mypassword'            
+        networks: 
+            - backend
+
+    bootstraper:
+        image: ${DOCKER_REGISTRY-}bootstraper
+        container_name: modular-monolith-bootstraper
+        environment:
+            ModularMonolith__Db__ConnectionString: "User ID=postgres;Password=mypassword;Host=db;Port=5432;Database=modular-monolith"
+            ModularMonolith__Db__ReadConnectionString: "User ID=postgres;Password=mypassword;Host=db;Port=5432;Database=modular-monolith"
+        build:
+          context: .
+          dockerfile: src/Bootstraper/Dockerfile
+        networks:
+            - backend
+        depends_on:
+            - db
 
 networks:
     backend:
