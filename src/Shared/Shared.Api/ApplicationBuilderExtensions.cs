@@ -5,7 +5,7 @@
     using Microsoft.Extensions.Hosting;
     using ModularMonolith.Shared;
     using ModularMonolith.Shared.Extensions;
-    using ModularMonolith.Shared.Security;
+    using ModularMonolith.Shared.Modules;
 
     public static class ApplicationBuilderExtensions
     {
@@ -19,6 +19,7 @@
             }
             app.UseHttpsRedirection();
             //app.UseExceptionHandler();
+            app.UseModules();
             app.UseEndpoints(n => n.MapEndpoints());
             return app;
         }
