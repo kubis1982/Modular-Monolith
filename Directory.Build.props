@@ -7,7 +7,7 @@
 		<Product>ModularMonolith</Product>
 		<VersionPrefix>2024.1.1</VersionPrefix>
 		<Configurations>Debug;Release</Configurations>
-		<RootNamespace>Kubis1982</RootNamespace>
+		<RootNamespace>ModularMonolith</RootNamespace>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>$(NoWarn);CS1591</NoWarn>
