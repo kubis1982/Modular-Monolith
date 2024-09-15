@@ -1,4 +1,4 @@
-﻿namespace ModularMonolith.Shared.Messaging
+﻿namespace ModularMonolith.Shared.Events
 {
     using System;
 

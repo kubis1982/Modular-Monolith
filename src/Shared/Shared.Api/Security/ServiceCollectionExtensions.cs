@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using System.Linq;
 
 namespace ModularMonolith.Shared.Security;
 
 public static class ServiceCollectionExtensions {
-    internal static IServiceCollection AddSecurity(this IServiceCollection services, IConfiguration configuration) { 
+    internal static IServiceCollection AddSecurity(this IServiceCollection services, IConfiguration configuration) {
+        services.AddHttpContextAccessor();
         services.AddScoped<IUserContextAccessor, UserContextAccessor>();
         services.AddScoped(n => n.GetRequiredService<IUserContextAccessor>().Get());
         return services;

@@ -21,7 +21,6 @@
                 // Persistance
                 .AddReadDatabase<ReadDbContext>()
                 .AddWriteDatabase<WriteDbContext>(ModuleCode);
-
             return services;
         }
     }

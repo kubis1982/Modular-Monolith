@@ -31,5 +31,13 @@
         /// <returns>The user specification.</returns>
         public static UserSpec ByEmail(UserEmail userEmail)
             => new(n => n.Where(n => n.Email == userEmail));
+
+        /// <summary>
+        /// Creates a specification to query users by their session ID.
+        /// </summary>
+        /// <param name="sessionId">The session ID.</param>
+        /// <returns>The user specification.</returns>
+        public static UserSpec BySessionId(SessionId sessionId)
+           => new(n => n.Where(n => n.Sessions.Any(n => n.Id == sessionId)).Include(n => n.Sessions.Where(n => n.Id == sessionId)));
     }
 }

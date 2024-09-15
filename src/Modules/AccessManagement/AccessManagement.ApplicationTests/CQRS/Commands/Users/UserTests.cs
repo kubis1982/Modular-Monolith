@@ -19,7 +19,7 @@
 
             // Assert
             result.TypeId.Should().Be(user.Id.TypeId);
-            result.Id.Should().Be(user.Id.Value);            
+            result.Id.Should().Be(user.Id.Id);            
         }
     }
 }
