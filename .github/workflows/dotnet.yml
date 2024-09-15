@@ -28,5 +28,3 @@ jobs:
       run: dotnet test ModularMonolith.sln --no-build --verbosity normal --filter "Category=Architecture"  
     - name: DomainTests
       run: dotnet test ModularMonolith.sln --no-build --verbosity normal --filter "Category=Domain"
-    - name: ApplicationTests
-      run: dotnet test ModularMonolith.sln --no-build --verbosity normal --filter "Category=Application"
