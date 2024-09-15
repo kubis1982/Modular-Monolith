@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
+		<RootNamespace>ModularMonolith.Modules.AccessManagement</RootNamespace>
+		<AssemblyName>ModularMonolith.Modules.AccessManagement.ApiTests</AssemblyName>
+		<NoWarn>$(NoWarn);NU1603</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.8" />
+		<PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="8.0.8">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="xunit" Version="2.9.0" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="AutoFixture" Version="4.18.1" />
+		<PackageReference Include="AutoFixture.AutoMoq" Version="4.18.1" />
+		<PackageReference Include="AutoFixture.Xunit2" Version="4.18.1" />
+		<PackageReference Include="FluentAssertions" Version="6.12.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Shared\Shared.Tests\Shared.Tests.csproj" />
+	  <ProjectReference Include="..\AccessManagement.Api\AccessManagement.Api.csproj" />
+	  <ProjectReference Include="..\AccessManagement.Application\AccessManagement.Application.csproj" />
+	  <ProjectReference Include="..\AccessManagement.Domain\AccessManagement.Domain.csproj" />
+	  <ProjectReference Include="..\AccessManagement.Infrastructure\AccessManagement.Infrastructure.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="xunit.runner.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+</Project>
