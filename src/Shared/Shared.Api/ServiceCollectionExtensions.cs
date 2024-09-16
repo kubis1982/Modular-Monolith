@@ -5,7 +5,6 @@ using ModularMonolith.Shared.Documentation;
 using ModularMonolith.Shared.Exceptions;
 using ModularMonolith.Shared.Modules;
 using ModularMonolith.Shared.Persistance;
-using ModularMonolith.Shared.Security;
 
 namespace ModularMonolith.Shared;
 

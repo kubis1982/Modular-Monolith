@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using ModularMonolith.Modules.AccessManagement.Endpoints.Requests.Users;
+﻿using ModularMonolith.Modules.AccessManagement.Endpoints.Requests.Users;
 using ModularMonolith.Modules.AccessManagement.Persistance.ReadModel;
 using ModularMonolith.Shared;
 using Xunit.Abstractions;
@@ -7,10 +6,12 @@ using Xunit.Abstractions;
 namespace ModularMonolith.Modules.AccessManagement.Endpoints.Users
 {
 
-    public class UserTests(ITestOutputHelper testOutputHelper) : ApiTests(testOutputHelper) {
+    public class UserTests(ITestOutputHelper testOutputHelper) : ApiTests(testOutputHelper)
+    {
         [Theory]
         [AutoFixture($"temp@{SystemInformation.DomainName}")]
-        public async Task ShouldCreateNewUser(string email, CreateUserRequest request) {
+        public async Task ShouldCreateNewUser(string email, CreateUserRequest request)
+        {
             // Arrange
             request.Email = email;
 

@@ -28,10 +28,12 @@
             if (migration)
             {
                 Migrate<TWriteDbContext>(factory, deleted);
-                if (modulating) DbMigrationHelper.MigrateAsync(factory.Services, factory.Services.GetRequiredService<ILogger<TestHelper>>(), default).Wait();
+                if (modulating)
+                    DbMigrationHelper.MigrateAsync(factory.Services, factory.Services.GetRequiredService<ILogger<TestHelper>>(), default).Wait();
             }
             HttpTestClient httpApi = HttpTestClient.CreateHttpApi(routePrefix, factory, Log);
-            httpApi.Disposed += () => {
+            httpApi.Disposed += () =>
+            {
                 if (deleted)
                 {
                     using var scope = factory.Services.CreateScope();

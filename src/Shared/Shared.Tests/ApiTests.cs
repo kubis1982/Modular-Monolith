@@ -2,11 +2,10 @@
 {
     using Microsoft.Extensions.DependencyInjection;
     using ModularMonolith.Shared.Extensions;
+    using ModularMonolith.Shared.Persistance;
+    using ModularMonolith.Shared.Security;
     using System.Diagnostics.CodeAnalysis;
     using Xunit.Abstractions;
-    using ModularMonolith.Shared.Persistance;
-    using FluentAssertions.Common;
-    using ModularMonolith.Shared.Security;
 
     [Trait("Category", "Api")]
     [ExcludeFromCodeCoverage]
@@ -37,17 +36,24 @@
             {
                 Log = testOutputHelper.WriteLine
             };
-            TestHelper = testHelperFactory.CreateTestHelper(migration, n => {
+            TestHelper = testHelperFactory.CreateTestHelper(migration, n =>
+            {
                 n.AddSingleton<UserContextTest>();
                 n.AddScoped<IUserContext, UserContextTest>();
-                n.Configure<DbOptions>(options => {
+                n.Configure<DbOptions>(options =>
+                {
                     string moduleName = GetType().GetModuleName();
                     options.ConnectionString = ApiTests<T>.GetConnectionString(moduleName);
                     options.ReadConnectionString = ApiTests<T>.GetConnectionString(moduleName);
                     options.Migrator.IsEnabled = false;
                 });
+                OnAddServices(n);
                 action?.Invoke(n);
             });
+        }
+
+        protected virtual void OnAddServices(IServiceCollection serviceCollection)
+        {
         }
 
         private static string GetConnectionString(string moduleName)

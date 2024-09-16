@@ -1,6 +1,7 @@
 ﻿namespace ModularMonolith.Modules.AccessManagement
 {
     using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.AspNetCore.Builder;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Options;
@@ -8,9 +9,8 @@
     using ModularMonolith.Modules.AccessManagement.Services;
     using ModularMonolith.Shared.Modules;
     using ModularMonolith.Shared.Security;
-    using System.Text;
     using System;
-    using Microsoft.AspNetCore.Builder;
+    using System.Text;
 
     internal class ModuleDefinition : AbstractModuleDefinition
     {
@@ -25,7 +25,7 @@
             services.AddScoped(n => n.GetRequiredService<IUserContextAccessor>().Get());
             services.ConfigureOptions<AuthOptionsSetup>();
             services.AddScoped<IJwtProvider, JwtProvider>();
-            services.AddScoped<ISessionService, SessionService>();           
+            services.AddScoped<ISessionService, SessionService>();
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

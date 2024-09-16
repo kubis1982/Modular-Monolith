@@ -7,8 +7,10 @@
     using ModularMonolith.Modules.AccessManagement.Persistance.ReadModel;
     using ModularMonolith.Shared;
 
-    internal class UserCustomisation : ICustomization {
-        public void Customize(IFixture fixture) {
+    internal class UserCustomisation : ICustomization
+    {
+        public void Customize(IFixture fixture)
+        {
             fixture.Customize<UserEntity>(n => n
                 .With(m => m.IsActive, true)
                 .With(n => n.Email, () => $"{fixture.Create<string>().Substring(1, 15)}@{SystemInformation.DomainName}")
