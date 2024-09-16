@@ -2,7 +2,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ModularMonolith.Shared.Documentation;
+using ModularMonolith.Shared.Exceptions;
 using ModularMonolith.Shared.Modules;
+using ModularMonolith.Shared.Persistance;
 using ModularMonolith.Shared.Security;
 
 namespace ModularMonolith.Shared;
@@ -13,6 +15,9 @@ public static class ServiceCollectionExtensions
     {
         services.AddEndpointsApiExplorer();
         services.AddEndpointsApiDocumentation();
+        services.AddExceptionHandler<GlobalExceptionHandler>();
+        services.AddProblemDetails();
+        services.AddMigrationDatabase();
         services.AddSharedInfrastructure(configuration);
         services.AddModules(configuration);
         return services;

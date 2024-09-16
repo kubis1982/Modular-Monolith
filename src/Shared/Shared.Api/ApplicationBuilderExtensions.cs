@@ -18,7 +18,7 @@
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            //app.UseExceptionHandler();
+            app.UseExceptionHandler();
             app.UseModules();
             app.UseEndpoints(n => n.MapEndpoints());
             return app;
