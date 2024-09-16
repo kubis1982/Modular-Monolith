@@ -14,17 +14,41 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:15.3
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: mypassword
+          POSTGRES_DB: modular-monolith
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+        cache: true
     - name: Restore dependencies
       run: dotnet restore ModularMonolith.sln
     - name: Build
       run: dotnet build ModularMonolith.sln --no-restore
-    - name: ArchitectureTests
+    - name: Architecture tests
       run: dotnet test ModularMonolith.sln --no-build --verbosity normal --filter "Category=Architecture"  
-    - name: DomainTests
+    - name: Domain tests
       run: dotnet test ModularMonolith.sln --no-build --verbosity normal --filter "Category=Domain"
+    - name: Wait for PostgreSQL to be ready
+      run: |
+        until pg_isready -h localhost -p 5432 -U postgres; do
+          echo "Waiting for PostgreSQL to be ready..."
+          sleep 1
+        done
+    - name: Api tests
+      run: dotnet test ModularMonolith.sln --no-build --verbosity normal --filter "Category=Api"
