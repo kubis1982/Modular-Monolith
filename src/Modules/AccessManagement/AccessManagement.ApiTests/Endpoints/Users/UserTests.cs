@@ -1,6 +1,11 @@
-﻿using ModularMonolith.Modules.AccessManagement.Endpoints.Requests.Users;
+﻿using Microsoft.Extensions.DependencyInjection;
+using ModularMonolith.Modules.AccessManagement.CQRS.Queries.Users;
+using ModularMonolith.Modules.AccessManagement.Domain.Users;
+using ModularMonolith.Modules.AccessManagement.Endpoints.Requests.Users;
 using ModularMonolith.Modules.AccessManagement.Persistance.ReadModel;
 using ModularMonolith.Shared;
+using ModularMonolith.Shared.Persistance.Exceptions;
+using System;
 using Xunit.Abstractions;
 
 namespace ModularMonolith.Modules.AccessManagement.Endpoints.Users
@@ -24,145 +29,138 @@ namespace ModularMonolith.Modules.AccessManagement.Endpoints.Users
             user.MiddleName.Should().Be(request.MiddleName);
             user.LastName.Should().Be(request.LastName);
             user.IsActive.Should().BeTrue();
-            user.Email.Should().Be(email == "" ? null : email);
+            user.Email.Should().Be(email);
         }
 
-        //    [Theory]
-        //    [AutoFixture]
-        //    public async Task ShouldNotCreateNewUserWhenEmailAlreadyExists(UserEntity[] users, CreateUserRequest request) {
-        //        // Arrange
-        //        TestHelper.Db.Add(users);
+        [Theory]
+        [AutoFixture]
+        public async Task ShouldNotCreateNewUserIfEmailAlreadyExists(CreateUserRequest request)
+        {
+            // Arrange
+            request.Email = User.Administrator.Email;
 
-        //        request.Email = users.Last().Email;
+            // Act
+            var action = async () => await TestHelper.HttpClient.PostAndReturnIdentityAsync($"/users", request);
 
-        //        // Act
-        //        var action = async () => await TestHelper.HttpClient.PostAndReturnIdentityAsync($"/users", request);
+            // Assert
+            await action.Should().ThrowExactlyAsync<HttpRequestException>().Where(n =>
+                n.Message.Contains(new UniqueConstraintException(null).Message));
+        }
 
-        //        // Assert
-        //        await action.Should().ThrowExactlyAsync<HttpRequestException>(new UniqueConstraintException(null).Message);
-        //    }
+        [Theory]
+        [AutoFixture]
+        public async Task ShouldUpdateUser(UserEntity user, UpdateUserRequest request)
+        {
+            // Arrange
+            TestHelper.Db.Add(user);
 
-        //    [Theory()]
-        //    [AutoFixture("admin@7technology.pl")]
-        //    [AutoFixture("")]
-        //    public async Task ShouldUpdateUser(string email, UserEntity user, UpdateUserRequest request) {
-        //        // Arrange
-        //        TestHelper.Db.Add(user);
+            // Act
+            await TestHelper.HttpClient.PutAsync($"/users/{user.Id}", request);
 
-        //        request.Email = email;
+            // Assert
+            var result = TestHelper.Db.GetSingle<UserEntity>(n => n.Id == user.Id);
+            result.FirstName.Should().Be(request.FirstName);
+            result.MiddleName.Should().Be(request.MiddleName);
+            result.LastName.Should().Be(request.LastName);
+            result.IsActive.Should().Be(user.IsActive);
+            result.Email.Should().Be(user.Email);
+        }
 
-        //        // Act
-        //        await TestHelper.HttpClient.PutAsync($"/users/{user.Id}", request);
+        [Theory]
+        [AutoFixture]
+        public async Task ShouldChangePasswordUser(UserEntity user, ChangePasswordRequest request)
+        {
+            // Arrange
+            TestHelper.Db.Add(user);
 
-        //        // Assert
-        //        var result = TestHelper.Db.GetSingle<UserEntity>(n => n.Id == user.Id);
-        //        result.Name.Should().Be(request.Name);
-        //        result.FirstName.Should().Be(request.FirstName);
-        //        result.MiddleName.Should().Be(request.MiddleName);
-        //        result.LastName.Should().Be(request.LastName);
-        //        result.IsBlocked.Should().BeFalse();
-        //        result.Email.Should().Be(string.IsNullOrWhiteSpace(email) ? null : email);
-        //    }
+            // Act
+            await TestHelper.HttpClient.PatchAsync($"/users/{user.Id}/change-password", request);
 
-        //    [Theory]
-        //    [AutoFixture]
-        //    public async Task ShouldChangePasswordUser(UserEntity user, ChangePasswordRequest request) {
-        //        // Arrange
-        //        TestHelper.Db.Add(user);
+            // Assert
+            var result = TestHelper.Db.GetSingle<UserEntity>(n => n.Id == user.Id);
+            result.Password.Should().Be(UserPassword.Create(request.Password, TestHelper.Services.GetRequiredService<IPasswordHasher>()).Hash);
+        }
 
-        //        // Act
-        //        await TestHelper.HttpClient.PatchAsync($"/users/{user.Id}/change-password", request);
+        [Theory]
+        [AutoFixture]
+        public async Task ShouldDeactivateUser(UserEntity user)
+        {
+            // Arrange
+            TestHelper.Db.Add(user);
 
-        //        // Assert
-        //        var result = TestHelper.Db.GetSingle<UserEntity>(n => n.Id == user.Id);
-        //        result.Password.Should().Be(UserPassword.Create(request.Password, TestHelper.Services.GetRequiredService<IPasswordHasher>()));
-        //        result.RequirePasswordReset.Should().BeTrue();
-        //    }
+            // Act
+            await TestHelper.HttpClient.PatchAsync($"/users/{user.Id}/deactivate");
 
-        //    [Theory]
-        //    [AutoFixture]
-        //    public async Task ShouldUnblockUser(UserEntity user) {
-        //        // Arrange
-        //        user.IsBlocked = true;
-        //        TestHelper.Db.Add(user);
+            // Assert
+            TestHelper.Db.Any<UserEntity>(n => n.Id == user.Id && n.IsActive == false).Should().BeTrue();
+        }
 
-        //        // Act
-        //        await TestHelper.HttpClient.PatchAsync($"/users/{user.Id}/unblock");
+        [Theory()]
+        [AutoFixture]
+        public async Task ShouldActivateUser(UserEntity user)
+        {
+            // Arrange
+            user.IsActive = false;
+            TestHelper.Db.Add(user);
 
-        //        // Assert
-        //        var result = TestHelper.Db.GetSingle<UserEntity>(n => n.Id == user.Id).IsBlocked.Should().BeFalse();
-        //    }
+            // Act
+            await TestHelper.HttpClient.PatchAsync($"/users/{user.Id}/activate");
 
-        //    [Theory()]
-        //    [AutoFixture]
-        //    public async Task ShouldBlockUser(UserEntity user) {
-        //        // Arrange
-        //        TestHelper.Db.Add(user);
+            // Assert
+            TestHelper.Db.Any<UserEntity>(n => n.Id == user.Id && n.IsActive == true).Should().BeTrue();
+        }
 
-        //        // Act
-        //        await TestHelper.HttpClient.PatchAsync($"/users/{user.Id}/block");
+        #region Delete User
 
-        //        // Assert
-        //        var result = TestHelper.Db.GetSingle<UserEntity>(n => n.Id == user.Id).IsBlocked.Should().BeTrue();
-        //    }
+        [Theory]
+        [AutoFixture]
+        public async Task ShouldDeleteUser(UserEntity user)
+        {
+            // Arrange
+            TestHelper.Db.Add(user);
 
-        //    #region Delete User
+            // Act
+            await TestHelper.HttpClient.DeleteAndEnsureNoContentAsync($"/users/{user.Id}");
 
-        //    [Theory]
-        //    [AutoFixture]
-        //    public async Task ShouldDeleteUser(UserEntity user) {
-        //        // Arrange
-        //        TestHelper.Db.Add(user);
+            // Assert
+            TestHelper.Db.GetSingleOrDefault<UserEntity>(n => n.Id == user.Id).Should().BeNull();
+        }
 
-        //        // Act
-        //        await TestHelper.HttpClient.DeleteAndEnsureNoContentAsync($"/users/{user.Id}");
+        [Theory]
+        [AutoFixture]
+        public async Task ShouldNotDeleteUserIfUserHasSessions(UserEntity user, SessionEntity sessionEntity)
+        {
+            // Arrange
+            TestHelper.Db.Add(user);
 
-        //        // Assert
-        //        TestHelper.Db.GetSingleOrDefault<UserEntity>(n => n.Id == user.Id).Should().BeNull();
-        //    }
+            sessionEntity.CreatedBy = user.Id;
 
-        //    [Theory]
-        //    [AutoFixture]
-        //    public async Task ShouldNotDeleteUserIfUserHasSessions(UserEntity user, SessionEntity sessionEntity) {
-        //        // Arrange
-        //        TestHelper.Db.Add(user);
+            TestHelper.Db.Add(sessionEntity);
 
-        //        sessionEntity.CreatedBy = user.Id;
+            // Act
+            var action = async () => await TestHelper.HttpClient.DeleteAndEnsureNoContentAsync($"/users/{user.Id}");
 
-        //        TestHelper.Db.Add(sessionEntity);
+            // Assert
+            await action.Should().ThrowExactlyAsync<HttpRequestException>().Where(n => 
+                n.Message.Contains(new UserHasSessionsException().Message));
+        }
 
-        //        // Act
-        //        var func = async () => await TestHelper.HttpClient.DeleteAndEnsureNoContentAsync($"/users/{user.Id}");
+        #endregion
 
-        //        // Assert
-        //        await func.Should().ThrowExactlyAsync<HttpRequestException>().Where(n => n.Message.Contains(new UserHasSessionsException().Message));
-        //    }
+        [Fact]
+        public async Task ShouldGetUser()
+        {
+            // Act
+            var result = await TestHelper.HttpClient.GetAsync<GetUserQueryResult>($"/users/{User.Administrator.Id.Id}");
 
-        //    #endregion
-
-        //    [Fact]
-        //    public async Task ShouldGetUser() {
-        //        // Act
-        //        var result = await TestHelper.HttpClient.GetAsync<GetUsersQueryResult>($"/users/1");
-
-        //        // Assert
-        //        result.Should().NotBeNull();
-        //        result.Email.Should().Be(User.Administrator.Email!.Value);
-        //        result.FirstName.Should().Be(User.Administrator.FullName!.FirstName!);
-        //        result.Id.Should().Be(User.Administrator.Id.Value);
-        //        result.TypeId.Should().Be(User.Administrator.Id.TypeId);
-        //        result.IsBlocked.Should().Be(User.Administrator.IsBlocked);
-        //        result.LastName.Should().Be(User.Administrator.FullName.LastName!);
-        //        result.MiddleName.Should().Be(User.Administrator.FullName.MiddleName!);
-        //        result.Name.Should().Be(User.Administrator.Name);
-        //        result.Roles.Should().BeEquivalentTo(new[] { RoleId.User.Value, RoleId.Administrator.Value });
-        //        result.Role.Should().NotBeNull();
-        //        result.Role.Code.Should().Be(Role.AdministratorRole.Code);
-        //        result.Role.Id.Should().Be(RoleId.Administrator.Value);
-        //        result.Role.Level.Should().Be(2);
-        //        result.Role.Name.Should().Be(Role.AdministratorRole.Name);
-        //        result.Role.ParentId.Should().Be(Role.UserRole.Id);
-        //        result.Role.Path.Should().Be(Role.AdministratorRole.Path);
-        //    }
+            // Assert
+            result.Email.Should().Be(User.Administrator.Email!.Value);
+            result.FirstName.Should().Be(User.Administrator.FullName!.FirstName!);
+            result.Id.Should().Be(User.Administrator.Id.Id);
+            result.TypeId.Should().Be(User.Administrator.Id.TypeId);
+            result.IsActive.Should().Be(User.Administrator.IsActive);
+            result.LastName.Should().Be(User.Administrator.FullName.LastName!);
+            result.MiddleName.Should().Be(User.Administrator.FullName.MiddleName!);
+        }
     }
 }

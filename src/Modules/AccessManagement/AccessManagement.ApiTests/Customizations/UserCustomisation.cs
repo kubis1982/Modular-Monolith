@@ -18,6 +18,10 @@
                     new RangedNumberRequest(typeof(int), 10, int.MaxValue),
                     new SpecimenContext(fixture))));
 
+            fixture.Customize<SessionEntity>(n => n
+                .With(m => m.KilledBy, (int?)null)
+                .With(m => m.Id, () => fixture.Create<int>()));
+
             fixture.Customize<UpdateUserRequest>(n => n
                 .With(n => n.FirstName, () => fixture.Create<string>().Substring(1, UserRestriction.FirstNameLength))
                 .With(n => n.MiddleName, () => fixture.Create<string>().Substring(1, UserRestriction.MiddleNameLength))

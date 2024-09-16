@@ -16,7 +16,7 @@
             builder.HasOne(n => n.Killer).WithMany().HasForeignKey("KilledBy").OnDelete(DeleteBehavior.Restrict);
             builder.Property<UserId>("KilledBy");
 
-            builder.Navigation(n => n.Killer).AutoInclude();
+            builder.Navigation(n => n.Killer).AutoInclude(false);
         }
 
         public override void AddCreatedField(EntityTypeBuilder<Session> builder)

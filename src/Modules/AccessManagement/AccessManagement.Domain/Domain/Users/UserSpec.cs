@@ -25,6 +25,14 @@
             => new(n => n.Where(n => n.Id == userId));
 
         /// <summary>
+        /// Creates a specification to query users by their ID and includes the last session.
+        /// </summary>
+        /// <param name="userId">The user ID.</param>
+        /// <returns>The user specification.</returns>
+        public static UserSpec ByIdWithLastSession(UserId userId)
+            => new(n => n.Where(n => n.Id == userId).Include(n => n.Sessions.OrderBy(n => n.Id).Take(1)));
+
+        /// <summary>
         /// Creates a specification to query users by their email.
         /// </summary>
         /// <param name="userEmail">The user email.</param>

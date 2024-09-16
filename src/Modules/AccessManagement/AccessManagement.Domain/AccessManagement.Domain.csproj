@@ -10,5 +10,6 @@
 	<ItemGroup>
 		<InternalsVisibleTo Include="$(AssemblyName)Tests" />
 		<InternalsVisibleTo Include="$(RootNamespace).Infrastructure" />
+		<InternalsVisibleTo Include="$(RootNamespace).ApiTests" />
 	</ItemGroup>
 </Project>

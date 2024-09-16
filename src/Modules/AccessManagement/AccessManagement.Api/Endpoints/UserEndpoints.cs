@@ -6,8 +6,10 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Routing;
     using ModularMonolith.Modules.AccessManagement.CQRS.Commands.Users;
+    using ModularMonolith.Modules.AccessManagement.CQRS.Queries.Users;
     using ModularMonolith.Modules.AccessManagement.Endpoints.Requests.Users;
     using ModularMonolith.Shared.CQRS.Commands;
+    using ModularMonolith.Shared.CQRS.Queries;
     using ModularMonolith.Shared.Modules;
     using ModularMonolith.Shared.Modules.Endpoints.Responses;
     using ModularMonolith.Shared.Security;
@@ -31,6 +33,7 @@
             endpointRouteBuilder.MapPatch("/users/{userId}/change-password", ChangePassword);
             endpointRouteBuilder.MapPatch("/users/{userId}/activate", ActivateUser);
             endpointRouteBuilder.MapPatch("/users/{userId}/deactivate", DeactivateUser);
+            endpointRouteBuilder.MapGet("/users/{userId}", GetUser);
         }
 
         /// <summary>
@@ -113,6 +116,23 @@
         {
             await commandExecutor.Execute(new ActivateUserCommand(userId), cancellationToken);
             return TypedResults.Ok();
+        }
+
+        /// <summary>
+        /// Retrieves a user by ID.
+        /// </summary>
+        /// <param name="queryExecutor">The query executor.</param>
+        /// <param name="userId">The user ID.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A results object containing either an OK response with the user query result or a NotFound response.</returns>
+        private async Task<Results<Ok<GetUserQueryResult>, NotFound>> GetUser([FromServices] IQueryExecutor queryExecutor, [FromRoute] int userId, CancellationToken cancellationToken)
+        {
+            var user = await queryExecutor.Execute(new GetUserQuery(userId), cancellationToken);
+            return user switch
+            {
+                null => TypedResults.NotFound(),
+                _ => TypedResults.Ok(user)
+            };
         }
     }
 }

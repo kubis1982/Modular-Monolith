@@ -23,7 +23,7 @@
         /// <summary>
         /// Gets or sets a value indicating whether the user is active.
         /// </summary>
-        internal bool IsActive { get; private set; } = false;
+        internal bool IsActive { get; private set; } = true;
 
         /// <summary>
         /// Gets or sets the full name of the user.
