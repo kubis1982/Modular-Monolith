@@ -4,7 +4,7 @@
     "classifications": [ "ModularMonolith" ],
     "identity": "ModularMonolith.Module",
     "name": "Modular Monolith Module Template",
-    "shortName": "moduleproj",
+    "shortName": "modular-monolith-module",
     "tags": {
       "language": "C#",
       "type": "project"
