@@ -5,10 +5,16 @@
     using AutoFixture.Xunit2;
     using ModularMonolith.Shared.Extensions;
 
+    /// <summary>
+    /// Custom attribute for AutoFixture data generation.
+    /// </summary>
     public class AutoFixtureAttribute(params object[] values) : InlineAutoDataAttribute(new AutoFixtureDataAttribute(), values)
     {
         private class AutoFixtureDataAttribute : AutoDataAttribute
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="AutoFixtureDataAttribute"/> class.
+            /// </summary>
             public AutoFixtureDataAttribute()
               : base(() =>
               {

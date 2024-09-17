@@ -7,24 +7,39 @@
     using System.Diagnostics.CodeAnalysis;
     using Xunit.Abstractions;
 
+    /// <summary>
+    /// Base class for API tests.
+    /// </summary>
+    /// <typeparam name="T">The type of the test helper factory.</typeparam>
+    /// <param name="testOutputHelper">The test output helper.</param>
+    /// <seealso cref="IAsyncLifetime"/>
     [Trait("Category", "Api")]
     [ExcludeFromCodeCoverage]
     public abstract class ApiTests<T>(ITestOutputHelper testOutputHelper) : IAsyncLifetime where T : class, ITestHelperFactory, new()
     {
+        /// <summary>
+        /// Gets or sets the test helper.
+        /// </summary>
         public TestHelper TestHelper { get; private set; } = null!;
 
+        /// <inheritdoc/>
         public Task DisposeAsync()
         {
-            TestHelper.Dispose();
+            ((IDisposable)TestHelper).Dispose();
             return Task.CompletedTask;
         }
 
+        /// <inheritdoc/>
         public Task InitializeAsync()
         {
             AddServices(true);
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Changes the services.
+        /// </summary>
+        /// <param name="action">The action to modify the service collection.</param>
         public void ChangeServices(Action<IServiceCollection>? action = null)
         {
             AddServices(false, action);
@@ -38,8 +53,8 @@
             };
             TestHelper = testHelperFactory.CreateTestHelper(migration, n =>
             {
-                n.AddSingleton<UserContextTest>();
-                n.AddScoped<IUserContext, UserContextTest>();
+                n.AddSingleton<TestUserContext>();
+                n.AddScoped<IUserContext, TestUserContext>();
                 n.Configure<DbOptions>(options =>
                 {
                     string moduleName = GetType().GetModuleName();
@@ -52,6 +67,10 @@
             });
         }
 
+        /// <summary>
+        /// Method to add additional services to the service collection.
+        /// </summary>
+        /// <param name="serviceCollection">The service collection.</param>
         protected virtual void OnAddServices(IServiceCollection serviceCollection)
         {
         }

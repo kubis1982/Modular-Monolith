@@ -1,26 +1,30 @@
 ﻿namespace ModularMonolith.Shared
 {
-    public class TestHelper : IDisposable
+    /// <summary>
+    /// Helper class for testing purposes.
+    /// </summary>
+    public class TestHelper(TestHttpClient httpClient, ITestDbApi db, IServiceProvider services) : IDisposable
     {
-        private readonly HttpTestClient httpTestClient;
-        private readonly IDbApi dbApi;
+        /// <summary>
+        /// Gets the instance of the TestHttpClient.
+        /// </summary>
+        public TestHttpClient HttpClient { get; } = httpClient;
 
-        internal TestHelper(HttpTestClient httpTestClient, IDbApi dbApi, IServiceProvider services)
-        {
-            this.httpTestClient = httpTestClient;
-            this.dbApi = dbApi;
-            Services = services;
-        }
+        /// <summary>
+        /// Gets the instance of the IDbApi.
+        /// </summary>
+        public ITestDbApi Db { get; } = db;
 
-        public HttpTestClient HttpClient => httpTestClient;
+        /// <summary>
+        /// Gets the instance of the IServiceProvider.
+        /// </summary>
+        public IServiceProvider Services { get; } = services;
 
-        public IDbApi Db => dbApi;
-
-        public IServiceProvider Services { get; }
-
-        public void Dispose()
-        {
-            HttpClient.Dispose();
-        }
+#pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
+        /// <summary>
+        /// Disposes the TestHttpClient instance.
+        /// </summary>
+        void IDisposable.Dispose() => HttpClient.Dispose();
+#pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
     }
 }
