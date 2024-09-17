@@ -13,6 +13,5 @@
 	</ItemGroup>
 	<ItemGroup>
 		<InternalsVisibleTo Include="$(AssemblyName)Tests" />
-		<InternalsVisibleTo Include="Kubis1982.Shared.Domain" />
 	</ItemGroup>
 </Project>

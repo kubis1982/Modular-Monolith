@@ -2,6 +2,7 @@
 {
     using ModularMonolith.Modules.AccessManagement.Domain;
     using ModularMonolith.Modules.AccessManagement.Domain.Users.Events;
+    using ModularMonolith.Shared;
     using ModularMonolith.Shared.Kernel;
     using ModularMonolith.Shared.Kernel.Types;
     using System.Collections.Generic;
@@ -173,6 +174,6 @@
         /// <summary>
         /// Gets the administrator user.
         /// </summary>
-        internal static User Administrator => new(UserEmail.Of("administrator@kubis1982.com"), UserPassword.Of("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"), UserFullName.Create("Administrator")) { Id = UserId.Administrator, IsActive = true };
+        internal static User Administrator => new(UserEmail.Of($"administrator@{SystemInformation.DomainName}"), UserPassword.Of("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"), UserFullName.Create("Administrator")) { Id = UserId.Administrator, IsActive = true };
     }
 }
