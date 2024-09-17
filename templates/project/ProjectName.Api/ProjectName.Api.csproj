@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<RootNamespace>ModularMonolith.Modules.ProjectName</RootNamespace>
+		<AssemblyName>ModularMonolith.Modules.ProjectName.Api</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+		<Content Include="module.ProjectName.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Shared\Shared.Api\Shared.Api.csproj" />
+		<ProjectReference Include="..\ProjectName.Application\ProjectName.Application.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+		<ProjectReference Include="..\ProjectName.Infrastructure\ProjectName.Infrastructure.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+	</ItemGroup>
+	<ItemGroup>
+		<InternalsVisibleTo Include="$(AssemblyName)Tests" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<RootNamespace>ModularMonolith.Modules.ProjectName</RootNamespace>
+		<AssemblyName>ModularMonolith.Modules.ProjectName.Application</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Shared\Shared.Application\Shared.Application.csproj" />
+		<ProjectReference Include="..\ProjectName.Domain\ProjectName.Domain.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+	</ItemGroup>
+	<ItemGroup>
+		<InternalsVisibleTo Include="$(AssemblyName)Tests" />
+	</ItemGroup>
+</Project>

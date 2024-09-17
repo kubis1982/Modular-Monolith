@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "kubis1982",
+    "classifications": [ "ModularMonolith" ],
+    "identity": "ModularMonolith.Module",
+    "name": "Modular Monolith Module Template",
+    "shortName": "moduleproj",
+    "tags": {
+      "language": "C#",
+      "type": "project"
+    },
+    "sourceName": "ProjectName",
+    "preferNameDirectory": true
+  }

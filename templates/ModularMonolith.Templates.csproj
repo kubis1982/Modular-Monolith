@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+
+        <Version>1.0.0</Version>
+
+        <PackageType>Template</PackageType>
+        <PackageId>ModularMonolith.Templates</PackageId>
+        <Title>Template Pack For ModularMonolith</Title>
+        <Authors>kubis1982</Authors>
+        <Description></Description>
+        <PackageTags>dotnet-new;templates;</PackageTags>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <ContentTargetFolders>content</ContentTargetFolders>
+        <NoWarn>$(NoWarn);NU5128</NoWarn>
+        <NoDefaultExcludes>true</NoDefaultExcludes>        
+        <PackageProjectUrl></PackageProjectUrl>
+        <RepositoryUrl>https://github.com/kubis1982/modular-monolith-templates.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**;templates\**\.vs\**;templates\**\.idea\**;**\.lutignore;**\*.lutconfig" />
+        <Compile Remove="**\*" />
+    </ItemGroup>
+
+</Project>
