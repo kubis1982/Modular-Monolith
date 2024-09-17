@@ -9,15 +9,6 @@
     internal class TestDbApi<TReadDbContext>(IServiceProvider serviceProvider) : ITestDbApi where TReadDbContext : ReadDbContextBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TestDbApi{TReadDbContext}"/> class.
-        /// </summary>
-        /// <param name="serviceProvider">The service provider.</param>
-        public TestDbApi(IServiceProvider serviceProvider)
-        {
-            this.serviceProvider = serviceProvider;
-        }
-
-        /// <summary>
         /// Creates a new instance of the <see cref="ITestDbContext"/>.
         /// </summary>
         /// <returns>The created <see cref="ITestDbContext"/>.</returns>

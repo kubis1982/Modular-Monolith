@@ -17,6 +17,10 @@
                 .Extensions().SetValue(n => n.IsActive, true).SetValue(n => n.Id, new UserId((int)fixture.Create(
                     new RangedNumberRequest(typeof(int), 5, int.MaxValue),
                     new SpecimenContext(fixture)))).DomainEntity));
+
+            fixture.Customize<RefreshToken>(n => n.FromFactory(() => RefreshToken.Of(fixture.Create<string>(), fixture.Create<DateTime>())));
+            fixture.Customize<Session>(n => n.FromFactory(() => Session.Create(fixture.Create<DateTime>(), fixture.Create<RefreshToken>())
+                .Extensions().SetValue(n => n.Id, new SessionId((int)fixture.Create<int>())).DomainEntity));
         }
     }
 }

@@ -126,25 +126,6 @@ namespace ModularMonolith.Modules.AccessManagement.Endpoints.Users
             TestHelper.Db.GetSingleOrDefault<UserEntity>(n => n.Id == user.Id).Should().BeNull();
         }
 
-        [Theory]
-        [AutoFixture]
-        public async Task ShouldNotDeleteUserIfUserHasSessions(UserEntity user, SessionEntity sessionEntity)
-        {
-            // Arrange
-            TestHelper.Db.Add(user);
-
-            sessionEntity.CreatedBy = user.Id;
-
-            TestHelper.Db.Add(sessionEntity);
-
-            // Act
-            var action = async () => await TestHelper.HttpClient.DeleteAndEnsureNoContentAsync($"/users/{user.Id}");
-
-            // Assert
-            await action.Should().ThrowExactlyAsync<HttpRequestException>().Where(n => 
-                n.Message.Contains(new UserHasSessionsException().Message));
-        }
-
         #endregion
 
         [Fact]

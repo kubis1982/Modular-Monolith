@@ -104,6 +104,20 @@
 
         [Theory]
         [AutoFixture]
+        public void ShouldNotDeleteUserIfUserHasSessions(User user, User currentUser, Session session)
+        {
+            // Arrange
+            user.Extensions().SetList(n => n.Sessions, [session]);
+
+            // Act
+            var action = () => user.Delete(currentUser);
+
+            // Assert
+            action.Should().ThrowExactly<UserHasSessionsException>();
+        }
+
+        [Theory]
+        [AutoFixture]
         public void ShouldCreateSession(User user, DateTime dateTime, UserPassword userPassword)
         {
             // Arrange
