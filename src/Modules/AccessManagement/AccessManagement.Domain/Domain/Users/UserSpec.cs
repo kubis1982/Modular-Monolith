@@ -47,5 +47,13 @@
         /// <returns>The user specification.</returns>
         public static UserSpec BySessionId(SessionId sessionId)
            => new(n => n.Where(n => n.Sessions.Any(n => n.Id == sessionId)).Include(n => n.Sessions.Where(n => n.Id == sessionId)));
+
+        /// <summary>
+        /// Creates a specification to query users by their token.
+        /// </summary>
+        /// <param name="token">The user token.</param>
+        /// <returns>The user specification.</returns>
+        public static UserSpec ByToken(Guid token)
+           => new(n => n.Where(n => n.Token!.Token == token));
     }
 }

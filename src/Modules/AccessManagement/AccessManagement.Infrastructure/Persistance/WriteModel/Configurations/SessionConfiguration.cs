@@ -7,11 +7,11 @@
     {
         protected override void OnConfigure(EntityTypeBuilder<Session> builder)
         {
-            builder.Property(n => n.ExpiryDate).IsRequired(true);
+            builder.Property(n => n.ExpirationDate).IsRequired(true);
             builder.OwnsOne(n => n.RefreshToken, n =>
             {
                 n.Property(m => m!.Token).HasMaxLength(UserRestriction.RefreshTokenLength).HasColumnName("RefreshToken");
-                n.Property(m => m!.ExpiryTime).HasColumnName("RefreshTokenExpiryDate");
+                n.Property(m => m!.ExpirationDate).HasColumnName("RefreshTokenExpirationDate");
             });
             builder.HasOne(n => n.Killer).WithMany().HasForeignKey("KilledBy").OnDelete(DeleteBehavior.Restrict);
             builder.Property<UserId>("KilledBy");

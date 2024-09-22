@@ -1,9 +1,9 @@
 ﻿namespace ModularMonolith.Shared
 {
-    [Trait("Category", "Domain")]
     /// <summary>
     /// Base class for domain tests.
     /// </summary>
+    [Trait("Category", "Domain")]
     public abstract class DomainTests
     {
     }

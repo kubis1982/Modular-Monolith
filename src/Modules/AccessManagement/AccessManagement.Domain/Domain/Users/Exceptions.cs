@@ -1,6 +1,7 @@
 ﻿namespace ModularMonolith.Modules.AccessManagement.Domain.Users
 {
     using ModularMonolith.Shared.Exceptions;
+    using System;
 
     /// <summary>
     /// Exception thrown when attempting to perform an action on the current user.
@@ -57,4 +58,15 @@
     /// </summary>
     /// <param name="sessionId">The session ID.</param>
     public sealed class SessionNotFoundException(SessionId sessionId) : AppException($"Session not found: {sessionId}");
+
+    /// <summary>
+    /// Exception thrown when an incorrect user token is provided.
+    /// </summary>
+    public sealed class IncorrectUserTokenException() : AppException($"Incorrect user token");
+
+    /// <summary>
+    /// Exception thrown when an invalid user token is provided.
+    /// </summary>
+    /// <param name="token">The invalid user token.</param>
+    public sealed class InvalidUserTokenException(Guid? token) : AppException($"Token '{token}' is invalid");
 }

@@ -47,7 +47,7 @@ namespace ModularMonolith.Modules.AccessManagement.Domain.Users
         {
             Session session = GetSession(sessionId);
             session.Refresh(refreshToken, newRefreshToken, expiryDate, clock);
-            AddEvent(new SessionExpiryDateExtendedEvent(this, session, expiryDate));
+            AddEvent(new SessionExpirationDateExtendedEvent(this, session, expiryDate));
         }
     }
 }

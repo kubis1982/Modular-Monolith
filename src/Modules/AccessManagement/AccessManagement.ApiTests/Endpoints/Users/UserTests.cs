@@ -5,6 +5,8 @@ using ModularMonolith.Modules.AccessManagement.Endpoints.Requests.Users;
 using ModularMonolith.Modules.AccessManagement.Persistance.ReadModel;
 using ModularMonolith.Shared;
 using ModularMonolith.Shared.Persistance.Exceptions;
+using ModularMonolith.Shared.Time;
+using Moq;
 using System;
 using Xunit.Abstractions;
 
@@ -142,6 +144,56 @@ namespace ModularMonolith.Modules.AccessManagement.Endpoints.Users
             result.IsActive.Should().Be(User.Administrator.IsActive);
             result.LastName.Should().Be(User.Administrator.FullName.LastName!);
             result.MiddleName.Should().Be(User.Administrator.FullName.MiddleName!);
+        }
+
+        [Theory]
+        [AutoFixture]
+        public async Task ShouldCreateToken(UserEntity userEntity, CreateUserCodeRequest request)
+        {
+            // Arrange
+            request.Email = userEntity.Email;
+
+            TestHelper.Db.Add(userEntity);
+
+            // Act
+            await TestHelper.HttpClient.PostAsync($"/reset-password", request);
+
+            // Assert
+            var user = TestHelper.Db.GetSingle<UserEntity>(n => n.Id == userEntity.Id);
+            user.Token.Should().NotBeNull();
+            user.TokenExpirationDate.Should().NotBeNull();
+            user.Token.Should().NotBe(Guid.Empty);
+        }
+
+        [Theory]
+        [AutoFixture]
+        public async Task ShouldFinishToken(UserEntity userEntity, UserToken userToken, ChangePasswordByTokenRequest request)
+        {
+            // Arrange
+            Mock<IClock> clockMock = new Mock<IClock>();
+            clockMock.Setup(n => n.Now).Returns(DateTime.UtcNow);
+
+            ChangeServices(n =>
+            {
+                n.AddScoped(n => clockMock.Object);
+            });
+
+            request.Token = userToken.Token;
+
+            userEntity.Token = userToken.Token;
+            userEntity.TokenExpirationDate = userToken.ExpirationDate;
+
+            TestHelper.Db.Add(userEntity);
+
+            // Act
+            await TestHelper.HttpClient.PatchAsync($"/confirm-password", request);
+
+            // Assert
+            var user = TestHelper.Db.GetSingle<UserEntity>(n => n.Id == userEntity.Id);
+            IPasswordHasher passwordHasher = TestHelper.Services.GetRequiredService<IPasswordHasher>();
+            user.Token.Should().BeNull();
+            user.TokenExpirationDate.Should().BeNull();
+            user.Password.Should().Be(UserPassword.Create(request.Password, passwordHasher).Hash);
         }
     }
 }

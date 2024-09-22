@@ -2,6 +2,7 @@
 {
     using ModularMonolith.Modules.AccessManagement.Domain;
     using ModularMonolith.Shared.Kernel.Types;
+    using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -14,7 +15,7 @@
         public int Id { get; set; }
 
         [StringLength(UserRestriction.EmailLength)]
-        public string? Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         [StringLength(UserRestriction.PasswordLength)]
         public string Password { get; set; } = null!;
@@ -29,5 +30,9 @@
 
         [StringLength(UserRestriction.LastNameLength)]
         public string? LastName { get; set; }
+
+        public Guid? Token { get; set; }
+
+        public DateTime? TokenExpirationDate { get; set; }
     }
 }

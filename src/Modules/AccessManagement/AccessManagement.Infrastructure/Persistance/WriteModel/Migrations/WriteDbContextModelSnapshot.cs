@@ -25,13 +25,12 @@ namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Migrat
 
             modelBuilder.Entity("ModularMonolith.Modules.AccessManagement.Domain.Users.Session", b =>
                 {
-                    b.Property<int>("Identity")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("Id")
                         .HasColumnOrder(1);
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Identity"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CreatedBy")
                         .HasColumnType("integer")
@@ -42,7 +41,7 @@ namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Migrat
                         .HasColumnType("timestamp(2) with time zone")
                         .HasColumnOrder(2);
 
-                    b.Property<DateTime>("ExpiryDate")
+                    b.Property<DateTime>("ExpirationDate")
                         .HasPrecision(2)
                         .HasColumnType("timestamp(2) with time zone");
 
@@ -68,7 +67,7 @@ namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Migrat
                         .HasColumnOrder(0)
                         .IsFixedLength();
 
-                    b.HasKey("Identity");
+                    b.HasKey("Id");
 
                     b.HasIndex("CreatedBy");
 
@@ -79,13 +78,12 @@ namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Migrat
 
             modelBuilder.Entity("ModularMonolith.Modules.AccessManagement.Domain.Users.User", b =>
                 {
-                    b.Property<int>("Identity")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("Id")
                         .HasColumnOrder(1);
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Identity"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("CreatedBy")
                         .HasColumnType("integer")
@@ -132,7 +130,7 @@ namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Migrat
                         .HasColumnOrder(0)
                         .IsFixedLength();
 
-                    b.HasKey("Identity");
+                    b.HasKey("Id");
 
                     b.HasIndex("Email")
                         .IsUnique();
@@ -142,7 +140,7 @@ namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Migrat
                     b.HasData(
                         new
                         {
-                            Identity = 1,
+                            Id = 1,
                             CreatedBy = 1,
                             Email = "administrator@kubis1982.com",
                             IsActive = true,
@@ -166,13 +164,13 @@ namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Migrat
 
                     b.OwnsOne("ModularMonolith.Modules.AccessManagement.Domain.Users.RefreshToken", "RefreshToken", b1 =>
                         {
-                            b1.Property<int>("SessionIdentity")
+                            b1.Property<int>("SessionId")
                                 .HasColumnType("integer");
 
-                            b1.Property<DateTime>("ExpiryTime")
+                            b1.Property<DateTime>("ExpirationDate")
                                 .HasPrecision(2)
                                 .HasColumnType("timestamp(2) with time zone")
-                                .HasColumnName("RefreshTokenExpiryDate");
+                                .HasColumnName("RefreshTokenExpirationDate");
 
                             b1.Property<string>("Token")
                                 .IsRequired()
@@ -180,12 +178,12 @@ namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Migrat
                                 .HasColumnType("character varying(256)")
                                 .HasColumnName("RefreshToken");
 
-                            b1.HasKey("SessionIdentity");
+                            b1.HasKey("SessionId");
 
                             b1.ToTable("Sessions", "AcM");
 
                             b1.WithOwner()
-                                .HasForeignKey("SessionIdentity");
+                                .HasForeignKey("SessionId");
                         });
 
                     b.Navigation("Killer");
@@ -197,7 +195,7 @@ namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Migrat
                 {
                     b.OwnsOne("ModularMonolith.Modules.AccessManagement.Domain.Users.UserFullName", "FullName", b1 =>
                         {
-                            b1.Property<int>("UserIdentity")
+                            b1.Property<int>("UserId")
                                 .HasColumnType("integer");
 
                             b1.Property<string>("FirstName")
@@ -221,25 +219,54 @@ namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Migrat
                                 .HasColumnName("MiddleName")
                                 .HasColumnOrder(11);
 
-                            b1.HasKey("UserIdentity");
+                            b1.HasKey("UserId");
 
                             b1.ToTable("Users", "AcM");
 
                             b1.WithOwner()
-                                .HasForeignKey("UserIdentity");
+                                .HasForeignKey("UserId");
 
                             b1.HasData(
                                 new
                                 {
-                                    UserIdentity = 1,
+                                    UserId = 1,
                                     FirstName = "",
                                     LastName = "Administrator",
                                     MiddleName = ""
                                 });
                         });
 
+                    b.OwnsOne("ModularMonolith.Modules.AccessManagement.Domain.Users.UserToken", "Token", b1 =>
+                        {
+                            b1.Property<int>("UserId")
+                                .HasColumnType("integer");
+
+                            b1.Property<DateTime>("ExpirationDate")
+                                .HasPrecision(2)
+                                .HasColumnType("timestamp(2) with time zone")
+                                .HasColumnName("TokenExpirationDate");
+
+                            b1.Property<Guid>("Token")
+                                .HasColumnType("uuid")
+                                .HasColumnName("Token");
+
+                            b1.HasKey("UserId");
+
+                            b1.HasIndex("Token")
+                                .IsUnique();
+
+                            NpgsqlIndexBuilderExtensions.AreNullsDistinct(b1.HasIndex("Token"), true);
+
+                            b1.ToTable("Users", "AcM");
+
+                            b1.WithOwner()
+                                .HasForeignKey("UserId");
+                        });
+
                     b.Navigation("FullName")
                         .IsRequired();
+
+                    b.Navigation("Token");
                 });
 
             modelBuilder.Entity("ModularMonolith.Modules.AccessManagement.Domain.Users.User", b =>

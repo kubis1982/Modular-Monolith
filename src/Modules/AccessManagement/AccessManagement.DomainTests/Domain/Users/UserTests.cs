@@ -123,7 +123,7 @@
             // Arrange
             user.Extensions().SetValue(n => n.Password, userPassword);
             var clock = Mock.Of<IClock>(n => n.Now == dateTime);
-            RefreshToken refreshToken = RefreshToken.Of("Próba", dateTime);
+            RefreshToken refreshToken = RefreshToken.Create("Próba", dateTime);
 
             // Act
             user.CreateSession(userPassword, dateTime, refreshToken);
@@ -142,8 +142,8 @@
             // Arrange
             DateTime dateTime = DateTime.UtcNow;
             var clock = Mock.Of<IClock>(n => n.Now == dateTime);
-            RefreshToken token = RefreshToken.Of(refreshToken, dateTime);
-            RefreshToken newToken = RefreshToken.Of(newRefreshToken, dateTime);
+            RefreshToken token = RefreshToken.Create(refreshToken, dateTime);
+            RefreshToken newToken = RefreshToken.Create(newRefreshToken, dateTime);
             Session session = Session.Create(dateTime, token).Extensions().SetValue(n => n.Id, sessionId).DomainEntity;
             user.Extensions().SetList(n => n.Sessions, [session]);
 
@@ -151,8 +151,88 @@
             user.RefreshSession(sessionId, refreshToken, dateTime, newToken, clock);
 
             // Assert
-            var @event = user.Extensions().GetEvent<SessionExpiryDateExtendedEvent>();
-            @event.ExpiryDate.Should().Be(dateTime);
+            var @event = user.Extensions().GetEvent<SessionExpirationDateExtendedEvent>();
+            @event.ExpirationDate.Should().Be(dateTime);
+        }
+
+        [Theory]
+        [AutoFixture]
+        public void ShouldCreateToken(User user)
+        {
+            // Arrange
+            Mock<IClock> clock = new();
+
+            // Act
+            user.CreateToken(clock.Object);
+
+            // Assert
+            var @event = user.Extensions().GetEvent<UserTokenCreatedEvent>();
+            @event.UserId.Should().Be(user.Id);
+        }
+
+        [Theory]
+        [AutoFixture]
+        public void ShouldNotCreateTokenIfUserIsDeactivated(User user)
+        {
+            // Arrange
+            user.Extensions().SetValue(n => n.IsActive, false);
+
+            // Act
+            Action action = () => user.CreateToken(Mock.Of<IClock>());
+
+            // Assert
+            action.Should().ThrowExactly<UserIsUnactiveException>();
+        }
+
+        [Theory]
+        [AutoFixture]
+        public void ShouldFinishToken(User user, UserToken userCode, string password)
+        {
+            // Arrange
+            Mock<IClock> clock = new();
+            clock.Setup(n => n.Now).Returns(DateTime.UtcNow);
+
+            user.Extensions().SetValue(n => n.Token, userCode);
+
+            // Act
+            user.FinishToken(userCode.Token, (UserPassword)password, clock.Object);
+
+            // Assert
+            var @event = user.Extensions().GetEvent<UserTokenFinishedEvent>();
+            @event.UserId.Should().Be(user.Id);
+            user.Password.Should().Be((UserPassword)password);
+        }
+
+        [Theory]
+        [AutoFixture]
+        public void ShouldNotFinishTokenIfTokenIsExpirated(User user, UserToken userCode)
+        {
+            // Arrange
+            Mock<IClock> clock = new Mock<IClock>();
+            clock.Setup(n => n.Now).Returns(userCode.ExpirationDate.AddHours(1));
+
+            // Act
+            var action = () => user.FinishToken(userCode.Token, (UserPassword)"Password", clock.Object);
+
+            // Assert
+            action.Should().ThrowExactly<InvalidUserTokenException>();
+        }
+
+        [Theory]
+        [AutoFixture]
+        public void ShouldNotFinishTokenIfTokenIsNotValid(User user, UserToken userCode, Guid token)
+        {
+            // Arrange
+            Mock<IClock> clock = new();
+            clock.Setup(n => n.Now).Returns(DateTime.UtcNow);
+
+            user.Extensions().SetValue(n => n.Token, userCode);
+
+            // Act
+            var action = () => user.FinishToken(token, (UserPassword)"Password", clock.Object);
+
+            // Assert
+            action.Should().ThrowExactly<InvalidUserTokenException>();
         }
     }
 }
