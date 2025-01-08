@@ -7,11 +7,11 @@
     {
         protected override void OnConfigure(EntityTypeBuilder<Session> builder)
         {
-            builder.Property(n => n.ExpiryDate).IsRequired(true);
+            builder.Property(n => n.ExpirationDate).IsRequired(true);
             builder.OwnsOne(n => n.RefreshToken, n =>
             {
                 n.Property(m => m!.Token).HasMaxLength(UserRestriction.RefreshTokenLength).HasColumnName("RefreshToken");
-                n.Property(m => m!.ExpiryTime).HasColumnName("RefreshTokenExpiryDate");
+                n.Property(m => m!.ExpirationDate).HasColumnName("RefreshTokenExpirationDate");
             });
             builder.HasOne(n => n.Killer).WithMany().HasForeignKey("KilledBy").OnDelete(DeleteBehavior.Restrict);
             builder.Property<UserId>("KilledBy");
@@ -21,7 +21,8 @@
 
         public override void AddCreatedField(EntityTypeBuilder<Session> builder)
         {
-            builder.Property<DateTime?>(ShadowProperties.CreatedOn).HasColumnOrder(2);
+            builder.Property<DateTime?>(ShadowProperties.CreatedOn).HasColumnOrder(2)
+                 .ValueGeneratedOnAdd().HasDefaultValueSql("NOW()");
             builder.Property<UserId>(ShadowProperties.CreatedBy).HasColumnOrder(3).IsRequired(true);
         }
     }

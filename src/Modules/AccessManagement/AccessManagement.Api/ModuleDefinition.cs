@@ -14,7 +14,9 @@
 
     internal class ModuleDefinition : AbstractModuleDefinition
     {
-        public override string ModuleCode => ServiceCollectionExtensions.ModuleCode;
+        public const string MODULE_CODE = ServiceCollectionExtensions.ModuleCode;
+
+        public override string ModuleCode => MODULE_CODE;
 
         public override string ModuleName => "Access Management";
 

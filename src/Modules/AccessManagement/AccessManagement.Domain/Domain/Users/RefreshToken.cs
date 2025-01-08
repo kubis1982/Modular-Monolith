@@ -5,22 +5,22 @@
     public sealed record RefreshToken
     {
         public string Token { get; private set; } = string.Empty;
-        public DateTime ExpiryTime { get; private set; }
+        public DateTime ExpirationDate { get; private set; }
 
         private RefreshToken()
         {
         }
 
-        private RefreshToken(string token, DateTime expiryTime)
+        private RefreshToken(string token, DateTime expirationDate)
         {
             if (string.IsNullOrWhiteSpace(token))
             {
                 throw new TokenIsEmptyException();
             }
             Token = token;
-            ExpiryTime = expiryTime;
+            ExpirationDate = expirationDate;
         }
 
-        public static RefreshToken Of(string token, DateTime expiryTime) => new(token, expiryTime);
+        public static RefreshToken Create(string token, DateTime expirationDate) => new(token, expirationDate);
     }
 }

@@ -1,10 +1,7 @@
-﻿namespace ModularMonolith.Shared
-{
+﻿namespace ModularMonolith.Shared {
+    using Xunit;
+
     [Trait("Category", "Domain")]
-    /// <summary>
-    /// Base class for domain tests.
-    /// </summary>
-    public abstract class DomainTests
-    {
+    public abstract class DomainTests {
     }
 }

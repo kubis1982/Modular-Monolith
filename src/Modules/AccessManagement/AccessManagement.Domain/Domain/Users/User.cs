@@ -2,16 +2,22 @@
 {
     using ModularMonolith.Modules.AccessManagement.Domain;
     using ModularMonolith.Modules.AccessManagement.Domain.Users.Events;
+    using ModularMonolith.Shared;
     using ModularMonolith.Shared.Kernel;
     using ModularMonolith.Shared.Kernel.Types;
+    using ModularMonolith.Shared.Time;
+    using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Represents a user in the system.
+    /// </summary>
     public partial class User : DomainEntity<UserId, int, EntityType>, IAggregateRoot
     {
         private readonly List<Session> sessions = [];
 
         /// <summary>
-        /// Gets or sets the email
+        /// Gets or sets the email of the user.
         /// </summary>
         internal UserEmail Email { get; private set; }
 
@@ -34,6 +40,11 @@
         /// Gets the sessions associated with the user.
         /// </summary>
         internal IReadOnlyCollection<Session> Sessions => sessions;
+
+        /// <summary>
+        /// Gets or sets the user code.
+        /// </summary>
+        internal UserToken? Token { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="User"/> class.
@@ -74,9 +85,9 @@
         /// <summary>
         /// Checks the password of the user.
         /// </summary>
-        /// <param name="password"></param>
-        /// <exception cref="UserIsUnactiveException"></exception>
-        /// <exception cref="IncorrectUserPasswordException"></exception>
+        /// <param name="password">The password to check.</param>
+        /// <exception cref="UserIsUnactiveException">Thrown when the user is inactive.</exception>
+        /// <exception cref="IncorrectUserPasswordException">Thrown when the password is incorrect.</exception>
         private void CheckPassword(UserPassword password)
         {
             if (IsActive == false)
@@ -170,9 +181,35 @@
             AddEvent(new UserDeletedEvent(this, currentUser));
         }
 
+        public void CreateToken(IClock clock)
+        {
+            if (IsActive == false)
+            {
+                throw new UserIsUnactiveException();
+            }
+            UserToken userCode = UserToken.Create(clock.Now);
+            AddEvent(new UserTokenCreatedEvent(this, userCode));
+        }
+
+        public void FinishToken(Guid token, UserPassword userPassword, IClock clock)
+        {
+            if (Token?.Token == token)
+            {
+                if (clock.Now <= Token.ExpirationDate)
+                {
+                    ChangePassword(userPassword);
+                    AddEvent(new UserTokenFinishedEvent(this, Token));
+                    Token = null;
+                    return;
+                }
+            }
+
+            throw new InvalidUserTokenException(token);
+        }
+
         /// <summary>
         /// Gets the administrator user.
         /// </summary>
-        internal static User Administrator => new(UserEmail.Of("administrator@kubis1982.com"), UserPassword.Of("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"), UserFullName.Create("Administrator")) { Id = UserId.Administrator, IsActive = true };
+        internal static User Administrator => new(UserEmail.Of($"administrator@{SystemInformation.DomainName}"), UserPassword.Of("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"), UserFullName.Create("Administrator")) { Id = UserId.Administrator, IsActive = true };
     }
 }

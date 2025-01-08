@@ -12,9 +12,6 @@
         public required string RefreshToken { get; set; }
 
         [Required]
-        public string TokenType { get; } = "bearer";
-
-        [Required]
         public required DateTime ExpiryDate { get; set; }
 
         [Required]

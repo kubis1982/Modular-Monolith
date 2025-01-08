@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ModularMonolith.Shared.Documentation;
 using ModularMonolith.Shared.Exceptions;
 using ModularMonolith.Shared.Modules;
 using ModularMonolith.Shared.Persistance;
@@ -12,8 +11,6 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddModular(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment environment)
     {
-        services.AddEndpointsApiExplorer();
-        services.AddEndpointsApiDocumentation();
         services.AddExceptionHandler<GlobalExceptionHandler>();
         services.AddProblemDetails();
         services.AddMigrationDatabase();

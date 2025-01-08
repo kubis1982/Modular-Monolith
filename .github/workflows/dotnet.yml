@@ -5,36 +5,19 @@ name: .NET
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres:15.3
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: mypassword
-          POSTGRES_DB: modular-monolith
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd="pg_isready -U postgres"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
-
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 9.0.100
     - name: Restore dependencies
       run: dotnet restore ModularMonolith.sln
     - name: Build

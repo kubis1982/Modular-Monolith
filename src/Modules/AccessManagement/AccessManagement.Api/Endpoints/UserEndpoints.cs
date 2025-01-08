@@ -27,13 +27,43 @@
         /// <param name="endpointRouteBuilder">The endpoint route builder.</param>
         public void AddRoutes(IEndpointRouteBuilder endpointRouteBuilder)
         {
-            endpointRouteBuilder.MapPost("/users", CreateUser);
-            endpointRouteBuilder.MapPut("/users/{userId}", UpdateUser);
-            endpointRouteBuilder.MapDelete("/users/{userId}", DeleteUser);
-            endpointRouteBuilder.MapPatch("/users/{userId}/change-password", ChangePassword);
-            endpointRouteBuilder.MapPatch("/users/{userId}/activate", ActivateUser);
-            endpointRouteBuilder.MapPatch("/users/{userId}/deactivate", DeactivateUser);
-            endpointRouteBuilder.MapGet("/users/{userId}", GetUser);
+            endpointRouteBuilder.MapPost("reset-password", ResetPassword);
+            endpointRouteBuilder.MapPatch("confirm-password", ConfirmPassword);
+
+            var users = endpointRouteBuilder.MapGroup("users");
+            users.MapPost("", CreateUser);
+            users.MapPut("{userId}", UpdateUser);
+            users.MapDelete("{userId}", DeleteUser);
+            users.MapPatch("{userId}/change-password", ChangePassword);
+            users.MapPatch("{userId}/activate", ActivateUser);
+            users.MapPatch("{userId}/deactivate", DeactivateUser);
+            users.MapGet("{userId}", GetUser);
+        }
+
+        /// <summary>
+        /// Creates a user's code
+        /// </summary>
+        /// <param name="commandExecutor"></param>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        private async Task<Ok> ResetPassword([FromServices] ICommandExecutor commandExecutor, [FromBody] CreateUserCodeRequest request, CancellationToken cancellationToken)
+        {
+            await commandExecutor.Execute(new CreateUserTokenCommand(request.Email), cancellationToken);
+            return TypedResults.Ok();
+        }
+
+        /// <summary>
+        /// Changes a user's password with a code
+        /// </summary>
+        /// <param name="commandExecutor"></param>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        private async Task<Ok> ConfirmPassword([FromServices] ICommandExecutor commandExecutor, [FromBody] ChangePasswordByTokenRequest request, CancellationToken cancellationToken)
+        {
+            await commandExecutor.Execute(new ChangePasswordByTokenCommand(request.Token, request.Password), cancellationToken);
+            return TypedResults.Ok();
         }
 
         /// <summary>

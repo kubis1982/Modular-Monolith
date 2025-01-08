@@ -14,7 +14,7 @@
             public override async Task Handle(RefreshSessionCommand command, CancellationToken cancellationToken)
             {
                 User user = await userRepository.SingleAsync(UserSpec.BySessionId((SessionId)command.SessionId), cancellationToken);
-                RefreshToken newRefreshToken = Domain.Users.RefreshToken.Of(command.NewRefreshToken, command.ExpiryRefreshToken);
+                RefreshToken newRefreshToken = Domain.Users.RefreshToken.Create(command.NewRefreshToken, command.ExpiryRefreshToken);
                 user.RefreshSession((SessionId)command.SessionId, command.RefreshToken, command.ExpiryDate, newRefreshToken, clock);
             }
         }

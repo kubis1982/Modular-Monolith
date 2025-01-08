@@ -21,10 +21,10 @@
                                             Id = sessions.Id,
                                             CreatedBy = sessions.CreatedBy,
                                             CreatedOn = sessions.CreatedOn,
-                                            IsExpired = dt > sessions.ExpiryDate,
-                                            ExpiryDate = sessions.ExpiryDate,
+                                            IsExpired = dt > sessions.ExpirationDate,
+                                            ExpirationDate = sessions.ExpirationDate,
                                             RefreshToken = sessions.RefreshToken,
-                                            RefreshTokenExpiryDate = sessions.RefreshTokenExpiryDate
+                                            RefreshTokenExpirationDate = sessions.RefreshTokenExpirationDate
                                         }).SingleOrDefault());
             }
         }
@@ -36,8 +36,8 @@
         public bool IsExpired { get; set; }
         public int CreatedBy { get; set; }
         public DateTime? CreatedOn { get; set; }
-        public DateTime ExpiryDate { get; set; }
+        public DateTime ExpirationDate { get; set; }
         public string? RefreshToken { get; set; }
-        public DateTime? RefreshTokenExpiryDate { get; set; }
+        public DateTime? RefreshTokenExpirationDate { get; set; }
     }
 }

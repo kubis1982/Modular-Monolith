@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using System;
 
 #nullable disable
 
@@ -32,7 +32,9 @@ namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Migrat
                     FirstName = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
                     MiddleName = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
                     LastName = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
-                    IsActive = table.Column<bool>(type: "boolean", nullable: false)
+                    IsActive = table.Column<bool>(type: "boolean", nullable: false),
+                    Token = table.Column<Guid>(type: "uuid", nullable: true),
+                    TokenExpirationDate = table.Column<DateTime>(type: "timestamp(2) with time zone", precision: 2, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -51,9 +53,9 @@ namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Migrat
                     CreatedBy = table.Column<int>(type: "integer", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "timestamp(2) with time zone", precision: 2, nullable: true),
                     ModifiedBy = table.Column<int>(type: "integer", nullable: true),
-                    ExpiryDate = table.Column<DateTime>(type: "timestamp(2) with time zone", precision: 2, nullable: false),
+                    ExpirationDate = table.Column<DateTime>(type: "timestamp(2) with time zone", precision: 2, nullable: false),
                     RefreshToken = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    RefreshTokenExpiryDate = table.Column<DateTime>(type: "timestamp(2) with time zone", precision: 2, nullable: true),
+                    RefreshTokenExpirationDate = table.Column<DateTime>(type: "timestamp(2) with time zone", precision: 2, nullable: true),
                     KilledBy = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
@@ -75,6 +77,12 @@ namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Migrat
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                schema: "AcM",
+                table: "Users",
+                columns: new[] { "Id", "CreatedBy", "Email", "IsActive", "ModifiedBy", "ModifiedOn", "Password", "TypeId", "FirstName", "LastName", "MiddleName" },
+                values: new object[] { 1, 1, "administrator@kubis1982.com", true, null, null, "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", "AcM01", "", "Administrator", "" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Sessions_CreatedBy",
                 schema: "AcM",
@@ -93,6 +101,14 @@ namespace ModularMonolith.Modules.AccessManagement.Persistance.WriteModel.Migrat
                 table: "Users",
                 column: "Email",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Token",
+                schema: "AcM",
+                table: "Users",
+                column: "Token",
+                unique: true)
+                .Annotation("Npgsql:NullsDistinct", true);
         }
 
         /// <inheritdoc />

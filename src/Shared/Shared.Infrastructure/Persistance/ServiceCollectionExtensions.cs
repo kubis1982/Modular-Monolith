@@ -45,6 +45,7 @@
                 {
                     n.MigrationsHistoryTable("MigrationHistory", schema);
                 });
+                x.ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
 #if DEBUG
                 x.ConfigureWarnings(
                     b => b.Log(

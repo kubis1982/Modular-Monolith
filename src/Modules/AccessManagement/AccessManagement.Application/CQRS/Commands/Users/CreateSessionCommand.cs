@@ -18,7 +18,7 @@
             public override async Task<EntityIdentityResult> Handle(CreateSessionCommand command, CancellationToken cancellationToken)
             {
                 User user = await userRepository.SingleAsync(UserSpec.ByEmail((UserEmail)command.Email), cancellationToken);
-                RefreshToken refreshToken = Domain.Users.RefreshToken.Of(command.RefreshToken, command.ExpiryRefreshToken);
+                RefreshToken refreshToken = Domain.Users.RefreshToken.Create(command.RefreshToken, command.ExpiryRefreshToken);
                 UserPassword password = UserPassword.Create(command.Password, passwordHasher);
                 Session session = user.CreateSession(password, command.ExpiryDate, refreshToken);
                 return EntityIdentityResult.Create(session);
