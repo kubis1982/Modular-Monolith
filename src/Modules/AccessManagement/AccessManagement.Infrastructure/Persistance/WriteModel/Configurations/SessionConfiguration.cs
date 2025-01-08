@@ -21,7 +21,8 @@
 
         public override void AddCreatedField(EntityTypeBuilder<Session> builder)
         {
-            builder.Property<DateTime?>(ShadowProperties.CreatedOn).HasColumnOrder(2);
+            builder.Property<DateTime?>(ShadowProperties.CreatedOn).HasColumnOrder(2)
+                 .ValueGeneratedOnAdd().HasDefaultValueSql("NOW()");
             builder.Property<UserId>(ShadowProperties.CreatedBy).HasColumnOrder(3).IsRequired(true);
         }
     }

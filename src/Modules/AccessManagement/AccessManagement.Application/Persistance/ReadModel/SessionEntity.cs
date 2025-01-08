@@ -19,12 +19,12 @@
 
         public int CreatedBy { get; set; }
 
-        public DateTime ExpiryDate { get; set; }
+        public DateTime ExpirationDate { get; set; }
 
         [StringLength(UserRestriction.RefreshTokenLength)]
         public string? RefreshToken { get; set; }
 
-        public DateTime? RefreshTokenExpiryDate { get; set; }
+        public DateTime? RefreshTokenExpirationDate { get; set; }
 
         public int? KilledBy { get; set; }
     }

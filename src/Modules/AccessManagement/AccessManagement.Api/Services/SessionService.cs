@@ -52,8 +52,8 @@
             DateTime refreshTokenExpiryDate = clock.Now.AddDays(authOptions.CurrentValue.RefreshTokenValidityInDays);
             await commandExecutor.Execute(new RefreshSessionCommand(userIdentity.SessionId, expiryDate, refreshToken, newRefreshToken, refreshTokenExpiryDate), cancellationToken);
             var session = await queryExecutor.Execute(new GetSessionQuery(userIdentity.SessionId), cancellationToken) ?? throw new SessionNotFoundException();
-            string token = jwtProvider.GenerateToken(jwtClaimValues, session.ExpiryDate);
-            return (token, session.ExpiryDate, session.RefreshToken ?? "", session.RefreshTokenExpiryDate ?? DateTime.MinValue);
+            string token = jwtProvider.GenerateToken(jwtClaimValues, session.ExpirationDate);
+            return (token, session.ExpirationDate, session.RefreshToken ?? "", session.RefreshTokenExpirationDate ?? DateTime.MinValue);
         }
 
         /// <summary>
@@ -79,8 +79,8 @@
                 UserName = user.Email ?? string.Empty,
                 SessionId = sessionId.Id
             };
-            string token = jwtProvider.GenerateToken(jwtClaimValues, session.ExpiryDate);
-            return (token, session.ExpiryDate, session.RefreshToken ?? "", session.RefreshTokenExpiryDate ?? DateTime.MinValue, sessionId.Id);
+            string token = jwtProvider.GenerateToken(jwtClaimValues, session.ExpirationDate);
+            return (token, session.ExpirationDate, session.RefreshToken ?? "", session.RefreshTokenExpirationDate ?? DateTime.MinValue, sessionId.Id);
         }
     }
 
