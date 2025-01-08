@@ -16,7 +16,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:15.3
+        image: postgres:15.8
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: mypassword
@@ -34,7 +34,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 9.0.100
     - name: Restore dependencies
       run: dotnet restore ModularMonolith.sln
     - name: Build
