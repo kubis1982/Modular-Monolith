@@ -16,7 +16,8 @@ builder.Logging.AddSerilog(logger);
 
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddOpenApi(n => {
+builder.Services.AddOpenApi(n =>
+{
     static string GetName(string name)
     {
         if (name.EndsWith("Model"))
@@ -41,7 +42,8 @@ builder.Services.AddOpenApi(n => {
     n.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
     n.AddSchemaTransformer<SchemaTransformer>();
     n.AddOperationTransformer<OperationIdAndSummaryTransformer>();
-    n.CreateSchemaReferenceId = (type) => {
+    n.CreateSchemaReferenceId = (type) =>
+    {
         string moduleName = type.Type.GetModuleName();
         if (string.IsNullOrEmpty(moduleName))
         {
@@ -61,7 +63,8 @@ app.UseModular(app.Environment);
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.MapScalarApiReference(n => {
+    app.MapScalarApiReference(n =>
+    {
         n.WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
         n.WithDotNetFlag(true);
         n.WithTitle("Bootstraper");
