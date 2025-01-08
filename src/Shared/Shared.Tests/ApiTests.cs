@@ -1,83 +1,69 @@
-﻿namespace ModularMonolith.Shared
-{
+﻿namespace ModularMonolith.Shared {
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
-    using ModularMonolith.Shared.Extensions;
-    using ModularMonolith.Shared.Persistance;
-    using ModularMonolith.Shared.Security;
-    using System.Diagnostics.CodeAnalysis;
+    using ModularMonolith.Shared.Api;
+    using System;
+    using Xunit;
     using Xunit.Abstractions;
 
     /// <summary>
-    /// Base class for API tests.
+    /// Abstract base class for API tests, providing common setup and utility methods.
     /// </summary>
-    /// <typeparam name="T">The type of the test helper factory.</typeparam>
-    /// <param name="testOutputHelper">The test output helper.</param>
-    /// <seealso cref="IAsyncLifetime"/>
+    /// <param name="webApplicationFixture">The factory to create the web API client.</param>
+    /// <param name="testOutputHelper">The helper to output test results.</param>
     [Trait("Category", "Api")]
-    [ExcludeFromCodeCoverage]
-    public abstract class ApiTests<T>(ITestOutputHelper testOutputHelper) : IAsyncLifetime where T : class, ITestHelperFactory, new()
-    {
-        /// <summary>
-        /// Gets or sets the test helper.
-        /// </summary>
-        public TestHelper TestHelper { get; private set; } = null!;
+    public abstract class ApiTests(WebApplicationFixture webApplicationFixture, ITestOutputHelper testOutputHelper) : IAsyncLifetime {
+        private TestHttpClient testHttpClient = webApplicationFixture.HttpClient;
 
-        /// <inheritdoc/>
-        public Task DisposeAsync()
-        {
-            ((IDisposable)TestHelper).Dispose();
+        /// <summary>
+        /// Gets the HTTP test client, with logging configured.
+        /// </summary>
+        protected TestHttpClient HttpClient {
+            get {
+                testHttpClient.Log = TestOutputHelper.WriteLine;
+                return testHttpClient;
+            }
+        }
+
+        /// <summary>
+        /// Gets the test output helper.
+        /// </summary>
+        protected ITestOutputHelper TestOutputHelper { get; } = testOutputHelper;
+
+        /// <summary>
+        /// Changes the services used by the HTTP client.
+        /// </summary>
+        /// <param name="action">An action to configure the service collection.</param>
+        protected void ChangeServices(Action<IServiceCollection> action) => testHttpClient = webApplicationFixture.CreateHttpClient(action);
+
+        /// <inheritdoc />
+        public virtual Task DisposeAsync() {
             return Task.CompletedTask;
         }
 
-        /// <inheritdoc/>
-        public Task InitializeAsync()
-        {
-            AddServices(true);
-            return Task.CompletedTask;
+        /// <inheritdoc />
+        public virtual async Task InitializeAsync() {
+            await webApplicationFixture.ResetDatabaseAsync();
         }
+
+        private readonly Lazy<IServiceProvider> serviceProvider = new(() => webApplicationFixture.ServiceProvider.CreateScope().ServiceProvider);
+
+        public IServiceProvider Services => serviceProvider.Value;
+    }
+
+    /// <summary>
+    /// Abstract base class for API tests with a specific database context, providing common setup and utility methods.
+    /// </summary>
+    /// <typeparam name="TDbContext">The type of the database context.</typeparam>
+    public abstract class ApiTests<TDbContext> : ApiTests where TDbContext : DbContext {
+        private readonly Lazy<TDbContext> dbContext;
+
+        protected ApiTests(WebApplicationFixture<TDbContext> webApplicationFixture, ITestOutputHelper testOutputHelper) : base(webApplicationFixture, testOutputHelper) 
+            => dbContext = new(() => Services.GetRequiredService<TDbContext>());
 
         /// <summary>
-        /// Changes the services.
+        /// Gets a database context.
         /// </summary>
-        /// <param name="action">The action to modify the service collection.</param>
-        public void ChangeServices(Action<IServiceCollection>? action = null)
-        {
-            AddServices(false, action);
-        }
-
-        private void AddServices(bool migration, Action<IServiceCollection>? action = null)
-        {
-            T testHelperFactory = new()
-            {
-                Log = testOutputHelper.WriteLine
-            };
-            TestHelper = testHelperFactory.CreateTestHelper(migration, n =>
-            {
-                n.AddSingleton<TestUserContext>();
-                n.AddScoped<IUserContext, TestUserContext>();
-                n.Configure<DbOptions>(options =>
-                {
-                    string moduleName = GetType().GetModuleName();
-                    options.ConnectionString = ApiTests<T>.GetConnectionString(moduleName);
-                    options.ReadConnectionString = ApiTests<T>.GetConnectionString(moduleName);
-                    options.Migrator.IsEnabled = false;
-                });
-                OnAddServices(n);
-                action?.Invoke(n);
-            });
-        }
-
-        /// <summary>
-        /// Method to add additional services to the service collection.
-        /// </summary>
-        /// <param name="serviceCollection">The service collection.</param>
-        protected virtual void OnAddServices(IServiceCollection serviceCollection)
-        {
-        }
-
-        private static string GetConnectionString(string moduleName)
-        {
-            return $"User ID=postgres;Password=mypassword;Host=localhost;Port=5432;Database={SystemInformation.SystemName}_Modules_{moduleName}";
-        }
+        protected TDbContext DbContext => dbContext.Value;
     }
 }
