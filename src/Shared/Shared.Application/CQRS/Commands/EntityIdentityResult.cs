@@ -8,7 +8,7 @@
         private Func<EntityTypeId> entityTypeIdValue;
         private Func<int> entityIdValue;
 
-        private EntityIdentityResult(Func<EntityTypeId> entityTypeIdValue, Func<int> entityIdValue)
+        public EntityIdentityResult(Func<EntityTypeId> entityTypeIdValue, Func<int> entityIdValue)
         {
             this.entityTypeIdValue = entityTypeIdValue;
             this.entityIdValue = entityIdValue;

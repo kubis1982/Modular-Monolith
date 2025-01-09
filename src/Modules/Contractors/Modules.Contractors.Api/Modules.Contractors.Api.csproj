@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<RootNamespace>ModularMonolith.Modules.Contractors</RootNamespace>
+		<AssemblyName>ModularMonolith.Modules.Contractors.Api</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="module.Contractors.development.json" />
+	  <None Remove="module.Contractors.json" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="module.Contractors.development.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="module.Contractors.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Shared\Shared.Api\Shared.Api.csproj" />
+		<ProjectReference Include="..\Modules.Contractors.Application\Modules.Contractors.Application.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+		<ProjectReference Include="..\Modules.Contractors.Infrastructure\Modules.Contractors.Infrastructure.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+	</ItemGroup>
+</Project>

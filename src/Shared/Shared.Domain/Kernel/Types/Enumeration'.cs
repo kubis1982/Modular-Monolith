@@ -13,7 +13,7 @@
 
         public TKey Key { get; private set; }
 
-        private protected Enumeration(TKey key, string name) => (Key, Name) = (key, name);
+        protected Enumeration(TKey key, string name) => (Key, Name) = (key, name);
 
         public override string ToString() => $"{Key}: {Name}";
 
@@ -28,13 +28,13 @@
 
         public override int GetHashCode() => Key!.GetHashCode();
 
-        public int CompareTo(object? obj) => CompareTo((Enumeration<TKey>?)obj);
+        public int CompareTo(object? obj) => Key.CompareTo((obj as Enumeration<TKey>)!.Key ?? default);
 
         public static bool operator ==(Enumeration<TKey> left, Enumeration<TKey> right)
         {
-            if (left is null)
+            if (ReferenceEquals(left, null))
             {
-                return right is null;
+                return ReferenceEquals(right, null);
             }
 
             return left.Equals(right);
@@ -47,22 +47,22 @@
 
         public static bool operator <(Enumeration<TKey> left, Enumeration<TKey> right)
         {
-            return left is null ? right is not null : left.CompareTo(right) < 0;
+            return ReferenceEquals(left, null) ? !ReferenceEquals(right, null) : left.CompareTo(right) < 0;
         }
 
         public static bool operator <=(Enumeration<TKey> left, Enumeration<TKey> right)
         {
-            return left is null || left.CompareTo(right) <= 0;
+            return ReferenceEquals(left, null) || left.CompareTo(right) <= 0;
         }
 
         public static bool operator >(Enumeration<TKey> left, Enumeration<TKey> right)
         {
-            return left is not null && left.CompareTo(right) > 0;
+            return !ReferenceEquals(left, null) && left.CompareTo(right) > 0;
         }
 
         public static bool operator >=(Enumeration<TKey> left, Enumeration<TKey> right)
         {
-            return left is null ? right is null : left.CompareTo(right) >= 0;
+            return ReferenceEquals(left, null) ? ReferenceEquals(right, null) : left.CompareTo(right) >= 0;
         }
 
         public static IEnumerable<T> GetAll<T>() where T : Enumeration<TKey> =>
@@ -89,6 +89,12 @@
         public static T Get<T>(string propertyName) where T : Enumeration<TKey>
         {
             return GetOrDefault<T>(propertyName) ?? throw new ArgumentException($"Nie znaleziono własności `{propertyName}` na `{typeof(T).Name}`");
+        }
+
+        public static T FromValue<T>(TKey value) where T : Enumeration<TKey>
+        {
+            var matchingItem = GetAll<T>().FirstOrDefault(item => item.Key.Equals(value));
+            return matchingItem ?? throw new InvalidOperationException($"'{value}' nie została znaleziona w {typeof(T)}");
         }
     }
 }

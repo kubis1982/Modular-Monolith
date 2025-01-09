@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<RootNamespace>ModularMonolith.Modules.Orders</RootNamespace>
+		<AssemblyName>ModularMonolith.Modules.Orders.Infrastructure</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Shared\Shared.Infrastructure\Shared.Infrastructure.csproj" />
+		<ProjectReference Include="..\..\Articles\Modules.Articles.Shared\Modules.Articles.Shared.csproj" />
+		<ProjectReference Include="..\..\Contractors\Modules.Contractors.Shared\Modules.Contractors.Shared.csproj" />
+		<ProjectReference Include="..\..\Warehouses\Modules.Warehouses.Shared\Modules.Warehouses.Shared.csproj" />
+		<ProjectReference Include="..\Modules.Orders.Application\Modules.Orders.Application.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+		<ProjectReference Include="..\Modules.Orders.Domain\Modules.Orders.Domain.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+	</ItemGroup>
+</Project>

@@ -18,7 +18,7 @@
         {
             if (string.IsNullOrWhiteSpace(code))
             {
-                throw new ArgumentNullException(nameof(MeasurementUnitCode));
+                throw new ArgumentException("Code is empty", nameof(MeasurementUnitCode));
             }
             if (!CodePattern().IsMatch(code))
             {
