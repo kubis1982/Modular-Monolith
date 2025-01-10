@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.OpenApi;
 using ModularMonolith.OpenApi;
 using ModularMonolith.Shared;
+using ModularMonolith.Shared.Documentation;
 using ModularMonolith.Shared.Extensions;
 using Scalar.AspNetCore;
 using Serilog;
@@ -50,7 +51,12 @@ builder.Services.AddOpenApi(n =>
             return OpenApiOptions.CreateDefaultSchemaReferenceId(type);
         }
         string typeName = GetName(type.Type.Name);
-        return moduleName == "Modules" ? typeName : $"{moduleName}{typeName}";
+
+        if (moduleName == "Modules")
+            return typeName;
+
+        string? subModuleName = type.Type.Assembly.GetCustomAttributes(true).OfType<SubModuleNameAttribute>().SingleOrDefault()?.GetName(type.Type);
+        return !string.IsNullOrWhiteSpace(subModuleName) ? $"{moduleName}{subModuleName}{typeName}" : $"{moduleName}{typeName}";
     };
 });
 

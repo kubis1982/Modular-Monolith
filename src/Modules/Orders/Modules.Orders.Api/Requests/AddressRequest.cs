@@ -15,9 +15,11 @@
         public string? PostalCode { get; set; }
 
         [StringLength(OrderRestriction.AddressCityLength)]
+        [Required]
         public string? City { get; set; }
 
         [StringLength(OrderRestriction.AddressCountryLength)]
+        [Required]
         public string? Country { get; set; }
     }
 }

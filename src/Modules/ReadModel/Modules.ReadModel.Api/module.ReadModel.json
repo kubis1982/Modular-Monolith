@@ -1,0 +1,8 @@
+{
+  "ReadModel": {
+    "module": {
+      "name": "ReadModel",
+      "enabled": true
+    }
+  }
+}

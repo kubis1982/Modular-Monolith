@@ -39,6 +39,8 @@
 	  <ProjectReference Include="..\Modules\Orders\Modules.Orders.Application\Modules.Orders.Application.csproj" />
 	  <ProjectReference Include="..\Modules\Orders\Modules.Orders.Domain\Modules.Orders.Domain.csproj" />
 	  <ProjectReference Include="..\Modules\Orders\Modules.Orders.Infrastructure\Modules.Orders.Infrastructure.csproj" />
+	  <ProjectReference Include="..\Modules\ReadModel\Modules.ReadModel.Api\Modules.ReadModel.Api.csproj" />
+	  <ProjectReference Include="..\Modules\ReadModel\Modules.ReadModel.Infrastructure\Modules.ReadModel.Infrastructure.csproj" />
 	  <ProjectReference Include="..\Modules\Warehouses\Modules.Warehouses.Api\Modules.Warehouses.Api.csproj" />
 	  <ProjectReference Include="..\Modules\Warehouses\Modules.Warehouses.Application\Modules.Warehouses.Application.csproj" />
 	  <ProjectReference Include="..\Modules\Warehouses\Modules.Warehouses.Domain\Modules.Warehouses.Domain.csproj" />
