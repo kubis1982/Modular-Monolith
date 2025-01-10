@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.OpenApi;
 using ModularMonolith.OpenApi;
 using ModularMonolith.Shared;
+using ModularMonolith.Shared.Documentation;
 using ModularMonolith.Shared.Extensions;
 using Scalar.AspNetCore;
 using Serilog;
@@ -16,7 +17,8 @@ builder.Logging.AddSerilog(logger);
 
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddOpenApi(n => {
+builder.Services.AddOpenApi(n =>
+{
     static string GetName(string name)
     {
         if (name.EndsWith("Model"))
@@ -41,14 +43,20 @@ builder.Services.AddOpenApi(n => {
     n.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
     n.AddSchemaTransformer<SchemaTransformer>();
     n.AddOperationTransformer<OperationIdAndSummaryTransformer>();
-    n.CreateSchemaReferenceId = (type) => {
+    n.CreateSchemaReferenceId = (type) =>
+    {
         string moduleName = type.Type.GetModuleName();
         if (string.IsNullOrEmpty(moduleName))
         {
             return OpenApiOptions.CreateDefaultSchemaReferenceId(type);
         }
         string typeName = GetName(type.Type.Name);
-        return moduleName == "Modules" ? typeName : $"{moduleName}{typeName}";
+
+        if (moduleName == "Modules")
+            return typeName;
+
+        string? subModuleName = type.Type.Assembly.GetCustomAttributes(true).OfType<SubModuleNameAttribute>().SingleOrDefault()?.GetName(type.Type);
+        return !string.IsNullOrWhiteSpace(subModuleName) ? $"{moduleName}{subModuleName}{typeName}" : $"{moduleName}{typeName}";
     };
 });
 
@@ -61,7 +69,8 @@ app.UseModular(app.Environment);
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.MapScalarApiReference(n => {
+    app.MapScalarApiReference(n =>
+    {
         n.WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
         n.WithDotNetFlag(true);
         n.WithTitle("Bootstraper");

@@ -16,21 +16,25 @@
     /// <param name="connectionString">The connection string to use for the database.</param>
     /// <param name="action"></param>
     /// <param name="migrate"></param>
-    internal class WebApplicationFactory(string connectionString, Action<IServiceCollection> action, bool migrate = false) : WebApplicationFactory<StartBootstraper> {
+    internal class WebApplicationFactory(string connectionString, Action<IServiceCollection> action, bool migrate = false) : WebApplicationFactory<StartBootstraper>
+    {
         /// <summary>
         /// Configures the web host with custom services and configuration settings.
         /// </summary>
         /// <param name="builder">The <see cref="IWebHostBuilder"/> to configure.</param>
-        protected override void ConfigureWebHost(IWebHostBuilder builder) {
+        protected override void ConfigureWebHost(IWebHostBuilder builder)
+        {
             base.ConfigureWebHost(builder);
 
-            builder.ConfigureServices(services => {
+            builder.ConfigureServices(services =>
+            {
                 services.AddSingleton<IUserContext, UserContextTest>();
 
                 action?.Invoke(services);
             });
 
-            builder.ConfigureAppConfiguration((context, config) => {
+            builder.ConfigureAppConfiguration((context, config) =>
+            {
                 var settings = new Dictionary<string, string?>
                 {
                     { "ModularMonolith:Db:ConnectionString", connectionString },

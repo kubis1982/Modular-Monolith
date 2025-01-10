@@ -1,0 +1,8 @@
+{
+  "Articles": {
+    "module": {
+      "name": "Articles",
+      "enabled": true
+    }
+  }
+}

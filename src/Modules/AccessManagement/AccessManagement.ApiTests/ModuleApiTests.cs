@@ -9,14 +9,17 @@
     using Xunit.Abstractions;
 
     [Collection(nameof(WebApplicationFixtureCollection))]
-    public class ModuleApiTests(WebApplicationFixture webApplicationFixture, ITestOutputHelper testOutputHelper) : ApiTests<ReadDbContext>(webApplicationFixture, testOutputHelper) {
+    public class ModuleApiTests(WebApplicationFixture webApplicationFixture, ITestOutputHelper testOutputHelper) : ApiTests<ReadDbContext>(webApplicationFixture, testOutputHelper)
+    {
         public UserEntity Administrator { get; set; } = default!;
-        
-        public override async Task InitializeAsync() {
+
+        public override async Task InitializeAsync()
+        {
             await base.InitializeAsync();
 
             // Użytkownicy
-            Administrator = new UserEntity {
+            Administrator = new UserEntity
+            {
                 TypeId = User.Administrator.Id.TypeId,
                 Email = User.Administrator.Email,
                 Id = User.Administrator.Id.Id,
@@ -31,7 +34,8 @@
             DbContext.Database.ExecuteSqlRaw($"""ALTER SEQUENCE "{ModuleDefinition.MODULE_CODE}"."Users_Id_seq" RESTART WITH 2;""");
         }
 
-        protected static string? GetClaim(string token, string claimName) {
+        protected static string? GetClaim(string token, string claimName)
+        {
             var tokenHandler = new JwtSecurityTokenHandler();
             var securityToken = (JwtSecurityToken)tokenHandler.ReadToken(token);
             var claimValue = securityToken.Claims.FirstOrDefault(c => c.Type == claimName)?.Value;

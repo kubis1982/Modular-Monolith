@@ -21,6 +21,7 @@ public static class ServiceCollectionExtensions
         services.AddDatabase(configuration);
         services.AddSingleton<IClock, Clock>();
         services.AddSerialization();
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetSystemAssemblies());
         return services;
     }
 }

@@ -1,0 +1,8 @@
+{
+  "Warehouses": {
+    "module": {
+      "name": "Warehouses",
+      "enabled": true
+    }
+  }
+}

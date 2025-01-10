@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<RootNamespace>ModularMonolith.Modules.Orders</RootNamespace>
+		<AssemblyName>ModularMonolith.Modules.Orders.Api</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Include="module.Orders.development.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="module.Orders.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Shared\Shared.Api\Shared.Api.csproj" />
+		<ProjectReference Include="..\Modules.Orders.Application\Modules.Orders.Application.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+		<ProjectReference Include="..\Modules.Orders.Infrastructure\Modules.Orders.Infrastructure.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+		<ProjectReference Include="..\Modules.Orders.Shared\Modules.Orders.Shared.csproj" />
+	</ItemGroup>
+
+</Project>

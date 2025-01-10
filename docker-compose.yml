@@ -1,9 +1,7 @@
 services:
     db:
         image: postgres:15.8
-        container_name: modular-monolith-db
-        ports:
-            - 5432:5432         
+        container_name: modular-monolith-db     
         environment:
             POSTGRES_PASSWORD: 'mypassword'            
         networks: 

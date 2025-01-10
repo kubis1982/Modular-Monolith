@@ -11,7 +11,7 @@
         internal class DeleteUserCommandHandler(IUserRepository userRepository, IUserContext userContext) : UnitOfWorkCommandHandler<DeleteUserCommand>
         {
             public override async Task Handle(DeleteUserCommand command, CancellationToken cancellationToken)
-            {                
+            {
                 var user = await userRepository.SingleAsync(UserSpec.ByIdWithLastSession((UserId)command.UserId), cancellationToken);
                 var currentUser = await userRepository.SingleAsync(UserSpec.ById((UserId)userContext.Id), cancellationToken);
                 user.Delete(currentUser);

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<RootNamespace>ModularMonolith.Modules.Warehouses</RootNamespace>
+		<AssemblyName>ModularMonolith.Modules.Warehouses.Application</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Shared\Shared.Application\Shared.Application.csproj" />
+		<ProjectReference Include="..\..\Articles\Modules.Articles.Shared\Modules.Articles.Shared.csproj" />
+		<ProjectReference Include="..\Modules.Warehouses.Domain\Modules.Warehouses.Domain.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+		<ProjectReference Include="..\Modules.Warehouses.Shared\Modules.Warehouses.Shared.csproj" />
+	</ItemGroup>
+</Project>

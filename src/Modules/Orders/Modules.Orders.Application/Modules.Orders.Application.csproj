@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<RootNamespace>ModularMonolith.Modules.Orders</RootNamespace>
+		<AssemblyName>ModularMonolith.Modules.Orders.Application</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Shared\Shared.Application\Shared.Application.csproj" />
+		<ProjectReference Include="..\Modules.Orders.Domain\Modules.Orders.Domain.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+		<ProjectReference Include="..\Modules.Orders.Shared\Modules.Orders.Shared.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<InternalsVisibleTo Include="$(AssemblyName)Tests" />
+		<InternalsVisibleTo Include="ModularMonolith.Modules.Orders.Infrastructure" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<RootNamespace>ModularMonolith.Modules.Contractors</RootNamespace>
+		<AssemblyName>ModularMonolith.Modules.Contractors.Application</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Shared\Shared.Application\Shared.Application.csproj" />
+		<ProjectReference Include="..\Modules.Contractors.Domain\Modules.Contractors.Domain.csproj">
+			<PrivateAssets>build;compile</PrivateAssets>
+		</ProjectReference>
+		<ProjectReference Include="..\Modules.Contractors.Shared\Modules.Contractors.Shared.csproj" />
+	</ItemGroup>
+</Project>

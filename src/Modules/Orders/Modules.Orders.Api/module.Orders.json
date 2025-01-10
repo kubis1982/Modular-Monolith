@@ -1,0 +1,8 @@
+{
+  "Orders": {
+    "module": {
+      "name": "Orders",
+      "enabled": true
+    }
+  }
+}

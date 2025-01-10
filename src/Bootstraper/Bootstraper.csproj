@@ -24,7 +24,13 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Modules\AccessManagement\AccessManagement.Api\AccessManagement.Api.csproj" />
+	  <ProjectReference Include="..\Modules\Articles\Modules.Articles.Api\Modules.Articles.Api.csproj" />
+	  <ProjectReference Include="..\Modules\Contractors\Modules.Contractors.Api\Modules.Contractors.Api.csproj" />
+	  <ProjectReference Include="..\Modules\Orders\Modules.Orders.Api\Modules.Orders.Api.csproj" />
+	  <ProjectReference Include="..\Modules\ReadModel\Modules.ReadModel.Api\Modules.ReadModel.Api.csproj" />
+	  <ProjectReference Include="..\Modules\Warehouses\Modules.Warehouses.Api\Modules.Warehouses.Api.csproj" />
 	  <ProjectReference Include="..\Shared\Shared.Api\Shared.Api.csproj" />
+	  <ProjectReference Include="..\Shared\Shared.Infrastructure\Shared.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>

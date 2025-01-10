@@ -2,22 +2,34 @@
 
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Models;
+using ModularMonolith.Shared.Documentation;
 using ModularMonolith.Shared.Extensions;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
-internal class OperationIdAndSummaryTransformer : IOpenApiOperationTransformer {
-    public Task TransformAsync(OpenApiOperation operation, OpenApiOperationTransformerContext context, CancellationToken cancellationToken) {
-        if (operation.OperationId is null) {
-            MethodInfo? methodInfo = context.Description.ActionDescriptor.EndpointMetadata.OfType<MethodInfo>().FirstOrDefault();
-            if (methodInfo is not null) {
-                string methodName = methodInfo.Name;
-                string? moduleName = methodInfo.DeclaringType?.GetModuleName();
-                operation.OperationId = string.IsNullOrEmpty(moduleName) ? methodName : $"{moduleName}{methodName}";
-                operation.Summary = methodName;
+internal class OperationIdAndSummaryTransformer : IOpenApiOperationTransformer
+{
+    public Task TransformAsync(OpenApiOperation operation, OpenApiOperationTransformerContext context, CancellationToken cancellationToken)
+    {
+        MethodInfo? methodInfo = context.Description.ActionDescriptor.EndpointMetadata.OfType<MethodInfo>().FirstOrDefault();
+        string? methodName = methodInfo?.Name;
+        Type? declaringType = methodInfo?.DeclaringType;
+        string? moduleName = declaringType?.GetModuleName();
+
+        if (moduleName is not null)
+        {
+            operation.OperationId ??= string.IsNullOrEmpty(moduleName) ? methodName : $"{moduleName}{methodName}";
+            operation.Summary ??= methodName;
+
+            string? subModuleName = declaringType!.Assembly.GetCustomAttributes(true).OfType<SubModuleNameAttribute>().SingleOrDefault()?.GetName(declaringType);
+
+            if (!string.IsNullOrWhiteSpace(subModuleName))
+            {
+                operation.Tags.Add(new OpenApiTag { Name = subModuleName, Description = "DFGDF" });
             }
         }
+
         return Task.CompletedTask;
     }
 }

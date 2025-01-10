@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
+		<NoWarn>$(NoWarn);NU1603</NoWarn>
+		<RootNamespace>ModularMonolith.Modules.Warehouses</RootNamespace>
+		<AssemblyName>ModularMonolith.Modules.Warehouses.DomainTests</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Shared\Shared.Tests\Shared.Tests.csproj" />
+	  <ProjectReference Include="..\Modules.Warehouses.Domain\Modules.Warehouses.Domain.csproj" />
+	</ItemGroup>
+
+</Project>
