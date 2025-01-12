@@ -1,9 +1,9 @@
-﻿using ModularMonolith.Modules.Ordering.Domain.Orders;
-using ModularMonolith.Modules.Ordering.Persistance.ReadModel;
-using ModularMonolith.Modules.Ordering.Requests.Orders;
+﻿using ModularMonolith.Modules.Orders.Domain.Orders;
+using ModularMonolith.Modules.Orders.Persistance.ReadModel;
+using ModularMonolith.Modules.Orders.Requests.Orders;
 using Xunit.Abstractions;
 
-namespace ModularMonolith.Modules.Ordering.Endpoints.Orders.Tests
+namespace ModularMonolith.Modules.Orders.Endpoints.Orders.Tests
 {
     public class OrdersTests(WebApplicationFixture webApplicationFixture, ITestOutputHelper testOutputHelper) : ModuleApiTests(webApplicationFixture, testOutputHelper)
     {

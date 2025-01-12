@@ -1,2 +1,2 @@
 ﻿global using Microsoft.EntityFrameworkCore;
-global using ModularMonolith.Modules.Ordering.Domain;
+global using ModularMonolith.Modules.Orders.Domain;

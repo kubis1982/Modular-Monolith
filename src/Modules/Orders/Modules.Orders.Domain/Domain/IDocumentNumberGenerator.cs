@@ -1,4 +1,4 @@
-﻿namespace ModularMonolith.Modules.Ordering.Domain
+﻿namespace ModularMonolith.Modules.Orders.Domain
 {
     using System;
     using System.Threading;

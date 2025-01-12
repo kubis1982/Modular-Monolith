@@ -1,8 +1,8 @@
-﻿namespace ModularMonolith.Modules.Ordering
+﻿namespace ModularMonolith.Modules.Orders
 {
     using Microsoft.Extensions.DependencyInjection;
-    using ModularMonolith.Modules.Ordering.Persistance.ReadModel;
-    using ModularMonolith.Modules.Ordering.Services;
+    using ModularMonolith.Modules.Orders.Persistance.ReadModel;
+    using ModularMonolith.Modules.Orders.Services;
 
     [CollectionDefinition(nameof(WebApplicationFixtureCollection))]
     public class WebApplicationFixtureCollection : ICollectionFixture<WebApplicationFixture> { }

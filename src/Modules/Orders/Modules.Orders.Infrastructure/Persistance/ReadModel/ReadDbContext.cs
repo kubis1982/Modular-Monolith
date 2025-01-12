@@ -1,4 +1,4 @@
-﻿namespace ModularMonolith.Modules.Ordering.Persistance.ReadModel
+﻿namespace ModularMonolith.Modules.Orders.Persistance.ReadModel
 {
     using ModularMonolith.Shared.Persistance.ReadModel;
 

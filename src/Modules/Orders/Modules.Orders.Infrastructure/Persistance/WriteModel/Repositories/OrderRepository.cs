@@ -1,6 +1,6 @@
-﻿namespace ModularMonolith.Modules.Ordering.Persistance.WriteModel.Repositories
+﻿namespace ModularMonolith.Modules.Orders.Persistance.WriteModel.Repositories
 {
-    using ModularMonolith.Modules.Ordering.Domain.Orders;
+    using ModularMonolith.Modules.Orders.Domain.Orders;
 
     internal class OrderRepository(WriteDbContext dbContext) : Repository<Order, OrderSpec>(dbContext), IOrderRepository
     {

@@ -1,4 +1,4 @@
-﻿namespace ModularMonolith.Modules.Ordering.Persistance.WriteModel
+﻿namespace ModularMonolith.Modules.Orders.Persistance.WriteModel
 {
 
     using Domain;

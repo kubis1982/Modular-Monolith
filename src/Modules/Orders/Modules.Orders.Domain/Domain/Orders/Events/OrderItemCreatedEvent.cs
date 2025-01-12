@@ -1,4 +1,4 @@
-﻿namespace ModularMonolith.Modules.Ordering.Domain.Orders.Events
+﻿namespace ModularMonolith.Modules.Orders.Domain.Orders.Events
 {
     public sealed record OrderItemCreatedEvent : OrderDomainEvent
     {

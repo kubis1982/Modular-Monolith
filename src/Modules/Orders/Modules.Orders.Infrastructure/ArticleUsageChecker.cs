@@ -1,7 +1,7 @@
-﻿namespace ModularMonolith.Modules.Ordering
+﻿namespace ModularMonolith.Modules.Orders
 {
     using ModularMonolith.Modules.Articles;
-    using ModularMonolith.Modules.Ordering.Persistance.ReadModel;
+    using ModularMonolith.Modules.Orders.Persistance.ReadModel;
     using System.ComponentModel;
     using System.Linq;
 

@@ -1,9 +1,9 @@
-﻿namespace ModularMonolith.Modules.Ordering.Commands.Orders.Sale
+﻿namespace ModularMonolith.Modules.Orders.Commands.Orders.Sale
 {
-    using ModularMonolith.Modules.Ordering.Domain;
-    using ModularMonolith.Modules.Ordering.Domain.Orders;
-    using ModularMonolith.Modules.Ordering.Extensions;
-    using ModularMonolith.Modules.Ordering.Services;
+    using ModularMonolith.Modules.Orders.Domain;
+    using ModularMonolith.Modules.Orders.Domain.Orders;
+    using ModularMonolith.Modules.Orders.Extensions;
+    using ModularMonolith.Modules.Orders.Services;
     using ModularMonolith.Shared.Time;
     using System;
     using System.Threading;

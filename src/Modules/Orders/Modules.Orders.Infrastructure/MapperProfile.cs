@@ -1,9 +1,9 @@
-﻿namespace ModularMonolith.Modules.Ordering
+﻿namespace ModularMonolith.Modules.Orders
 {
     using AutoMapper;
     using ModularMonolith.Modules.Articles.Api;
     using ModularMonolith.Modules.Contractors.Api.Dtos;
-    using ModularMonolith.Modules.Ordering.Domain;
+    using ModularMonolith.Modules.Orders.Domain;
     using ModularMonolith.Modules.Warehouses.Api;
 
     internal class MapperProfile : Profile

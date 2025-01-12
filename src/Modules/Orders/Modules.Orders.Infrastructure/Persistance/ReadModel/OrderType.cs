@@ -1,4 +1,4 @@
-﻿namespace ModularMonolith.Modules.Ordering.Persistance.ReadModel
+﻿namespace ModularMonolith.Modules.Orders.Persistance.ReadModel
 {
     public enum OrderType
     {

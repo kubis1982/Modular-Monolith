@@ -1,4 +1,4 @@
-﻿namespace ModularMonolith.Modules.Ordering.Domain.Orders
+﻿namespace ModularMonolith.Modules.Orders.Domain.Orders
 {
     /// <summary>
     /// Represents the state of an order.

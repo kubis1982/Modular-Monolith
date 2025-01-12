@@ -1,4 +1,4 @@
-﻿namespace ModularMonolith.Modules.Ordering.Persistance.WriteModel.Configurations
+﻿namespace ModularMonolith.Modules.Orders.Persistance.WriteModel.Configurations
 {
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

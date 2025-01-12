@@ -1,6 +1,6 @@
-﻿namespace ModularMonolith.Modules.Ordering.Extensions
+﻿namespace ModularMonolith.Modules.Orders.Extensions
 {
-    using ModularMonolith.Modules.Ordering.Domain;
+    using ModularMonolith.Modules.Orders.Domain;
     using ModularMonolith.Shared.Kernel.Types;
 
     internal static class EntityExtensions

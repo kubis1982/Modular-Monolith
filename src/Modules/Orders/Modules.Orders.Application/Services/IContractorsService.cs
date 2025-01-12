@@ -1,6 +1,6 @@
-﻿namespace ModularMonolith.Modules.Ordering.Services
+﻿namespace ModularMonolith.Modules.Orders.Services
 {
-    using ModularMonolith.Modules.Ordering.Domain;
+    using ModularMonolith.Modules.Orders.Domain;
 
     public interface IContractorsService
     {

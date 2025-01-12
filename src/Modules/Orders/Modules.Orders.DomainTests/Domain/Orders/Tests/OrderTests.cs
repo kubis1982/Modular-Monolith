@@ -1,7 +1,7 @@
-﻿namespace ModularMonolith.Modules.Ordering.Domain.Orders.Tests
+﻿namespace ModularMonolith.Modules.Orders.Domain.Orders.Tests
 {
-    using ModularMonolith.Modules.Ordering.Domain.Orders.Events;
-    using ModularMonolith.Modules.Ordering.Domain.Orders.Exceptions;
+    using ModularMonolith.Modules.Orders.Domain.Orders.Events;
+    using ModularMonolith.Modules.Orders.Domain.Orders.Exceptions;
     using ModularMonolith.Shared.Kernel.Types;
 
     public class OrderTests : ModuleDomainTests

@@ -1,6 +1,6 @@
-﻿namespace ModularMonolith.Modules.Ordering.Commands.Orders.Purchase
+﻿namespace ModularMonolith.Modules.Orders.Commands.Orders.Purchase
 {
-    using ModularMonolith.Modules.Ordering.Domain.Orders;
+    using ModularMonolith.Modules.Orders.Domain.Orders;
     using System.Threading;
     using System.Threading.Tasks;
 

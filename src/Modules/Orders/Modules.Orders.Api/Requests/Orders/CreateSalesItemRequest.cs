@@ -1,6 +1,6 @@
-﻿namespace ModularMonolith.Modules.Ordering.Requests.Orders
+﻿namespace ModularMonolith.Modules.Orders.Requests.Orders
 {
-    using ModularMonolith.Modules.Ordering.Persistance;
+    using ModularMonolith.Modules.Orders.Persistance;
     using System.ComponentModel.DataAnnotations;
 
     public class CreateSalesItemRequest

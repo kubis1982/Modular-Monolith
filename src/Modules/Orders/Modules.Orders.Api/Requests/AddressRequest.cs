@@ -1,6 +1,6 @@
-﻿namespace ModularMonolith.Modules.Ordering.Requests
+﻿namespace ModularMonolith.Modules.Orders.Requests
 {
-    using ModularMonolith.Modules.Ordering.Persistance;
+    using ModularMonolith.Modules.Orders.Persistance;
     using System.ComponentModel.DataAnnotations;
 
     public class AddressRequest

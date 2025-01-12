@@ -1,4 +1,4 @@
-﻿namespace ModularMonolith.Modules.Ordering.Domain.Exceptions
+﻿namespace ModularMonolith.Modules.Orders.Domain.Exceptions
 {
 
     internal class ConverterInvalidValueException : AppException

@@ -1,6 +1,6 @@
-﻿namespace ModularMonolith.Modules.Ordering.Queries.Orders
+﻿namespace ModularMonolith.Modules.Orders.Queries.Orders
 {
-    using ModularMonolith.Modules.Ordering.Domain.Orders;
+    using ModularMonolith.Modules.Orders.Domain.Orders;
     using ModularMonolith.Shared.CQRS.Queries;
     using ModularMonolith.Shared.Kernel.Types;
     using System;

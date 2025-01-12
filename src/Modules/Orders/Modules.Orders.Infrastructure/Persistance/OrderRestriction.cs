@@ -1,4 +1,4 @@
-﻿namespace ModularMonolith.Modules.Ordering.Persistance
+﻿namespace ModularMonolith.Modules.Orders.Persistance
 {
     public static class OrderRestriction
     {

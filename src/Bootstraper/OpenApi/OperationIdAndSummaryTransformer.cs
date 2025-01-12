@@ -26,7 +26,8 @@ internal class OperationIdAndSummaryTransformer : IOpenApiOperationTransformer
 
             if (!string.IsNullOrWhiteSpace(subModuleName))
             {
-                operation.Tags.Add(new OpenApiTag { Name = subModuleName, Description = "DFGDF" });
+                operation.Tags.Clear();
+                operation.Tags.Add(new OpenApiTag { Name = subModuleName });
             }
         }
 

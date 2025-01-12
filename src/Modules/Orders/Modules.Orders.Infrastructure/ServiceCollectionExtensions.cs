@@ -1,15 +1,15 @@
-﻿namespace ModularMonolith.Modules.Ordering
+﻿namespace ModularMonolith.Modules.Orders
 {
 
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using ModularMonolith.Modules.Articles;
     using ModularMonolith.Modules.Contractors;
-    using ModularMonolith.Modules.Ordering.Domain.Orders;
-    using ModularMonolith.Modules.Ordering.Persistance.ReadModel;
-    using ModularMonolith.Modules.Ordering.Persistance.WriteModel;
-    using ModularMonolith.Modules.Ordering.Persistance.WriteModel.Repositories;
-    using ModularMonolith.Modules.Ordering.Services;
+    using ModularMonolith.Modules.Orders.Domain.Orders;
+    using ModularMonolith.Modules.Orders.Persistance.ReadModel;
+    using ModularMonolith.Modules.Orders.Persistance.WriteModel;
+    using ModularMonolith.Modules.Orders.Persistance.WriteModel.Repositories;
+    using ModularMonolith.Modules.Orders.Services;
     using ModularMonolith.Modules.Warehouses;
     using ModularMonolith.Shared.Persistance;
 

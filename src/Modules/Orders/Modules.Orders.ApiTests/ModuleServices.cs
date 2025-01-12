@@ -1,7 +1,7 @@
-﻿namespace ModularMonolith.Modules.Ordering
+﻿namespace ModularMonolith.Modules.Orders
 {
-    using ModularMonolith.Modules.Ordering.Domain;
-    using ModularMonolith.Modules.Ordering.Services;
+    using ModularMonolith.Modules.Orders.Domain;
+    using ModularMonolith.Modules.Orders.Services;
     using System.Threading.Tasks;
 
     public class ModuleServices : IContractorsService, IWarehousesService, IArticlesService

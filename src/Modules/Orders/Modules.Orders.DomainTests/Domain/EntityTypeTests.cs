@@ -1,6 +1,6 @@
-﻿using ModularMonolith.Modules.Ordering.Domain.Orders;
+﻿using ModularMonolith.Modules.Orders.Domain.Orders;
 
-namespace ModularMonolith.Modules.Ordering.Domain.Tests
+namespace ModularMonolith.Modules.Orders.Domain.Tests
 {
     public class EntityTypeTests : ModuleDomainTests
     {

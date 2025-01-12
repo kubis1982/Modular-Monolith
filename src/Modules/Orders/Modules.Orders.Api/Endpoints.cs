@@ -1,14 +1,14 @@
-﻿namespace ModularMonolith.Modules.Ordering
+﻿namespace ModularMonolith.Modules.Orders
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Http.HttpResults;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Routing;
-    using ModularMonolith.Modules.Ordering.Commands.Orders.Purchase;
-    using ModularMonolith.Modules.Ordering.Commands.Orders.Sale;
-    using ModularMonolith.Modules.Ordering.Queries.Orders;
-    using ModularMonolith.Modules.Ordering.Requests.Orders;
+    using ModularMonolith.Modules.Orders.Commands.Orders.Purchase;
+    using ModularMonolith.Modules.Orders.Commands.Orders.Sale;
+    using ModularMonolith.Modules.Orders.Queries.Orders;
+    using ModularMonolith.Modules.Orders.Requests.Orders;
     using ModularMonolith.Shared.CQRS.Commands;
     using ModularMonolith.Shared.CQRS.Queries;
     using ModularMonolith.Shared.Modules;

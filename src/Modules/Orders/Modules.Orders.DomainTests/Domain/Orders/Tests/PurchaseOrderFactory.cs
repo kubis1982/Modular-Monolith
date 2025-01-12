@@ -1,6 +1,6 @@
-﻿namespace ModularMonolith.Modules.Ordering.Domain.Orders.Tests
+﻿namespace ModularMonolith.Modules.Orders.Domain.Orders.Tests
 {
-    using ModularMonolith.Modules.Ordering.Domain;
+    using ModularMonolith.Modules.Orders.Domain;
     using System;
 
     internal class PurchaseOrderFactory : OrderFactory

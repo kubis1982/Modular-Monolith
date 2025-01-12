@@ -1,4 +1,4 @@
-﻿namespace ModularMonolith.Modules.Ordering.Domain.Tests
+﻿namespace ModularMonolith.Modules.Orders.Domain.Tests
 {
     using AutoFixture;
     using ModularMonolith.Shared.Kernel.Types;

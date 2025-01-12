@@ -4,7 +4,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ModularMonolith.Modules.Ordering.Persistance.ReadModel;
+namespace ModularMonolith.Modules.Orders.Persistance.ReadModel;
 
 [Table("OrderItems", Schema = EntityType.ModuleCode)]
 public partial class OrderItemEntity {

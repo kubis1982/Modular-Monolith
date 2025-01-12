@@ -1,11 +1,11 @@
-﻿namespace ModularMonolith.Modules.Ordering.Customizations
+﻿namespace ModularMonolith.Modules.Orders.Customizations
 {
 
     using AutoFixture;
-    using ModularMonolith.Modules.Ordering.Domain;
-    using ModularMonolith.Modules.Ordering.Domain.Orders;
-    using ModularMonolith.Modules.Ordering.Persistance.ReadModel;
-    using ModularMonolith.Modules.Ordering.Requests.Orders;
+    using ModularMonolith.Modules.Orders.Domain;
+    using ModularMonolith.Modules.Orders.Domain.Orders;
+    using ModularMonolith.Modules.Orders.Persistance.ReadModel;
+    using ModularMonolith.Modules.Orders.Requests.Orders;
 
     internal class OrdersCustomisation : ICustomization
     {

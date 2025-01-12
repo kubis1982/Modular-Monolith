@@ -1,6 +1,6 @@
-﻿namespace ModularMonolith.Modules.Ordering
+﻿namespace ModularMonolith.Modules.Orders
 {
-    using ModularMonolith.Modules.Ordering.Persistance.ReadModel;
+    using ModularMonolith.Modules.Orders.Persistance.ReadModel;
     using ModularMonolith.Shared;
     using Xunit.Abstractions;
 

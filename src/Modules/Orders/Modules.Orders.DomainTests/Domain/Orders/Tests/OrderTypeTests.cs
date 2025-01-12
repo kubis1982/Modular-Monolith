@@ -1,4 +1,4 @@
-﻿namespace ModularMonolith.Modules.Ordering.Domain.Orders.Tests
+﻿namespace ModularMonolith.Modules.Orders.Domain.Orders.Tests
 {
     public class OrderTypeTests : ModuleDomainTests
     {

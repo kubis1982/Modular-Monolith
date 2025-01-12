@@ -1,6 +1,6 @@
-﻿namespace ModularMonolith.Modules.Ordering.Domain
+﻿namespace ModularMonolith.Modules.Orders.Domain
 {
-    using ModularMonolith.Modules.Ordering.Domain.Orders;
+    using ModularMonolith.Modules.Orders.Domain.Orders;
     using System;
     using System.Collections.Generic;
     using System.Reflection;

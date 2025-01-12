@@ -1,4 +1,4 @@
-﻿namespace ModularMonolith.Modules.Ordering
+﻿namespace ModularMonolith.Modules.Orders
 {
     using ModularMonolith.Shared;
 

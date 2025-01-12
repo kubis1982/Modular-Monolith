@@ -1,6 +1,6 @@
-﻿namespace ModularMonolith.Modules.Ordering.Domain.Orders
+﻿namespace ModularMonolith.Modules.Orders.Domain.Orders
 {
-    using ModularMonolith.Modules.Ordering.Domain.Orders.Exceptions;
+    using ModularMonolith.Modules.Orders.Domain.Orders.Exceptions;
     using System;
     using System.Collections.Generic;
     using System.Linq;

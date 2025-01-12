@@ -1,7 +1,7 @@
-﻿namespace ModularMonolith.Modules.Ordering.Persistance.WriteModel.Configurations.Orders
+﻿namespace ModularMonolith.Modules.Orders.Persistance.WriteModel.Configurations.Orders
 {
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using ModularMonolith.Modules.Ordering.Domain.Orders;
+    using ModularMonolith.Modules.Orders.Domain.Orders;
     using ModularMonolith.Shared.Kernel.Types;
     using System;
 

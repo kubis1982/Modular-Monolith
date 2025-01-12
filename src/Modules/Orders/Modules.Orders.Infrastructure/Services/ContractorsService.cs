@@ -1,4 +1,4 @@
-﻿namespace ModularMonolith.Modules.Ordering.Services
+﻿namespace ModularMonolith.Modules.Orders.Services
 {
     using AutoMapper;
     using ModularMonolith.Modules.Contractors.Api;

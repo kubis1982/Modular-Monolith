@@ -1,6 +1,6 @@
-﻿namespace ModularMonolith.Modules.Ordering.Domain
+﻿namespace ModularMonolith.Modules.Orders.Domain
 {
-    using ModularMonolith.Modules.Ordering.Domain.Exceptions;
+    using ModularMonolith.Modules.Orders.Domain.Exceptions;
 
     public record Quantity
     {
