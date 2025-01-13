@@ -1,11 +1,11 @@
 ﻿using ModularMonolith.Modules.ReadModel.Persistance.ReadModel.Ordering;
-using ModularMonolith.Modules.ReadModel.Queries.Ordering;
+using ModularMonolith.Modules.ReadModel.Queries.Orders;
 using ModularMonolith.Shared;
 using Xunit.Abstractions;
 
 namespace ModularMonolith.Modules.ReadModel.Endpoints {
 
-    public class OrderingTests(WebApplicationFixture webApplicationFixture, ITestOutputHelper testOutputHelper) : ModuleApiTests(webApplicationFixture, testOutputHelper) {
+    public class OrdersTests(WebApplicationFixture webApplicationFixture, ITestOutputHelper testOutputHelper) : ModuleApiTests(webApplicationFixture, testOutputHelper) {
         [Theory]
         [InlineDataFixture(OrderType.Sales)]
         [InlineDataFixture(OrderType.Purchase)]

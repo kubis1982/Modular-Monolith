@@ -1,4 +1,4 @@
-﻿namespace ModularMonolith.Modules.ReadModel.Queries.Ordering {
+﻿namespace ModularMonolith.Modules.ReadModel.Queries.Orders {
     using Microsoft.EntityFrameworkCore;
     using ModularMonolith.Modules.ReadModel.Persistance.ReadModel;
     using ModularMonolith.Modules.ReadModel.Persistance.ReadModel.Ordering;

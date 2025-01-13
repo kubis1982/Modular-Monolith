@@ -5,7 +5,7 @@
         [ModulePrefix("ArM")]
         Articles,
         [ModulePrefix("OrM")]
-        Ordering,
+        Orders,
         [ModulePrefix("WaM")]
         Warehouses,
         [ModulePrefix("CnM")]
