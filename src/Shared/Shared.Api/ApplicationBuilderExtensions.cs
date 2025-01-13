@@ -8,7 +8,7 @@
 
     public static class ApplicationBuilderExtensions
     {
-        public static IApplicationBuilder UseModular(this IApplicationBuilder app, IWebHostEnvironment environment)
+        public static WebApplication UseModular(this WebApplication app, IWebHostEnvironment environment)
         {
             app.UseRouting();
             if (!environment.IsDevelopment())
@@ -18,7 +18,7 @@
             app.UseHttpsRedirection();
             app.UseExceptionHandler();
             app.UseModules();
-            app.UseEndpoints(n => n.MapEndpoints());
+            app.MapEndpoints();
             return app;
         }
     }

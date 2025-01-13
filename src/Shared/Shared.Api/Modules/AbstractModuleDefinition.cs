@@ -54,7 +54,7 @@
         /// Uses the module in the application builder.
         /// </summary>
         /// <param name="app">The application builder.</param>
-        public void UseServices(IApplicationBuilder app)
+        public void UseServices(WebApplication app)
         {
             OnUseServices(app);
         }
@@ -63,7 +63,7 @@
         /// Called when using the module in the application builder.
         /// </summary>
         /// <param name="app">The application builder.</param>
-        protected virtual void OnUseServices(IApplicationBuilder app) { }
+        protected virtual void OnUseServices(WebApplication app) { }
 
         /// <summary>
         /// Gets the URL for the specified path.

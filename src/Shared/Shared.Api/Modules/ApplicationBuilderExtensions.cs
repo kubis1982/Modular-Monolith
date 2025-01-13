@@ -5,9 +5,9 @@
 
     internal static class ApplicationBuilderExtensions
     {
-        public static IApplicationBuilder UseModules(this IApplicationBuilder app)
+        public static WebApplication UseModules(this WebApplication app)
         {
-            foreach (var module in app.ApplicationServices.GetServices<AbstractModuleDefinition>())
+            foreach (var module in app.Services.GetServices<AbstractModuleDefinition>())
             {
                 module.UseServices(app);
             }

@@ -2,7 +2,7 @@
 using ModularMonolith.Shared.CQRS.Queries;
 using Xunit.Abstractions;
 
-namespace ModularMonolith.Modules.ReadModel.Controllers
+namespace ModularMonolith.Modules.ReadModel.Articles
 {
     public class ArticlesControllerTests(WebApplicationFixture webApplicationFixture, ITestOutputHelper testOutputHelper) : ModuleApiTests(webApplicationFixture, testOutputHelper) {
         private async Task Test<T>(Func<ArticlesController, Task<IQueryable<T>>> func) {

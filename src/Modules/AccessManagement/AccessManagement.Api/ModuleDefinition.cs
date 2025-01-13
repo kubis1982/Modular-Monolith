@@ -56,7 +56,7 @@
             services.AddModularInfrastructure(configuration);
         }
 
-        protected override void OnUseServices(IApplicationBuilder app)
+        protected override void OnUseServices(WebApplication app)
         {
             base.OnUseServices(app);
 

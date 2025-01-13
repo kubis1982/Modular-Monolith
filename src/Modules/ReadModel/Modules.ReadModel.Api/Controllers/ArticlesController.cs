@@ -1,4 +1,4 @@
-﻿namespace ModularMonolith.Modules.ReadModel.Controllers
+﻿namespace ModularMonolith.Modules.ReadModel.Articles
 {
     using ModularMonolith.Modules.ReadModel;
     using ModularMonolith.Modules.ReadModel.Queries.Articles.Queryables;
@@ -10,7 +10,7 @@
     [ControllerRoute(Modules.Articles)]
     public class ArticlesController(IQueryExecutor queryExecutor) : ModuleController {
         [MethodRoute("articles")]
-        [Documentation(Modules.Articles, "GetArticles", "OOOOO")]
+        [Documentation(Modules.Articles, "GetArticles")]
         public Task<IQueryable<GetArticlesQueryResult>> GetArticles(CancellationToken cancellationToken) => queryExecutor.Execute(new GetArticlesQuery(), cancellationToken);
     }
 }
